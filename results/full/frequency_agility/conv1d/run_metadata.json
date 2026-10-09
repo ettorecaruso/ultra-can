@@ -1,0 +1,122 @@
+{
+  "experiment": "frequency_agility",
+  "arch": "conv1d",
+  "timestamp": "2026-10-08T14:16:32",
+  "tensorflow_version": "2.21.0",
+  "modalities": [
+    "fh_off",
+    "fh_off_blind",
+    "fh_on"
+  ],
+  "jammer_knowledge": {
+    "fh_off": "omniscient",
+    "fh_off_blind": "band_agnostic",
+    "fh_on": "model"
+  },
+  "jammer_models": [
+    "barrage",
+    "fixed_partial",
+    "sweep",
+    "follower"
+  ],
+  "in_channel_types": [
+    "cw",
+    "partial_band"
+  ],
+  "jsr_values": [
+    -10.0,
+    -6.0,
+    -2.0,
+    2.0,
+    6.0,
+    10.0
+  ],
+  "n_bursts_per_condition": 20000,
+  "n_realizations": 5,
+  "snr_db": 21.0,
+  "num_echoes": 3,
+  "dwell_sweep": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "dwell_sweep_jsr": 6.0,
+  "reaction_sweep": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "reaction_sweep_models": [
+    "follower"
+  ],
+  "reaction_sweep_jsr": 6.0,
+  "reaction_sweep_dwell": 8,
+  "hop": {
+    "num_bursts": 20000.0,
+    "num_slots": 20000.0,
+    "num_channels": 8.0,
+    "dwell_bursts": 1.0,
+    "slot_duration_us": 10.0,
+    "hop_rate_hz": 100000.0
+  },
+  "channel": {
+    "model": "tdl_3gpp",
+    "fingerprint": "2f24e3d5",
+    "hold_mode": "per_hop",
+    "parameters": {
+      "generator": "geometry",
+      "mode": "monostatic",
+      "direct_fading": "rician",
+      "echo_fading": "none",
+      "echo_fading_kappa_db": 6.0,
+      "direct_fading_kappa_db": 10.0,
+      "num_echoes_model": "fixed",
+      "poisson_echoes_mean": 2.0,
+      "add_awgn": true,
+      "echo_only_mode": false,
+      "scene": {
+        "node_altitude_m": 50.0,
+        "obstacle_distance_m": [
+          40.0,
+          400.0
+        ],
+        "obstacle_reflectivity": 0.3,
+        "scatterer_distance_m": [
+          20.0,
+          300.0
+        ],
+        "scatterer_reflectivity": 0.08,
+        "radial_speed_mps": [
+          10.0,
+          30.0
+        ],
+        "speed_outlier_mps": 100.0,
+        "speed_outlier_probability": 0.0,
+        "reference_range_m": 100.0,
+        "echo_power_fraction": 0.5
+      },
+      "time_block_slots": 53,
+      "clutter_power_fraction": 0.25,
+      "clutter_fading": "rayleigh",
+      "clutter_kappa_db": 0.0,
+      "clutter_doppler_max": 8e-05,
+      "max_pdp_truncation_fraction": 0.1,
+      "pdp": {
+        "profile": "TDL-D",
+        "kind": "exponential",
+        "n_taps": 13,
+        "rms_delay_spread_ns": 300.0,
+        "decay_db_per_ds": 4.343,
+        "delays_ns": [],
+        "powers_db": []
+      }
+    }
+  },
+  "shared_process": "the modalities share the waveform stream and the slot ids; the hold mode of the channel decides how the realization is selected",
+  "mask_rng_offset": 50021,
+  "time_block_slots": 53
+}

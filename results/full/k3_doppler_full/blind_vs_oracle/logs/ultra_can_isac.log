@@ -1,0 +1,10 @@
+2026-10-08 22:39:47 | root                           | INFO   | Logging configured: file=/content/dhuc/results/full/k3_doppler_full/blind_vs_oracle/logs/ultra_can_isac.log level=INFO
+2026-10-08 22:39:47 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-08 22:39:47 | __main__                       | INFO   | seed = 42
+2026-10-08 22:39:47 | __main__                       | INFO   | lambda_mse = 2
+2026-10-08 22:39:47 | __main__                       | INFO   | sequence_length = 100
+2026-10-08 22:39:47 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-08 22:39:47 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-08 22:39:47 | __main__                       | INFO   | epochs = 30
+2026-10-08 22:40:00 | __main__                       | INFO   | blind_vs_oracle conv1d: 3 points
+2026-10-08 22:40:10 | __main__                       | INFO   | blind_vs_oracle qkv: 3 points

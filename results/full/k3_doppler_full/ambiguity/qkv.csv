@@ -1,0 +1,3 @@
+arch,pile,n_symbols,mae_peak_samples,mae_head_samples,medae_peak_samples,medae_head_samples,gap_samples,gap_median_samples
+qkv,easy,6000,0.0,3.6116076080004373,0.0,2.9347829818725586,-3.6116076080004373,-2.9347829818725586
+qkv,ambiguous,6000,0.591,5.5249003001848855,1.0,4.890324115753174,-4.933900300184885,-3.890324115753174

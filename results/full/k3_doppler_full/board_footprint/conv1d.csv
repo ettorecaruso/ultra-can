@@ -1,0 +1,2 @@
+params,float32_kib,int8_kib_estimate,latency_median_ms,latency_mean_ms,latency_p95_ms,latency_std_ms,peak_process_memory_kib,arch,batch,n_bursts,input_shape
+26596,103.890625,25.97265625,63.81082149999884,65.0915871299992,73.57017200001792,4.296358969618663,1587256.0,conv1d,1,100,100x3

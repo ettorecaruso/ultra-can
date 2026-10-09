@@ -1,0 +1,3 @@
+arch,pile,n_symbols,mae_peak_samples,mae_head_samples,medae_peak_samples,medae_head_samples,gap_samples,gap_median_samples
+conv1d,easy,6000,0.0,3.5737082240084805,0.0,2.98679780960083,-3.5737082240084805,-2.98679780960083
+conv1d,ambiguous,6000,0.591,3.663988078845044,1.0,2.677708625793457,-3.072988078845044,-1.677708625793457

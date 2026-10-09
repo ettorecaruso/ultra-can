@@ -1,0 +1,22 @@
+2026-10-08 22:39:14 | root                           | INFO   | Logging configured: file=/content/dhuc/results/full/k3_doppler_full/board_footprint/logs/ultra_can_isac.log level=INFO
+2026-10-08 22:39:14 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-08 22:39:14 | __main__                       | INFO   | seed = 42
+2026-10-08 22:39:14 | __main__                       | INFO   | lambda_mse = 2
+2026-10-08 22:39:14 | __main__                       | INFO   | sequence_length = 100
+2026-10-08 22:39:14 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-08 22:39:14 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-08 22:39:14 | __main__                       | INFO   | epochs = 30
+2026-10-08 22:39:14 | src.experiments.pipeline       | INFO   | build_model 'conv1d': model seed applied = 21 (from model.seeds.conv1d, dataset seed stays 42)
+2026-10-08 22:39:15 | src.models.heads               | INFO   | communication_head built: input_dim=64, units=128, M=2, params=8578
+2026-10-08 22:39:16 | src.models.heads               | INFO   | sensing_head built: input_dim=228, units=32, output_units=1, params=7361
+2026-10-08 22:39:18 | src.models.ultra_can           | INFO   | model 'ultra_can' built: comm=8578 params, sensing=7361 params, TOTAL=26596 params
+2026-10-08 22:39:19 | src.experiments.pipeline       | INFO   | Model 'ultra_can' built: 26596 trainable parameters.
+2026-10-08 22:39:27 | __main__                       | INFO   | board_footprint conv1d: {'params': 26596, 'float32_kib': 103.890625, 'int8_kib_estimate': 25.97265625, 'latency_median_ms': 63.81082149999884, 'latency_mean_ms': 65.0915871299992, 'latency_p95_ms': 73.57017200001792, 'latency_std_ms': 4.296358969618663, 'peak_process_memory_kib': 1587256.0, 'arch': 'conv1d', 'batch': 1, 'n_bursts': 100, 'input_shape': '100x3'}
+2026-10-08 22:39:27 | __main__                       | INFO   | dataset dir: 01634829
+2026-10-08 22:39:27 | src.experiments.pipeline       | INFO   | build_model 'qkv': model seed applied = 15 (from model.seeds.qkv, dataset seed stays 42)
+2026-10-08 22:39:27 | src.models.heads               | INFO   | communication_head built: input_dim=64, units=128, M=2, params=8578
+2026-10-08 22:39:27 | src.models.heads               | INFO   | sensing_head built: input_dim=228, units=32, output_units=1, params=7361
+2026-10-08 22:39:28 | src.models.ultra_can_qkv       | INFO   | model 'ultra_can_qkv' built: comm=8578 params, sensing=7361 params, TOTAL=43171 params, lambda_mse=2
+2026-10-08 22:39:28 | src.experiments.pipeline       | INFO   | Model 'ultra_can_qkv' built: 43171 trainable parameters.
+2026-10-08 22:39:39 | __main__                       | INFO   | board_footprint qkv: {'params': 43171, 'float32_kib': 168.63671875, 'int8_kib_estimate': 42.1591796875, 'latency_median_ms': 73.86287599999264, 'latency_mean_ms': 82.5789460499999, 'latency_p95_ms': 113.46513199998753, 'latency_std_ms': 15.040256147940147, 'peak_process_memory_kib': 1649800.0, 'arch': 'qkv', 'batch': 1, 'n_bursts': 100, 'input_shape': '100x3'}
+2026-10-08 22:39:39 | __main__                       | INFO   | dataset dir: 01634829

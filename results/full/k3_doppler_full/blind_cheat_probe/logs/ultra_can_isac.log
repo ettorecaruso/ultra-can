@@ -1,0 +1,18 @@
+2026-10-09 11:14:54 | root                           | INFO   | Logging configured: file=/home/ettore/Documents/vs_code/ultra-can/results/full/k3_doppler_full/blind_cheat_probe/logs/ultra_can_isac.log level=INFO
+2026-10-09 11:14:54 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-09 11:14:54 | __main__                       | INFO   | seed = 42
+2026-10-09 11:14:54 | __main__                       | INFO   | lambda_mse = 2
+2026-10-09 11:14:54 | __main__                       | INFO   | sequence_length = 100
+2026-10-09 11:14:54 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-09 11:14:54 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-09 11:14:54 | __main__                       | INFO   | epochs = 30
+2026-10-09 11:15:02 | __main__                       | INFO   | blind_cheat_probe conv1d: 6 rows
+2026-10-09 11:15:31 | root                           | INFO   | Logging configured: file=/home/ettore/Documents/vs_code/ultra-can/results/full/k3_doppler_full/blind_cheat_probe/logs/ultra_can_isac.log level=INFO
+2026-10-09 11:15:31 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-09 11:15:31 | __main__                       | INFO   | seed = 42
+2026-10-09 11:15:31 | __main__                       | INFO   | lambda_mse = 2
+2026-10-09 11:15:31 | __main__                       | INFO   | sequence_length = 100
+2026-10-09 11:15:31 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-09 11:15:31 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-09 11:15:31 | __main__                       | INFO   | epochs = 30
+2026-10-09 11:15:44 | __main__                       | INFO   | blind_cheat_probe qkv: 6 rows

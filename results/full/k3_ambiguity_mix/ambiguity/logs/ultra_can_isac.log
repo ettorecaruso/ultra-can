@@ -1,0 +1,10 @@
+2026-10-08 22:36:08 | root                           | INFO   | Logging configured: file=/content/dhuc/results/full/k3_ambiguity_mix/ambiguity/logs/ultra_can_isac.log level=INFO
+2026-10-08 22:36:08 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-08 22:36:08 | __main__                       | INFO   | seed = 42
+2026-10-08 22:36:08 | __main__                       | INFO   | lambda_mse = 2
+2026-10-08 22:36:08 | __main__                       | INFO   | sequence_length = 100
+2026-10-08 22:36:08 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-08 22:36:08 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-08 22:36:08 | __main__                       | INFO   | epochs = 30
+2026-10-08 22:36:14 | __main__                       | INFO   | ambiguity conv1d: 2 rows
+2026-10-08 22:36:18 | __main__                       | INFO   | ambiguity qkv: 2 rows

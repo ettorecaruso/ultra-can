@@ -1,0 +1,41 @@
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+.ipynb_checkpoints/
+# (this file is versioned: do NOT list `.gitignore` here, otherwise the next
+#  `git rm -r --cached . && git add .` drops it from the repository)
+
+# Local working files (never versioned)
+.clinerules
+nohup.out
+resoconto.md
+leg_errors/
+
+# Run outputs: experiments write checkpoints and CSV trees here, they are
+# delivered through the Drive run roots and the account zips, not through git.
+
+# Scratch of the figure pipeline: rebuilt by scripts/make_all.sh on every run
+# (the blind reference and the per-figure mirrors), so it is not versioned.
+results/newRes/
+results/figures/
+figures/_data/
+
+results_old/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+tests/
+data/raw/
+data/processed/
+latex/
+

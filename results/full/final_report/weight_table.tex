@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Comparison of parameters and memory footprint for the considered architectures (float32 weights).}
+\label{tab:weight_comparison}
+\begin{tabular}{l r r l}
+\toprule
+\textbf{Architecture} & \textbf{Parameters} & \textbf{Memory (kB)} & \textbf{Notes} \\
+\midrule
+Classical receivers & 0 & 0.0 & Equations only (0 parameters) \\
+Ultra-CAN (Conv1D+Att. 1D) & 26,596 & 103.9 &  \\
+LSTM (LSTM-OFDM-DCSK) & 45,987 & 179.6 &  \\
+MC-DLCSK (BiLSTM) & 44,755 & 174.8 &  \\
+Ultra-CAN (QKV Attention) & 43,171 & 168.6 &  \\
+\bottomrule
+\end{tabular}
+\end{table}

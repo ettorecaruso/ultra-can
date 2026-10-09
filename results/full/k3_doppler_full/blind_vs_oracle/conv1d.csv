@@ -1,0 +1,4 @@
+arch,snr_db,n_symbols,ber_blind,ber_oracle,ber_gap
+conv1d,5.0,2000,0.004,0.0,0.004
+conv1d,11.0,2000,0.002,0.0,0.002
+conv1d,21.0,2000,0.002,0.0,0.002

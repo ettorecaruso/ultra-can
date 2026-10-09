@@ -1,0 +1,1418 @@
+general:
+  seed: 42
+  experiment_name: ber_vs_snr_full
+  log_level: INFO
+  run_output_dir: /content/dhuc/results/full/ber_vs_snr/k3_doppler_limited/conv1d
+data:
+  sequence_length: 100
+  map_type: logistic
+  map_param: 3.9
+  fc_hz: 2.4e9
+  fs_hz: 1.0e7
+  snr_range:
+  - -5
+  - 21
+  snr_step: 2
+  echoes:
+  - 3
+  max_delay: 33
+  max_doppler: 4.0e-05
+  feature_mode: iq
+  feature_norm: none
+  num_symbols_train: 105000
+  num_symbols_val: 5000
+  num_symbols_test: 20000
+  alpha_min: 0.05
+  alpha_max: 0.3
+  alpha_tau_coupling: false
+  alpha_floor: 0.001
+  rician_kappa_db: 10
+  doppler_direct_max: 1.0e-05
+  raw_dir: data/raw
+  processed_dir: data/processed
+model:
+  backbone_type: conv1d
+  size: full
+  seeds:
+    conv1d: 21
+    qkv: 15
+    lstm: 92
+    mc_dlsk: 24
+  conv_filters:
+  - 32
+  - 64
+  conv_kernel: 3
+  conv_padding: same
+  conv_dilations:
+  - 1
+  - 1
+  pool_projection: true
+  attention_mode: attention_pool
+  attention_heads: 8
+  attention_dim: 64
+  positional_encoding: true
+  qkv_residual: true
+  attention_checks: false
+  store_attention_weights: false
+  attention_residual: true
+  attention_temperature: 1.0
+  dropout_rate: 0.3
+  communication_head:
+    units: 128
+    activation: relu
+    modulation_order: 2
+  sensing_head:
+    units: 32
+    activation: relu
+    output_units: 1
+    output_activation: linear
+    use_max_pool_feature: true
+    use_position_feature: false
+    use_reference_profile: true
+    profile_max_lag: 33
+    delay_mode: peak_residual
+    use_delay_peak_feature: true
+    peak_sharpness: 8.0
+training:
+  epochs: 30
+  batch_size: 128
+  learning_rate: 0.001
+  optimizer: adam
+  lambda_mse: 2
+  loss_weights:
+    comm: 1.0
+    sensing: 2
+  label_smoothing: 0.1
+  lr_schedule: cosine
+  sensing_range_penalty: 1.0
+  sensing_component_weights:
+    delay: 1.0
+  early_stopping_patience: 10
+evaluation:
+  snr_test_range:
+  - -5
+  - -3
+  - -1
+  - 1
+  - 3
+  - 5
+  - 7
+  - 9
+  - 11
+  - 13
+  - 15
+  - 17
+  - 19
+  - 21
+  num_symbols_per_snr: 1000
+  bit_error_threshold: 100
+  max_symbols_per_snr: 2000000
+  online_generation: true
+  eval_batch_symbols: 100000
+  eval_predict_batch_size: 1024
+  operating_snr_db: 5.0
+  target_ber: 0.0001
+jamming:
+  enable: false
+  jamming_types:
+  - cw
+  - barrage
+  - partial_band
+  jsr_range:
+  - -10
+  - 10
+  jsr_step: 2
+  n_realizations: 5
+  full:
+    general:
+      experiment_name: jamming_full
+    data:
+      num_symbols_train: 105000
+      num_symbols_val: 5000
+      num_symbols_test: 20000
+      snr_range:
+      - -5
+      - 21
+      snr_step: 2
+      echoes:
+      - 1
+      - 3
+    model: &id001
+      backbone_type: conv1d
+      size: full
+      conv_filters:
+      - 32
+      - 64
+      conv_kernel: 3
+      conv_padding: same
+      conv_dilations:
+      - 1
+      - 1
+      pool_projection: true
+      attention_mode: attention_pool
+      attention_heads: 8
+      attention_dim: 64
+      attention_temperature: 1.0
+      attention_residual: true
+      positional_encoding: true
+      qkv_residual: true
+      dropout_rate: 0.3
+      communication_head:
+        units: 128
+        activation: relu
+        modulation_order: 2
+      sensing_head:
+        units: 32
+        activation: relu
+        output_units: 1
+        output_activation: linear
+        use_max_pool_feature: true
+        use_position_feature: false
+        use_reference_profile: true
+        profile_max_lag: 33
+        delay_mode: peak_residual
+        use_delay_peak_feature: true
+        peak_sharpness: 8.0
+    training:
+      epochs: 30
+      batch_size: 128
+      lambda_mse: 2
+      loss_weights:
+        comm: 1.0
+        sensing: 2
+      sensing_component_weights:
+        delay: 1.0
+      sensing_range_penalty: 1.0
+    evaluation:
+      online_generation: true
+    jamming:
+      enable: true
+      jamming_types:
+      - cw
+      - barrage
+      - partial_band
+      jsr_range:
+      - -10
+      - 10
+      jsr_step: 2
+    visualization:
+      plot_format: pdf
+    sweep_k: &id002
+      min: 1
+      max: 10
+      step: 1
+    sweep_doppler: &id003
+      min: 0.0
+      max: 0.003
+      num_points: 12
+    echo_only: &id004
+      doppler_fixed: 4.0e-05
+      doppler_direct_fixed: 1.0e-05
+      k_fixed: 3
+      tau_offset: 7
+      alpha_base: 0.2
+      alpha_variation: 0.5
+      snr_db: -12
+    channel: &id005
+      model: aerial_multiecho
+      direct_fading: rician
+      echo_fading: none
+      echo_fading_kappa_db: 6.0
+      direct_fading_kappa_db: null
+      num_echoes_model: fixed
+      poisson_echoes_mean: 2.0
+      hold_mode: per_symbol
+      add_awgn: true
+      echo_only_mode: false
+    frequency_hopping: &id006
+      enable: true
+      num_channels: 8
+      dwell_bursts: 1
+      burst_duration_us: 10.0
+      sequence_seed: null
+      coverage_fraction: 0.25
+      sweep_jam_slots: 1
+      follower_reaction_bursts: 2
+      jammer_models:
+      - barrage
+      - fixed_partial
+      - sweep
+      - follower
+      in_channel_types:
+      - cw
+      - partial_band
+      jsr_values:
+      - -10
+      - -6
+      - -2
+      - 2
+      - 6
+      - 10
+      n_bursts_per_condition: 20000
+      n_realizations: 5
+      dwell_sweep:
+      - 1
+      - 2
+      - 4
+      - 8
+      - 16
+      dwell_sweep_jsr: 6.0
+      dwell_sweep_models:
+      - sweep
+      - follower
+    baselines: &id007
+      enabled: true
+      lstm:
+        units:
+        - 77
+        dropout: 0.3
+        size: full
+      mc_dlsk:
+        units:
+        - 50
+        dropout: 0.3
+        size: full
+      dcsk_correlator:
+        correlation_length: 50
+        threshold: 0.0
+    experiments:
+      jamming:
+        jamming_types:
+        - cw
+        - barrage
+        - partial_band
+        jsr_range:
+        - -10
+        - 10
+        jsr_step: 2
+        models:
+        - conv1d
+        - qkv
+        - lstm
+        - mc_dlsk
+        visualize_layers: false
+        max_symbols: 40000
+        n_realizations: 5
+  fast:
+    general:
+      experiment_name: jamming_fast
+    data:
+      num_symbols_train: 108
+      num_symbols_val: 20
+      num_symbols_test: 50
+      snr_range:
+      - 0
+      - 10
+      snr_step: 5
+      echoes:
+      - 0
+      - 1
+      max_delay: 5
+    model: *id001
+    training:
+      epochs: 1
+      batch_size: 16
+      lambda_mse: 2
+      loss_weights:
+        comm: 1.0
+        sensing: 2
+      sensing_range_penalty: 1.0
+    evaluation:
+      snr_test_range:
+      - 0
+      - 5
+      - 10
+    jamming:
+      enable: true
+      jamming_types:
+      - cw
+      - barrage
+      - partial_band
+      jsr_range:
+      - 0
+      - 5
+      jsr_step: 2
+      n_realizations: 1
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      jamming:
+        jamming_types:
+        - cw
+        - barrage
+        - partial_band
+        jsr_range:
+        - 0
+        - 5
+        jsr_step: 2
+        models:
+        - conv1d
+        - qkv
+        - lstm
+        - mc_dlsk
+        visualize_layers: false
+visualization:
+  attention_maps: true
+  save_plots: true
+  plot_format: pdf
+  num_samples: 5
+channel:
+  model: aerial_multiecho
+  generator: geometry
+  mode: monostatic
+  direct_fading: rician
+  echo_fading: none
+  echo_fading_kappa_db: 6.0
+  direct_fading_kappa_db: null
+  num_echoes_model: fixed
+  poisson_echoes_mean: 2.0
+  hold_mode: per_symbol
+  add_awgn: true
+  echo_only_mode: false
+  scene:
+    node_altitude_m: 50.0
+    obstacle_distance_m:
+    - 40.0
+    - 400.0
+    obstacle_reflectivity: 0.3
+    scatterer_distance_m:
+    - 20.0
+    - 300.0
+    scatterer_reflectivity: 0.08
+    radial_speed_mps: &id008
+    - 5.0
+    - 15.0
+    speed_outlier_mps: 100.0
+    speed_outlier_probability: 0.0
+    reference_range_m: 100.0
+    echo_power_fraction: 0.5
+peers:
+  enable: false
+  n_peers: 0
+  peer_range_m:
+  - 10.0
+  - 120.0
+  peer_alpha_ref: 0.25
+  peer_alpha_max: 0.6
+  peer_range_ref_m: 30.0
+  peer_doppler_fraction: 0.5
+  label_mode: exclude_with_fallback
+  guard_factor: 1.5
+  direct_interference: false
+  direct_gain_ref: 1.0
+  sequence_id_scheme: shared
+frequency_hopping:
+  enable: true
+  num_channels: 8
+  dwell_bursts: 1
+  burst_duration_us: 10.0
+  time_block_slots: 53
+  sequence_seed: null
+  coverage_fraction: 0.25
+  sweep_jam_slots: 1
+  follower_reaction_bursts: 2
+  jammer_models:
+  - barrage
+  - fixed_partial
+  - sweep
+  - follower
+  in_channel_types:
+  - cw
+  - partial_band
+  jsr_values:
+  - -10
+  - -6
+  - -2
+  - 2
+  - 6
+  - 10
+  n_bursts_per_condition: 20000
+  n_realizations: 5
+  dwell_sweep:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+  dwell_sweep_jsr: 6.0
+  dwell_sweep_models:
+  - sweep
+  - follower
+  reaction_sweep:
+  - 0
+  - 1
+  - 2
+  - 4
+  - 8
+  reaction_sweep_models:
+  - follower
+  reaction_sweep_jsr: 6.0
+  reaction_sweep_dwell: 8
+baselines:
+  enabled: true
+  lstm:
+    units:
+    - 77
+    dropout: 0.3
+    size: full
+  mc_dlsk:
+    units:
+    - 50
+    dropout: 0.3
+    size: full
+  dcsk_correlator:
+    correlation_length: 50
+    threshold: 0.0
+experiments:
+  board_footprint:
+    archs:
+    - conv1d
+    - qkv
+    batch: 1
+    n_bursts: 100
+    warmup: 20
+  blind_vs_oracle:
+    archs:
+    - conv1d
+    - qkv
+    n_symbols: 2000
+    snr_db:
+    - 5.0
+    - 11.0
+    - 21.0
+    seed: 20261008
+  ranging_benchmark:
+    archs:
+    - conv1d
+    - qkv
+    n_symbols: 4000
+    snr_db:
+    - 5.0
+    - 11.0
+    - 21.0
+    gamma:
+    - 1.0
+    - 1.25
+    - 1.5
+    - 2.0
+    seed: 20261008
+  ambiguity:
+    archs:
+    - conv1d
+    - qkv
+    n_symbols: 6000
+    snr_db: 15.0
+    amplitude_ratio:
+    - 0.8
+    - 1.2
+    seed: 20261008
+  velocity_track:
+    n_bursts: 50
+    n_tracks: 30
+    snr_db: 15.0
+    radial_speed_mps:
+    - 10.0
+    - 30.0
+    seed: 20261008
+  unified_benchmark:
+    nets:
+    - conv1d
+    - qkv
+    - lstm
+    - mc_dlsk
+    classical:
+    - dcsk
+    - matched_filter
+    - energy_detector
+    n_symbols: 20000
+    snr_test_range:
+    - -5.0
+    - -1.0
+    - 3.0
+    - 5.0
+    - 9.0
+    - 13.0
+    - 17.0
+    - 21.0
+    relative_gap: 0.1
+    seed: 20261008
+  ber_vs_snr:
+    architectures:
+    - conv1d
+    - qkv
+    - lstm
+    - mc_dlsk
+    - blind_stat
+    scenarios:
+    - name: k1_doppler_full
+      echoes:
+      - 1
+      max_doppler: 8.0e-05
+    - name: k3_doppler_full
+      echoes:
+      - 3
+      max_doppler: 8.0e-05
+    - name: k3_doppler_limited
+      echoes:
+      - 3
+      max_doppler: 4.0e-05
+      channel:
+        scene:
+          radial_speed_mps: *id008
+    - name: iod_peers
+      echoes:
+      - 3
+      max_doppler: 8.0e-05
+      peers:
+        enable: true
+        n_peers: 2
+    - name: k1_ablation_log_uniform
+      echoes:
+      - 1
+      max_doppler: 8.0e-05
+      channel:
+        generator: log_uniform
+  classical_receivers:
+    no_dl_models:
+    - dcsk_correlator
+    - matched_filter
+    - energy_detector
+    deterministic: true
+  jamming:
+    jamming_types:
+    - cw
+    - barrage
+    - partial_band
+    jsr_range:
+    - -10
+    - 10
+    jsr_step: 2
+    n_realizations: 5
+    max_symbols: 40000
+    visualize_layers: true
+  jamming_interpretability:
+    models:
+    - conv1d
+    - qkv
+    - lstm
+    - mc_dlsk
+    jamming_types:
+    - cw
+    - barrage
+    - partial_band
+    jsr_values:
+    - -10
+    - -6
+    - -2
+    - 2
+    - 6
+    - 10
+    snr_eval:
+    - -1
+    - 3
+    - 7
+    - 11
+    - 15
+    - 21
+    ret_subset: 3000
+    n_realizations: 5
+    max_symbols: null
+  channel_generalization:
+    models:
+    - conv1d
+    - qkv
+    - lstm
+    - mc_dlsk
+    channel_variants:
+    - nominal
+    snr_test_range:
+    - -5
+    - -3
+    - -1
+    - 1
+    - 3
+    - 5
+    - 7
+    - 9
+    - 11
+    - 13
+    - 15
+    - 17
+    - 19
+    - 21
+    bit_error_threshold: 100
+  frequency_agility:
+    models:
+    - conv1d
+    - qkv
+    - lstm
+    - mc_dlsk
+  final_report:
+    output: weight_table.tex
+    include_classical: true
+sweep_k:
+  min: 1
+  max: 10
+  step: 1
+sweep_doppler:
+  min: 0.0
+  max: 0.003
+  num_points: 12
+echo_only:
+  doppler_fixed: 4.0e-05
+  doppler_direct_fixed: 1.0e-05
+  k_fixed: 3
+  tau_offset: 7
+  alpha_base: 0.2
+  alpha_variation: 0.5
+  snr_db: -12
+defaults:
+  general:
+    seed: 42
+    experiment_name: ultra_can_isac
+    log_level: INFO
+  data: &id010
+    sequence_length: 100
+    map_type: logistic
+    map_param: 3.9
+    fc_hz: 2.4e9
+    fs_hz: 1.0e7
+    snr_range:
+    - -5
+    - 21
+    snr_step: 2
+    echoes:
+    - 1
+    - 3
+    max_delay: 33
+    max_doppler: 8.0e-05
+    feature_mode: iq
+    feature_norm: none
+    num_symbols_train: 5040
+    num_symbols_val: 1000
+    num_symbols_test: 2000
+    alpha_min: 0.05
+    alpha_max: 0.3
+    rician_kappa_db: 10
+    doppler_direct_max: 1.0e-05
+    raw_dir: data/raw
+    processed_dir: data/processed
+  model: *id001
+  training: &id011
+    epochs: 5
+    batch_size: 64
+    learning_rate: 0.001
+    optimizer: adam
+    lambda_mse: 2
+    loss_weights:
+      comm: 1.0
+      sensing: 2
+    sensing_component_weights:
+      delay: 1.0
+    early_stopping_patience: 10
+  evaluation: &id012
+    snr_test_range:
+    - -5
+    - -3
+    - -1
+    - 1
+    - 3
+    - 5
+    - 7
+    - 9
+    - 11
+    - 13
+    - 15
+    - 17
+    - 19
+    - 21
+    num_symbols_per_snr: 1000
+    bit_error_threshold: 100
+    max_symbols_per_snr: 2000000
+  jamming: &id009
+    enable: false
+    jamming_types:
+    - cw
+    - barrage
+    - partial_band
+    jsr_range:
+    - -10
+    - 10
+    jsr_step: 2
+    n_realizations: 5
+  visualization:
+    attention_maps: true
+    save_plots: true
+    plot_format: pdf
+    num_samples: 5
+  sweep_k: *id002
+  sweep_doppler: *id003
+  echo_only: *id004
+  channel: *id005
+  frequency_hopping: *id006
+  baselines: *id007
+  experiments:
+    ber_vs_snr:
+      architectures:
+      - conv1d
+      - qkv
+      - lstm
+      - mc_dlsk
+      - blind_stat
+      scenarios:
+      - name: k1_doppler_full
+        echoes:
+        - 1
+        max_doppler: 8.0e-05
+      - name: k3_doppler_full
+        echoes:
+        - 3
+        max_doppler: 8.0e-05
+      - name: k3_doppler_limited
+        echoes:
+        - 3
+        max_doppler: 4.0e-05
+    classical_receivers:
+      no_dl_models:
+      - dcsk_correlator
+      - matched_filter
+      - energy_detector
+      deterministic: true
+    jamming:
+      jamming_types:
+      - cw
+      - barrage
+      - partial_band
+      jsr_range:
+      - -10
+      - 10
+      visualize_layers: false
+    final_report:
+      output: weight_table.tex
+      include_classical: true
+ber_vs_snr:
+  full:
+    general:
+      experiment_name: ber_vs_snr_full
+    data:
+      num_symbols_train: 105000
+      num_symbols_val: 5000
+      num_symbols_test: 20000
+      snr_range:
+      - -5
+      - 21
+      snr_step: 2
+      echoes:
+      - 1
+      - 3
+    model: *id001
+    training:
+      epochs: 30
+      batch_size: 128
+      lambda_mse: 2
+      loss_weights:
+        comm: 1.0
+        sensing: 2
+      sensing_component_weights:
+        delay: 1.0
+      sensing_range_penalty: 1.0
+    evaluation:
+      snr_test_range:
+      - -5
+      - -3
+      - -1
+      - 1
+      - 3
+      - 5
+      - 7
+      - 9
+      - 11
+      - 13
+      - 15
+      - 17
+      - 19
+      - 21
+      online_generation: true
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      ber_vs_snr:
+        architectures:
+        - conv1d
+        - qkv
+        - lstm
+        - mc_dlsk
+        - blind_stat
+        scenarios:
+        - name: k1_doppler_full
+          echoes:
+          - 1
+          max_doppler: 8.0e-05
+        - name: k3_doppler_full
+          echoes:
+          - 3
+          max_doppler: 8.0e-05
+        - name: k3_doppler_limited
+          echoes:
+          - 3
+          max_doppler: 4.0e-05
+          channel:
+            scene:
+              radial_speed_mps:
+              - 5.0
+              - 15.0
+        - name: iod_peers
+          echoes:
+          - 3
+          max_doppler: 8.0e-05
+          peers:
+            enable: true
+            n_peers: 2
+        - name: k1_ablation_log_uniform
+          echoes:
+          - 1
+          max_doppler: 8.0e-05
+          channel:
+            generator: log_uniform
+        - name: k3_b_tdl_d_retrained
+          echoes:
+          - 3
+          max_doppler: 8.0e-05
+  fast:
+    general:
+      experiment_name: ber_vs_snr_fast
+    data:
+      num_symbols_train: 108
+      num_symbols_val: 20
+      num_symbols_test: 50
+      snr_range:
+      - 0
+      - 10
+      snr_step: 5
+      echoes:
+      - 0
+      - 1
+      max_delay: 5
+    model: *id001
+    training:
+      epochs: 2
+      batch_size: 32
+    evaluation:
+      snr_test_range:
+      - 0
+      - 5
+      - 10
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      ber_vs_snr:
+        architectures:
+        - conv1d
+        - qkv
+        - blind_stat
+        scenarios:
+        - name: k1_doppler_full
+          echoes:
+          - 1
+          max_doppler: 8.0e-05
+        - name: iod_peers
+          echoes:
+          - 3
+          max_doppler: 8.0e-05
+          peers:
+            enable: true
+            n_peers: 1
+classical_receivers:
+  full:
+    general:
+      experiment_name: classical_receivers_full
+    data: *id010
+    model: *id001
+    training: *id011
+    evaluation: *id012
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel:
+      add_awgn: false
+      echo_fading: none
+      echo_only_mode: true
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      classical_receivers:
+        no_dl_models:
+        - dcsk_correlator
+        - matched_filter
+        - energy_detector
+        deterministic: true
+  fast:
+    general:
+      experiment_name: classical_receivers_fast
+    data:
+      num_symbols_test: 400
+      max_delay: 5
+    model: *id001
+    training: *id011
+    evaluation: *id012
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel:
+      add_awgn: false
+      echo_fading: none
+      echo_only_mode: true
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      classical_receivers:
+        no_dl_models:
+        - dcsk_correlator
+        - matched_filter
+        - energy_detector
+        deterministic: true
+final_report:
+  full:
+    general:
+      experiment_name: final_report_full
+    data: *id010
+    model: *id001
+    training: *id011
+    evaluation: *id012
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      final_report:
+        output: weight_table.tex
+        include_classical: true
+  fast:
+    general:
+      experiment_name: final_report_fast
+    data: *id010
+    model: *id001
+    training: *id011
+    evaluation: *id012
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      final_report:
+        output: weight_table.tex
+        include_classical: true
+jamming_interpretability:
+  full:
+    general:
+      experiment_name: jamming_interpretability_full
+    data:
+      num_symbols_train: 105000
+      num_symbols_val: 5000
+      num_symbols_test: 20000
+      snr_range:
+      - -5
+      - 21
+      snr_step: 2
+      echoes:
+      - 1
+      - 3
+    model: *id001
+    training:
+      epochs: 30
+      batch_size: 128
+      lambda_mse: 2
+      loss_weights:
+        comm: 1.0
+        sensing: 2
+      sensing_component_weights:
+        delay: 1.0
+      sensing_range_penalty: 1.0
+    evaluation:
+      snr_test_range:
+      - -1
+      - 3
+      - 7
+      - 11
+      - 15
+      - 21
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      jamming_interpretability:
+        models:
+        - conv1d
+        - qkv
+        - lstm
+        - mc_dlsk
+        jamming_types:
+        - cw
+        - barrage
+        - partial_band
+        jsr_values:
+        - -10
+        - -6
+        - -2
+        - 2
+        - 6
+        - 10
+        snr_eval:
+        - -1
+        - 3
+        - 7
+        - 11
+        - 15
+        - 21
+        ret_subset: 3000
+        n_realizations: 5
+        max_symbols: null
+  fast:
+    general:
+      experiment_name: jamming_interpretability_fast
+    data:
+      num_symbols_train: 5040
+      num_symbols_val: 1000
+      num_symbols_test: 600
+      snr_range:
+      - -5
+      - 21
+      snr_step: 2
+      echoes:
+      - 1
+      - 3
+    model: *id001
+    training:
+      epochs: 1
+      batch_size: 32
+      lambda_mse: 2
+      loss_weights:
+        comm: 1.0
+        sensing: 2
+      sensing_range_penalty: 1.0
+    evaluation:
+      snr_test_range:
+      - -1
+      - 7
+      - 15
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      jamming_interpretability:
+        models:
+        - conv1d
+        - qkv
+        jamming_types:
+        - cw
+        jsr_values:
+        - -10
+        - 10
+        snr_eval:
+        - -1
+        - 7
+        - 15
+        ret_subset: 500
+        n_realizations: 1
+frequency_agility:
+  full:
+    general:
+      experiment_name: frequency_agility_full
+    data:
+      snr_range:
+      - -5
+      - 21
+      snr_step: 2
+      echoes:
+      - 1
+      - 3
+    model: *id001
+    training: *id011
+    evaluation: *id012
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel:
+      hold_mode: per_hop
+    frequency_hopping:
+      enable: true
+      num_channels: 8
+      dwell_bursts: 1
+      n_bursts_per_condition: 20000
+      n_realizations: 5
+      jammer_models:
+      - barrage
+      - fixed_partial
+      - sweep
+      - follower
+      in_channel_types:
+      - cw
+      - partial_band
+      jsr_values:
+      - -10
+      - -6
+      - -2
+      - 2
+      - 6
+      - 10
+      dwell_sweep:
+      - 1
+      - 2
+      - 4
+      - 8
+      - 16
+      dwell_sweep_jsr: 6.0
+      dwell_sweep_models:
+      - sweep
+      - follower
+    baselines: *id007
+    experiments:
+      frequency_agility:
+        models:
+        - conv1d
+        - qkv
+        - lstm
+        - mc_dlsk
+        channel_variant: b_tdl_d
+  fast:
+    general:
+      experiment_name: frequency_agility_fast
+    data: *id010
+    model: *id001
+    training: *id011
+    evaluation: *id012
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel:
+      hold_mode: per_slot
+    frequency_hopping:
+      enable: true
+      n_bursts_per_condition: 400
+      n_realizations: 1
+      jsr_values:
+      - -10
+      - 0
+      - 10
+      dwell_sweep:
+      - 1
+      - 4
+      dwell_sweep_models:
+      - follower
+    baselines: *id007
+    experiments:
+      frequency_agility:
+        models:
+        - conv1d
+channel_generalization:
+  full:
+    general:
+      experiment_name: channel_generalization_full
+    data:
+      snr_range:
+      - -5
+      - 21
+      snr_step: 2
+      echoes:
+      - 3
+    model: *id001
+    training: *id011
+    evaluation:
+      snr_test_range:
+      - -5
+      - -3
+      - -1
+      - 1
+      - 3
+      - 5
+      - 7
+      - 9
+      - 11
+      - 13
+      - 15
+      - 17
+      - 19
+      - 21
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      channel_generalization:
+        models:
+        - conv1d
+        - qkv
+        - lstm
+        - mc_dlsk
+        channel_variants:
+        - nominal
+        - b_tdl_d
+        - b_tdl_d_light
+        - b_tdl_a
+        - c_two_ray_jakes
+        bit_error_threshold: 50
+        max_symbols_per_snr: 200000
+        eval_batch_symbols: 100000
+  fast:
+    general:
+      experiment_name: channel_generalization_fast
+    data: *id010
+    model: *id001
+    training: *id011
+    evaluation:
+      snr_test_range:
+      - -5
+      - 5
+      - 15
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      channel_generalization:
+        models:
+        - conv1d
+        - qkv
+        channel_variants:
+        - nominal
+        - b_tdl_d
+        bit_error_threshold: 5
+        max_symbols_per_snr: 4000
+        eval_batch_symbols: 2000
+peer_estimation:
+  full:
+    general:
+      experiment_name: peer_estimation_full
+    data:
+      echoes:
+      - 3
+    model: *id001
+    training: *id011
+    evaluation: *id012
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      peer_estimation:
+        models:
+        - conv1d
+        - qkv
+        model_scenario: iod_peers
+        echoes: 3
+        n_symbols: 4000
+        snr_db: 21.0
+        seed: 20260926
+        guard_factors:
+        - 1.0
+        - 1.25
+        - 1.5
+        - 2.0
+    peers:
+      enable: true
+      n_peers: 2
+      label_mode: exclude_with_fallback
+      guard_factor: 1.5
+  fast:
+    general:
+      experiment_name: peer_estimation_fast
+    data:
+      echoes:
+      - 3
+      num_symbols_test: 400
+    model: *id001
+    training: *id011
+    evaluation: *id012
+    jamming: *id009
+    visualization:
+      plot_format: pdf
+    sweep_k: *id002
+    sweep_doppler: *id003
+    echo_only: *id004
+    channel: *id005
+    frequency_hopping: *id006
+    baselines: *id007
+    experiments:
+      peer_estimation:
+        models:
+        - conv1d
+        model_scenario: iod_peers
+        echoes: 3
+        n_symbols: 200
+        snr_db: 21.0
+        seed: 20260926
+        guard_factors:
+        - 1.0
+        - 1.5
+    peers:
+      enable: true
+      n_peers: 1

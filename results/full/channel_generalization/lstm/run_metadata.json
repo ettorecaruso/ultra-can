@@ -1,0 +1,286 @@
+{
+  "experiment": "channel_generalization",
+  "arch": "lstm",
+  "timestamp": "2026-10-08T23:14:41",
+  "channel_variants": [
+    "nominal",
+    "b_tdl_d",
+    "b_tdl_d_light",
+    "b_tdl_a",
+    "c_two_ray_jakes"
+  ],
+  "protocol": {
+    "snr_test_range": [
+      -5.0,
+      -3.0,
+      -1.0,
+      1.0,
+      3.0,
+      5.0,
+      7.0,
+      9.0,
+      11.0,
+      13.0,
+      15.0,
+      17.0,
+      19.0,
+      21.0
+    ],
+    "bit_error_threshold": 50,
+    "max_symbols_per_snr": 200000,
+    "batch_symbols": 100000
+  },
+  "operating_snr_db": 5.0,
+  "target_ber": 0.0001,
+  "echoes": [
+    3
+  ],
+  "channels": {
+    "nominal": {
+      "model": "aerial_multiecho",
+      "fingerprint": "ecde5ce2",
+      "hold_mode": "per_symbol",
+      "parameters": {
+        "generator": "geometry",
+        "mode": "monostatic",
+        "direct_fading": "rician",
+        "echo_fading": "none",
+        "echo_fading_kappa_db": 6.0,
+        "direct_fading_kappa_db": null,
+        "num_echoes_model": "fixed",
+        "poisson_echoes_mean": 2.0,
+        "add_awgn": true,
+        "echo_only_mode": false,
+        "scene": {
+          "node_altitude_m": 50.0,
+          "obstacle_distance_m": [
+            40.0,
+            400.0
+          ],
+          "obstacle_reflectivity": 0.3,
+          "scatterer_distance_m": [
+            20.0,
+            300.0
+          ],
+          "scatterer_reflectivity": 0.08,
+          "radial_speed_mps": [
+            10.0,
+            30.0
+          ],
+          "speed_outlier_mps": 100.0,
+          "speed_outlier_probability": 0.0,
+          "reference_range_m": 100.0,
+          "echo_power_fraction": 0.5
+        }
+      }
+    },
+    "b_tdl_d": {
+      "model": "tdl_3gpp",
+      "fingerprint": "2f24e3d5",
+      "hold_mode": "per_hop",
+      "parameters": {
+        "generator": "geometry",
+        "mode": "monostatic",
+        "direct_fading": "rician",
+        "echo_fading": "none",
+        "echo_fading_kappa_db": 6.0,
+        "direct_fading_kappa_db": 10.0,
+        "num_echoes_model": "fixed",
+        "poisson_echoes_mean": 2.0,
+        "add_awgn": true,
+        "echo_only_mode": false,
+        "scene": {
+          "node_altitude_m": 50.0,
+          "obstacle_distance_m": [
+            40.0,
+            400.0
+          ],
+          "obstacle_reflectivity": 0.3,
+          "scatterer_distance_m": [
+            20.0,
+            300.0
+          ],
+          "scatterer_reflectivity": 0.08,
+          "radial_speed_mps": [
+            10.0,
+            30.0
+          ],
+          "speed_outlier_mps": 100.0,
+          "speed_outlier_probability": 0.0,
+          "reference_range_m": 100.0,
+          "echo_power_fraction": 0.5
+        },
+        "time_block_slots": 53,
+        "clutter_power_fraction": 0.25,
+        "clutter_fading": "rayleigh",
+        "clutter_kappa_db": 0.0,
+        "clutter_doppler_max": 8e-05,
+        "max_pdp_truncation_fraction": 0.1,
+        "pdp": {
+          "profile": "TDL-D",
+          "kind": "exponential",
+          "n_taps": 13,
+          "rms_delay_spread_ns": 300.0,
+          "decay_db_per_ds": 4.343,
+          "delays_ns": [],
+          "powers_db": []
+        }
+      }
+    },
+    "b_tdl_d_light": {
+      "model": "tdl_3gpp",
+      "fingerprint": "646a5649",
+      "hold_mode": "per_hop",
+      "parameters": {
+        "generator": "geometry",
+        "mode": "monostatic",
+        "direct_fading": "rician",
+        "echo_fading": "none",
+        "echo_fading_kappa_db": 6.0,
+        "direct_fading_kappa_db": 10.0,
+        "num_echoes_model": "fixed",
+        "poisson_echoes_mean": 2.0,
+        "add_awgn": true,
+        "echo_only_mode": false,
+        "scene": {
+          "node_altitude_m": 50.0,
+          "obstacle_distance_m": [
+            40.0,
+            400.0
+          ],
+          "obstacle_reflectivity": 0.3,
+          "scatterer_distance_m": [
+            20.0,
+            300.0
+          ],
+          "scatterer_reflectivity": 0.08,
+          "radial_speed_mps": [
+            10.0,
+            30.0
+          ],
+          "speed_outlier_mps": 100.0,
+          "speed_outlier_probability": 0.0,
+          "reference_range_m": 100.0,
+          "echo_power_fraction": 0.5
+        },
+        "time_block_slots": 53,
+        "clutter_power_fraction": 0.05,
+        "clutter_fading": "rayleigh",
+        "clutter_kappa_db": 0.0,
+        "clutter_doppler_max": 8e-05,
+        "max_pdp_truncation_fraction": 0.1,
+        "pdp": {
+          "profile": "TDL-D",
+          "kind": "exponential",
+          "n_taps": 13,
+          "rms_delay_spread_ns": 300.0,
+          "decay_db_per_ds": 4.343,
+          "delays_ns": [],
+          "powers_db": []
+        }
+      }
+    },
+    "b_tdl_a": {
+      "model": "tdl_3gpp",
+      "fingerprint": "21bf51e0",
+      "hold_mode": "per_hop",
+      "parameters": {
+        "generator": "geometry",
+        "mode": "monostatic",
+        "direct_fading": "rayleigh",
+        "echo_fading": "none",
+        "echo_fading_kappa_db": 6.0,
+        "direct_fading_kappa_db": 0.0,
+        "num_echoes_model": "fixed",
+        "poisson_echoes_mean": 2.0,
+        "add_awgn": true,
+        "echo_only_mode": false,
+        "scene": {
+          "node_altitude_m": 50.0,
+          "obstacle_distance_m": [
+            40.0,
+            400.0
+          ],
+          "obstacle_reflectivity": 0.3,
+          "scatterer_distance_m": [
+            20.0,
+            300.0
+          ],
+          "scatterer_reflectivity": 0.08,
+          "radial_speed_mps": [
+            10.0,
+            30.0
+          ],
+          "speed_outlier_mps": 100.0,
+          "speed_outlier_probability": 0.0,
+          "reference_range_m": 100.0,
+          "echo_power_fraction": 0.5
+        },
+        "time_block_slots": 53,
+        "clutter_power_fraction": 0.25,
+        "clutter_fading": "rayleigh",
+        "clutter_kappa_db": 0.0,
+        "clutter_doppler_max": 8e-05,
+        "max_pdp_truncation_fraction": 0.1,
+        "pdp": {
+          "profile": "TDL-A",
+          "kind": "exponential",
+          "n_taps": 13,
+          "rms_delay_spread_ns": 300.0,
+          "decay_db_per_ds": 4.343,
+          "delays_ns": [],
+          "powers_db": []
+        }
+      }
+    },
+    "c_two_ray_jakes": {
+      "model": "two_ray_jakes",
+      "fingerprint": "a2f6cac0",
+      "hold_mode": "per_hop",
+      "parameters": {
+        "generator": "geometry",
+        "mode": "monostatic",
+        "direct_fading": "rician",
+        "echo_fading": "none",
+        "echo_fading_kappa_db": 6.0,
+        "direct_fading_kappa_db": 10.0,
+        "num_echoes_model": "fixed",
+        "poisson_echoes_mean": 2.0,
+        "add_awgn": true,
+        "echo_only_mode": false,
+        "scene": {
+          "node_altitude_m": 50.0,
+          "obstacle_distance_m": [
+            40.0,
+            400.0
+          ],
+          "obstacle_reflectivity": 0.3,
+          "scatterer_distance_m": [
+            20.0,
+            300.0
+          ],
+          "scatterer_reflectivity": 0.08,
+          "radial_speed_mps": [
+            10.0,
+            30.0
+          ],
+          "speed_outlier_mps": 100.0,
+          "speed_outlier_probability": 0.0,
+          "reference_range_m": 100.0,
+          "echo_power_fraction": 0.5
+        },
+        "time_block_slots": 53,
+        "two_ray": {
+          "h_tx_m": 50.0,
+          "h_rx_m": 50.0,
+          "d_m": 100.0,
+          "reflection_coeff": 0.7,
+          "velocity_mps": 20.0,
+          "n_cisoids": 16,
+          "min_delay_samples": 1.0,
+          "power_fraction": null
+        }
+      }
+    }
+  }
+}

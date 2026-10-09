@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-10-08T12:31:43.856104",
+  "tensorflow_version": "2.21.0",
+  "config_snapshot_path": "/content/dhuc/results/full/ber_vs_snr/k3_b_tdl_d_retrained/conv1d/logs/config_used.yaml",
+  "lambda_mse": 2.0,
+  "sensing_range_penalty": 1.0,
+  "sensing_component_weights": [
+    1.0
+  ],
+  "epochs": 30,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "early_stopping_patience": 10,
+  "model_name": "ultra_can",
+  "train_batches": 821
+}

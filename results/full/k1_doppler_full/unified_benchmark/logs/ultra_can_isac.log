@@ -1,0 +1,33 @@
+2026-10-08 22:40:18 | root                           | INFO   | Logging configured: file=/content/dhuc/results/full/k1_doppler_full/unified_benchmark/logs/ultra_can_isac.log level=INFO
+2026-10-08 22:40:18 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-08 22:40:18 | __main__                       | INFO   | seed = 42
+2026-10-08 22:40:18 | __main__                       | INFO   | lambda_mse = 2
+2026-10-08 22:40:18 | __main__                       | INFO   | sequence_length = 100
+2026-10-08 22:40:18 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-08 22:40:18 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-08 22:40:18 | __main__                       | INFO   | epochs = 30
+2026-10-08 22:40:38 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=20000, n_errors=10017, BER=0.500850
+2026-10-08 22:40:38 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=20000, n_errors=9510, BER=0.475500
+2026-10-08 22:40:38 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=20000, n_errors=10031, BER=0.501550
+2026-10-08 22:40:52 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=20000, n_errors=10175, BER=0.508750
+2026-10-08 22:40:52 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=20000, n_errors=9388, BER=0.469400
+2026-10-08 22:40:52 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=20000, n_errors=9900, BER=0.495000
+2026-10-08 22:41:06 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=20000, n_errors=10124, BER=0.506200
+2026-10-08 22:41:06 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=20000, n_errors=9426, BER=0.471300
+2026-10-08 22:41:06 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=20000, n_errors=10110, BER=0.505500
+2026-10-08 22:41:21 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=20000, n_errors=9996, BER=0.499800
+2026-10-08 22:41:21 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=20000, n_errors=9217, BER=0.460850
+2026-10-08 22:41:21 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=20000, n_errors=9944, BER=0.497200
+2026-10-08 22:41:36 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=20000, n_errors=10156, BER=0.507800
+2026-10-08 22:41:36 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=20000, n_errors=9211, BER=0.460550
+2026-10-08 22:41:36 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=20000, n_errors=10044, BER=0.502200
+2026-10-08 22:41:50 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=20000, n_errors=10308, BER=0.515400
+2026-10-08 22:41:50 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=20000, n_errors=9221, BER=0.461050
+2026-10-08 22:41:50 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=20000, n_errors=9926, BER=0.496300
+2026-10-08 22:42:04 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=20000, n_errors=10113, BER=0.505650
+2026-10-08 22:42:04 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=20000, n_errors=9236, BER=0.461800
+2026-10-08 22:42:04 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=20000, n_errors=9936, BER=0.496800
+2026-10-08 22:42:18 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=20000, n_errors=10176, BER=0.508800
+2026-10-08 22:42:18 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=20000, n_errors=9089, BER=0.454450
+2026-10-08 22:42:18 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=20000, n_errors=10046, BER=0.502300
+2026-10-08 22:42:19 | __main__                       | INFO   | unified_benchmark k1_doppler_full: 56 rows

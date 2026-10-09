@@ -1,0 +1,20 @@
+2026-10-08 22:38:33 | root                           | INFO   | Logging configured: file=/content/dhuc/results/full/k3_doppler_full/ranging_benchmark/logs/ultra_can_isac.log level=INFO
+2026-10-08 22:38:33 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-08 22:38:33 | __main__                       | INFO   | seed = 42
+2026-10-08 22:38:33 | __main__                       | INFO   | lambda_mse = 2
+2026-10-08 22:38:33 | __main__                       | INFO   | sequence_length = 100
+2026-10-08 22:38:33 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-08 22:38:33 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-08 22:38:33 | __main__                       | INFO   | epochs = 30
+2026-10-08 22:38:42 | __main__                       | INFO   | ranging_benchmark conv1d: 12 rows
+2026-10-08 22:38:46 | __main__                       | INFO   | ranging_benchmark qkv: 12 rows
+2026-10-09 09:25:27 | root                           | INFO   | Logging configured: file=/home/ettore/Documents/vs_code/ultra-can/results/full/k3_doppler_full/ranging_benchmark/logs/ultra_can_isac.log level=INFO
+2026-10-09 09:25:27 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-09 09:25:27 | __main__                       | INFO   | seed = 42
+2026-10-09 09:25:27 | __main__                       | INFO   | lambda_mse = 2
+2026-10-09 09:25:27 | __main__                       | INFO   | sequence_length = 100
+2026-10-09 09:25:27 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-09 09:25:27 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-09 09:25:27 | __main__                       | INFO   | epochs = 30
+2026-10-09 09:25:30 | __main__                       | INFO   | ranging_benchmark conv1d: 12 rows
+2026-10-09 09:25:41 | __main__                       | INFO   | ranging_benchmark qkv: 12 rows

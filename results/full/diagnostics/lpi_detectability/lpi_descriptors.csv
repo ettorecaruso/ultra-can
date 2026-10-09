@@ -1,0 +1,5 @@
+waveform,spectral_flatness,peak_to_floor_db,papr_db,occupied_bw_khz
+proposed (CSK),0.944037,3.7061,6.9140,4941.406
+OOK,0.044641,28.1230,2.9744,1049.805
+BPSK,0.044641,28.1230,-0.0000,1049.805
+DSSS-BPSK,0.998611,0.7505,-0.0000,4951.172

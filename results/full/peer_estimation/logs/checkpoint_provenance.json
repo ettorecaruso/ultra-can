@@ -1,0 +1,12 @@
+{
+  "peer_estimation:conv1d": {
+    "checkpoint": "/content/dhuc/results/full/ber_vs_snr/iod_peers/conv1d/best_model.keras",
+    "preferred_scenario": "iod_peers",
+    "matched_preferred_scenario": true
+  },
+  "peer_estimation:qkv": {
+    "checkpoint": "/content/dhuc/results/full/ber_vs_snr/iod_peers/qkv/best_model.keras",
+    "preferred_scenario": "iod_peers",
+    "matched_preferred_scenario": true
+  }
+}

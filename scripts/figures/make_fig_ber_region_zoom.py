@@ -44,8 +44,10 @@ SCENARIOS = [
     ("k3_doppler_limited", "k3_low_doppler", "Multi-echo, low Doppler (K = 3)"),
 ]
 MIN_DB = 5.0
-TARGET = 1e-6
-Y_BOTTOM = 0.0001
+# Nessuna linea-obiettivo. Il confine dei 10^-4 non e' piu' un traguardo che il grafico
+# possa mostrare: sul canale nuovo nessun ricevitore ci arriva. Il fondo dell'asse sta
+# appena SOPRA 10^-4, cosi' il valore non compare nemmeno come tacca dell'asse y.
+Y_BOTTOM = 1.1e-4
 Y_TOP = 0.011999999999999999
 
 def _results_root() -> Path:
@@ -125,9 +127,6 @@ def _curve(scenario: str) -> dict:
 
 def _draw_panel(ax, curves: dict, title: str) -> None:
     _siino_axis(ax, Y_BOTTOM, Y_TOP)
-    ax.axhspan(Y_BOTTOM, TARGET, color="#F0FBF5", zorder=0)
-    ax.axhline(TARGET, color="#00CC96", lw=1.2, ls="--", zorder=1,
-               label="target BER = 10⁻⁴")
     for arch in ARCHS:
         if arch not in curves:
             continue
@@ -182,12 +181,6 @@ def plot_region_zoom_plotly() -> None:
     ydict_plain = {k: v for k, v in ydict.items() if k != "title"}
 
     def _add(fig, scenario, x_ticks, first, **kw):
-        fig.add_hrect(y0=Y_BOTTOM, y1=TARGET, fillcolor="#F0FBF5",
-                      line_width=0, layer="below", **kw)
-        fig.add_trace(ps.scatter([min(x_ticks), max(x_ticks)], [TARGET, TARGET],
-                                 "target BER = 10⁻⁴", "qkv", dash="dash",
-                                 color="#00CC96", width=1.2,
-                                 showlegend=first), **kw)
         for arch in ARCHS:
             if arch in curves[scenario]:
                 df = curves[scenario][arch]

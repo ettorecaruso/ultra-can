@@ -1,0 +1,29 @@
+{
+  "root": "/content/drive/MyDrive/DHUC_RUN/jama_train",
+  "commit": "adfb0c1",
+  "archs": [
+    "qkv"
+  ],
+  "jammers": "cw",
+  "legs": {
+    "train jam-aware QKV (sonda ridotta a 100 simboli)": {
+      "rc": 0,
+      "minutes": 9.8,
+      "stderr": "leg_errors/train_jam_aware_QKV__sonda_ridotta_a_100_simboli_.stderr.log"
+    }
+  },
+  "missing": [],
+  "files": [
+    "qkv/best_model.keras",
+    "qkv/comparison_clean_vs_jamaware.csv",
+    "qkv/conditions.csv",
+    "qkv/conditions_realizations.csv",
+    "qkv/logs/best_weights.weights.h5",
+    "qkv/logs/history.csv",
+    "qkv/logs/run_metadata.json",
+    "qkv/logs/tensorboard/train/events.out.tfevents.1791549579.2f7433902dd3.3944.0.v2",
+    "qkv/logs/tensorboard/validation/events.out.tfevents.1791549616.2f7433902dd3.3944.1.v2",
+    "qkv/per_snr.csv",
+    "qkv/run_metadata.json"
+  ]
+}

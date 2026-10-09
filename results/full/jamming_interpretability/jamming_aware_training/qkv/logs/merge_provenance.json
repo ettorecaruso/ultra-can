@@ -1,0 +1,60 @@
+{
+  "merged_at_utc": "2026-10-09T13:53:23+00:00",
+  "arch": "qkv",
+  "passes": [
+    {
+      "folder": "jama_cw",
+      "commit": "478434e",
+      "jammers": "cw",
+      "minutes": {
+        "probe cw": 45.4
+      },
+      "rc": [
+        0
+      ],
+      "missing": []
+    },
+    {
+      "folder": "jama_barrage",
+      "commit": "478434e",
+      "jammers": "barrage",
+      "minutes": {
+        "probe barrage": 42.9
+      },
+      "rc": [
+        0
+      ],
+      "missing": []
+    },
+    {
+      "folder": "jama_pb",
+      "commit": "478434e",
+      "jammers": "partial_band",
+      "minutes": {
+        "probe partial_band": 43.1
+      },
+      "rc": [
+        0
+      ],
+      "missing": []
+    }
+  ],
+  "files": {
+    "conditions.csv": {
+      "rows_in": 21,
+      "rows_out": 19
+    },
+    "conditions_realizations.csv": {
+      "rows_in": 90,
+      "rows_out": 90
+    },
+    "per_snr.csv": {
+      "rows_in": 126,
+      "rows_out": 114
+    },
+    "comparison_clean_vs_jamaware.csv": {
+      "rows_in": 21,
+      "rows_out": 19
+    }
+  }
+}

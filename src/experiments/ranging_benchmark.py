@@ -51,8 +51,10 @@ def _settings(config: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 def _head_delay(model: tf.keras.Model, features: np.ndarray, tau_max: float) -> np.ndarray:
+    from src.models.heads import decode_delay_samples
+
     prediction = predict_in_chunks(model, features, "sensing")
-    return np.clip(prediction[:, 0], 0.0, 1.0) * float(tau_max)
+    return decode_delay_samples(prediction, tau_max)
 
 def _pile(
     obstacle_alpha: np.ndarray,

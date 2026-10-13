@@ -14,6 +14,7 @@ from src.data.data_loader import _build_feature_matrix
 from src.data.dataset_generator import generate_test_batch
 from src.evaluation.metrics import bit_error_count
 from src.evaluation.stats import wilson_interval
+from src.models.heads import decode_delay_samples
 from src.utils.config_loader import with_channel_variant
 from src.utils.logger import get_logger
 
@@ -134,7 +135,7 @@ def _evaluate_variant(
             tau_true.append(np.asarray(batch["tau"], dtype=np.float64))
             fd_true.append(np.asarray(batch["f_d"], dtype=np.float64))
             sensing = np.asarray(sensing, dtype=np.float64)
-            tau_pred.append(sensing[:, 0] * float(tau_max))
+            tau_pred.append(decode_delay_samples(sensing, tau_max))
             if sensing.shape[1] == 2:
                 fd_pred.append(sensing[:, 1] * float(fd_max))
             else:

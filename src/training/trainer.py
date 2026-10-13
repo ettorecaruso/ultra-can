@@ -87,6 +87,12 @@ class Trainer:
 
     def _validate_sensing_component_weights(self) -> None:
         
+        from src.models.heads import sensing_output_units, sensing_target_mode
+
+        if sensing_target_mode(self.config) == "matched_filter_peak":
+            # M1 has a single categorical sensing loss: component weights do not apply.
+            self.sensing_component_weights = None
+            return
         weights = self.training_cfg.get("sensing_component_weights")
         if weights is None:
             return
@@ -119,6 +125,21 @@ class Trainer:
 
     def _validate_loss_weights(self) -> None:
         
+        from src.models.heads import sensing_target_mode
+
+        if sensing_target_mode(self.config) == "matched_filter_peak":
+            # M1: the sensing head emits lag logits trained with sparse CE against the
+            # matched-filter peak; there is no scalar MSE component.
+            self.training_cfg["loss_weights"] = {
+                "comm": 1.0,
+                "sensing": self.lambda_mse,
+            }
+            logger.info(
+                "target=matched_filter_peak: loss_weights=%s (sparse CE on lag logits)",
+                self.training_cfg["loss_weights"],
+            )
+            return
+
         loss_weights = self.training_cfg.get("loss_weights")
         if not isinstance(loss_weights, dict):
             raise ValueError("config['training']['loss_weights'] missing or not a dict")
@@ -301,10 +322,16 @@ class Trainer:
         except Exception as e:
             raise RuntimeError(f"Unable to fetch a batch from train_ds: {e}")
 
-        sensing_loss_fn = mse_sensing_loss_factory(
-            float(self.training_cfg.get("sensing_range_penalty", 0.0)),
-            self.sensing_component_weights,
-        )
+        from src.models.heads import sensing_target_mode
+        from src.training.losses import sensing_ce_loss
+
+        if sensing_target_mode(self.config) == "matched_filter_peak":
+            sensing_loss_fn = sensing_ce_loss
+        else:
+            sensing_loss_fn = mse_sensing_loss_factory(
+                float(self.training_cfg.get("sensing_range_penalty", 0.0)),
+                self.sensing_component_weights,
+            )
         with tf.GradientTape() as tape:
             predictions = self.model(batch_features, training=True)
             loss = (
@@ -379,14 +406,24 @@ class Trainer:
         sensing_loss_fn = mse_sensing_loss_factory(
             sensing_range_penalty, self.sensing_component_weights
         )
-        self.model.compile(
-            optimizer=optimizer,
-            loss={
-                "comm": comm_loss_fn,
-                "sensing": sensing_loss_fn,
-            },
-            loss_weights=loss_weights,
-        )
+        from src.models.heads import sensing_target_mode
+        from src.training.losses import sensing_ce_loss
+
+        if sensing_target_mode(self.config) == "matched_filter_peak":
+            self.model.compile(
+                optimizer=optimizer,
+                loss={"comm": comm_loss_fn, "sensing": sensing_ce_loss},
+                loss_weights=loss_weights,
+            )
+        else:
+            self.model.compile(
+                optimizer=optimizer,
+                loss={
+                    "comm": comm_loss_fn,
+                    "sensing": sensing_loss_fn,
+                },
+                loss_weights=loss_weights,
+            )
         logger.info(
             "Model compiled: loss_weights = %s, lr=%f, optimizer=%s, "
             "label_smoothing=%s, lr_schedule=%s, sensing_range_penalty=%s, "

@@ -19,6 +19,7 @@ from src.data.data_loader import _build_feature_matrix
 from src.data.dataset_generator import generate_transmitted_batch
 from src.data.scene import require_monostatic
 from src.evaluation.ranging import scored_mae, scored_median_ae
+from src.models.heads import decode_delay_samples
 from src.experiments.pipeline import predict_in_chunks, resolve_scenario
 from src.utils.config_loader import DEFAULT_BASE_CONFIG_PATH, load_config
 from src.utils.logger import get_logger, log_config_summary, setup_logging
@@ -106,10 +107,7 @@ def run(model: tf.keras.Model, config: Dict[str, Any], arch: str) -> pd.DataFram
     rows: List[Dict[str, Any]] = []
     for name, (y, x, tau_true) in (("easy", easy), ("ambiguous", ambiguous)):
         features = _input(config, y, x)
-        head = (
-            np.clip(predict_in_chunks(model, features, "sensing")[:, 0], 0.0, 1.0)
-            * tau_max
-        )
+        head = decode_delay_samples(predict_in_chunks(model, features, "sensing"), tau_max)
         peak = (np.argmax(np.abs(_profile(y, x, tau_max)), axis=1) + 1).astype(np.float64)
         mask = np.zeros(tau_true.shape, dtype=bool)
         mae_peak = scored_mae(peak, tau_true, mask)

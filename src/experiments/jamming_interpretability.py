@@ -15,6 +15,7 @@ import pandas as pd
 from src.data.data_loader import DataDict, _build_feature_matrix
 from src.evaluation.metrics import bit_error_count
 from src.evaluation.stats import mean_interval
+from src.models.heads import decode_delay_samples
 from src.utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -117,7 +118,7 @@ def _run_condition(
         ar = np.arange(e - s)
         margin_sum += float(np.sum(comm_logits[ar, bits] - comm_logits[ar, 1 - bits]))
 
-        tau_p = np.clip(sens[:, 0], 0.0, 1.0) * tau_max
+        tau_p = decode_delay_samples(sens, tau_max)
         tau_preds.append(tau_p)
         for u in np.unique(snr_db[s:e]):
             m = snr_db[s:e] == u

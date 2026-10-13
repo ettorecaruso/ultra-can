@@ -141,6 +141,25 @@ def _mse_sensing_loss_core(
     logger.debug("mse_sensing_loss (range_penalty=%.2f) = %.6f", penalty, mse_loss)
     return mse_loss
 
+def sensing_ce_loss(y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.Tensor:
+    """Sparse categorical CE over the sensing lag logits (M1 mode-seeking supervision).
+
+    ``y_pred`` are the (B, L) lag logits; ``y_true`` the integer lag class in [0, L-1]
+    (the matched-filter peak ``argmax_tau |R_xy| - 1``). Emitted by
+    ``build_tf_dataset`` when ``model.sensing_head.target == 'matched_filter_peak'``.
+    """
+    labels = tf.reshape(tf.cast(y_true, tf.int32), [-1])
+    assert_finite(y_pred, "sensing_logits")
+    loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(
+        from_logits=True,
+        reduction=tf.keras.losses.Reduction.SUM_OVER_BATCH_SIZE,
+    )
+    ce_loss = loss_fn(labels, y_pred)
+    assert_finite(ce_loss, "sensing_ce_loss")
+    ce_loss = tf.maximum(ce_loss, 0.0)
+    logger.debug("sensing_ce_loss = %.6f", ce_loss)
+    return ce_loss
+
 def mse_sensing_loss_factory(
     range_penalty: float = 0.0,
     component_weights: Optional[Sequence[float]] = None,

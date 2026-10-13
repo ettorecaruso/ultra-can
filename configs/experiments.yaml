@@ -49,14 +49,15 @@ defaults: &defaults
     sensing_head:
       units: 32
       activation: "relu"
-      output_units: 1
+      output_units: 33
       output_activation: "linear"
+      target: "matched_filter_peak"
       use_max_pool_feature: true
       use_position_feature: false
       use_reference_profile: true
       profile_max_lag: 33
-      delay_mode: "peak_residual"
-      use_delay_peak_feature: true
+      delay_mode: "regression"
+      use_delay_peak_feature: false
       peak_sharpness: 8.0
   training:
     epochs: 5
@@ -203,7 +204,9 @@ ber_vs_snr:
                                scatterer_distance_m: [100.0, 215.0],
                                scatterer_reflectivity: 0.30}}}
           - {name: "k3_doppler_control",      echoes: [3], max_doppler: 0.00008,
-             model: {sensing_head: {output_units: 2}},
+             model: {sensing_head: {output_units: 2, target: "delay",
+                                    delay_mode: "peak_residual",
+                                    use_delay_peak_feature: true}},
              training: {sensing_component_weights: {delay: 1.0, doppler: 1.0}}}
     visualization:
       plot_format: "pdf"

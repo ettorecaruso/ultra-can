@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, Iterator, Optional, Sequence, Tuple
 
+import numpy as np
 import tensorflow as tf
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -36,6 +37,15 @@ _SENSING_DELAY_MODES: Tuple[str, ...] = ("regression", "peak_residual")
 _SENSING_PEAK_KEY = "use_delay_peak_feature"
 _SENSING_PEAK_SHARPNESS_KEY = "peak_sharpness"
 _SENSING_PEAK_SHARPNESS_DEFAULT = 8.0
+# M1 "radar-matching" sensing supervision (2026-10):
+#   target="delay"               -> legacy: regress the normalized geometric label (MSE)
+#   target="matched_filter_peak" -> train 33 lag-logits against the matched-filter peak
+#                                   argmax_tau |R_xy(tau)| (sparse CE), head emits logits and
+#                                   the model also exposes the decoded scalar tau (M1).
+_SENSING_TARGET_KEY = "target"
+_SENSING_TARGET_DEFAULT = "delay"
+_SENSING_TARGET_MATCHED_FILTER = "matched_filter_peak"
+_SENSING_TARGET_MODES: Tuple[str, ...] = ("delay", _SENSING_TARGET_MATCHED_FILTER)
 _MIN_MODULATION_ORDER = 2
 _HEAD_NAMES: Tuple[str, ...] = ("communication_head", "sensing_head")
 _COMM_REQUIRED_KEYS: Tuple[str, ...] = ("units", "activation", "modulation_order")
@@ -157,10 +167,26 @@ def _validate_head_config(
                 f"model.dropout_rate must be in [0, 1), got: {dropout!r}"
             )
     else:
+        target = str(head_cfg.get(_SENSING_TARGET_KEY, _SENSING_TARGET_DEFAULT))
+        if target not in _SENSING_TARGET_MODES:
+            raise ValueError(
+                f"model.sensing_head.{_SENSING_TARGET_KEY} must be one of "
+                f"{list(_SENSING_TARGET_MODES)}, got: {target!r}"
+            )
         output_units = _as_positive_int(
             head_cfg["output_units"], "model.sensing_head.output_units"
         )
-        if output_units not in _SENSING_OUTPUT_UNITS_ALLOWED:
+        if target == _SENSING_TARGET_MATCHED_FILTER:
+            lags = _as_positive_int(
+                head_cfg.get(_SENSING_PROFILE_LAG_KEY, output_units),
+                "model.sensing_head.profile_max_lag",
+            )
+            if output_units != lags:
+                raise ValueError(
+                    "model.sensing_head.output_units must equal profile_max_lag "
+                    f"for target='matched_filter_peak' ({lags}), got: {output_units}"
+                )
+        elif output_units not in _SENSING_OUTPUT_UNITS_ALLOWED:
             raise ValueError(
                 f"model.sensing_head.output_units must be one of "
                 f"{list(_SENSING_OUTPUT_UNITS_ALLOWED)}, got: {output_units}"
@@ -176,12 +202,36 @@ def _validate_head_config(
     )
     return model_cfg, head_cfg
 
+def sensing_target_mode(config: Dict[str, Any]) -> str:
+    """Sensing supervision mode: 'delay' (legacy) or 'matched_filter_peak' (M1)."""
+    model_cfg = config.get("model") or {}
+    sens_cfg = model_cfg.get("sensing_head") or {}
+    if not isinstance(sens_cfg, dict):
+        return _SENSING_TARGET_DEFAULT
+    return str(sens_cfg.get(_SENSING_TARGET_KEY, _SENSING_TARGET_DEFAULT))
+
 def sensing_output_units(config: Dict[str, Any]) -> int:
+    """Number of units of the sensing output (1/2 legacy, ``profile_max_lag`` in M1)."""
     model_cfg = config.get("model")
     if not isinstance(model_cfg, dict) or "sensing_head" not in model_cfg:
         return DEFAULT_SENSING_OUTPUT_UNITS
     _model_cfg, sens_cfg = _validate_head_config(config, "sensing_head")
     return int(sens_cfg["output_units"])
+
+def decode_delay_samples(sensing_pred: Any, max_delay: float) -> np.ndarray:
+    """Decode the sensing head output to delays in samples (float, 1..max_delay).
+
+    Single decode helper shared by every consumer (evaluator, ranging, peer, ...).
+    The mode is inferred from the output width, so callers only need ``max_delay``:
+      * width 1/2  -> legacy scalar head: ``clip(pred[:, 0], 0, 1) * max_delay``;
+      * width > 2  -> M1 lag logits: ``argmax_i pred_i + 1``.
+    """
+    pred = np.asarray(sensing_pred, dtype=np.float64)
+    if pred.ndim != 2:
+        raise ValueError(f"sensing_pred must be 2D (B, S), got: {pred.shape}")
+    if pred.shape[1] > 2:
+        return np.argmax(pred, axis=-1).astype(np.float64) + 1.0
+    return np.clip(pred[:, 0], 0.0, 1.0) * float(max_delay)
 
 def _smoke_check(
     model: tf.keras.Model,
@@ -330,6 +380,17 @@ def _soft_argmax_lag(
     return tf.reduce_sum(weights * lags[None, :], axis=-1, keepdims=True)
 
 @_register_serializable(package="src.models.heads")
+def _decode_lag_norm(logits: tf.Tensor, max_delay: int) -> tf.Tensor:
+    """Decode 33 lag-logits to the normalized scalar tau in (0, 1] (M1).
+
+    tau_norm = (argmax_i logits_i + 1) / max_delay, so tau = tau_norm * max_delay
+    is exactly the picked lag in 1..max_delay (the matched-filter convention).
+    """
+    max_delay = int(max_delay)
+    idx = tf.argmax(logits, axis=-1, output_type=tf.int32) + 1
+    return tf.cast(idx, logits.dtype)[:, None] / float(max_delay)
+
+@_register_serializable(package="src.models.heads")
 def _attention_pool(alpha_and_h: list) -> tf.Tensor:
     
     alpha, h = alpha_and_h
@@ -451,7 +512,18 @@ def build_sensing_head(
             f"model.sensing_head.{_SENSING_DELAY_MODE_KEY} must be one of "
             f"{sorted(_SENSING_DELAY_MODES)}, got: {delay_mode!r}"
         )
-    if delay_mode == "peak_residual":
+    target = str(sens_cfg.get(_SENSING_TARGET_KEY, _SENSING_TARGET_DEFAULT))
+    if target == _SENSING_TARGET_MATCHED_FILTER:
+        # M1: 33 lag-logits supervised by sparse CE against the matched-filter peak
+        # argmax_tau |R_xy(tau)|. The decoded scalar tau is added by the container
+        # model (build_ultra_can / build_ultra_can_qkv) as "sensing".
+        out = tf.keras.layers.Dense(
+            units=output_units,
+            activation="linear",
+            kernel_initializer="he_normal",
+            name="sensing_logits",
+        )(x)
+    elif delay_mode == "peak_residual":
         if output_units not in _SENSING_OUTPUT_UNITS_ALLOWED:
             raise ValueError(
                 f"delay_mode='peak_residual' emits [tau] (or [tau, fD]) and requires "

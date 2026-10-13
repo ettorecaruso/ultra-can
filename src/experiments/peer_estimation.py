@@ -89,8 +89,10 @@ def _head_delay(
     for start in range(0, features.shape[0], int(predict_batch)):
         chunk = features[start : start + int(predict_batch)]
         predictions = model(tf.convert_to_tensor(chunk), training=False)
-        parts.append(predictions["sensing"].numpy()[:, 0].astype(np.float64))
-    return np.concatenate(parts) * float(tau_max)
+        parts.append(predictions["sensing"].numpy().astype(np.float64))
+    from src.models.heads import decode_delay_samples
+
+    return decode_delay_samples(np.concatenate(parts, axis=0), tau_max)
 
 def _sample_table(
     model: tf.keras.Model,

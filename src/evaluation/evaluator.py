@@ -34,7 +34,7 @@ from src.evaluation.metrics import (
 from src.models.baselines import build_baseline
 from src.models.ultra_can import build_ultra_can
 from src.models.ultra_can_qkv import build_ultra_can_qkv
-from src.models.heads import sensing_output_units
+from src.models.heads import decode_delay_samples, sensing_output_units
 from src.utils.config_loader import DEFAULT_BASE_CONFIG_PATH, load_config, validate_config
 from src.utils.logger import get_logger, log_config_summary, setup_logging
 from src.utils.model_io import load_model
@@ -227,7 +227,10 @@ def evaluate_model(
             accum_errors += int(n_errors_batch)
             accum_symbols += batch_size_actual
 
-            n_out_batch = int(np.count_nonzero((sensing_pred < 0.0) | (sensing_pred > 1.0)))
+            n_out_batch = (
+                int(np.count_nonzero((sensing_pred < 0.0) | (sensing_pred > 1.0)))
+                if num_outputs <= 2 else 0
+            )
             if n_out_batch:
                 n_out_range += n_out_batch
                 n_out_range_total += sensing_pred.size
@@ -241,10 +244,9 @@ def evaluate_model(
                     "SNR=%.1f dB, batch: %d/%d sensing elements outside [0,1] -> clamped",
                     snr_target, n_out_batch, sensing_pred.size,
                 )
-            sensing_pred_clamped = np.clip(sensing_pred, 0.0, 1.0)
-            tau_pred = sensing_pred_clamped[:, 0] * tau_max
+            tau_pred = decode_delay_samples(sensing_pred, tau_max)
             if num_outputs == 2:
-                fd_pred = sensing_pred_clamped[:, 1] * fd_max
+                fd_pred = np.clip(sensing_pred[:, 1], 0.0, 1.0) * fd_max
             else:
                 fd_pred = np.zeros_like(tau_pred)
 
@@ -544,8 +546,9 @@ def evaluate_model_online(
             accum_errors += int(n_errors_batch)
             accum_symbols += batch_size_actual
 
-            n_out_batch = int(
-                np.count_nonzero((sensing_pred < 0.0) | (sensing_pred > 1.0))
+            n_out_batch = (
+                int(np.count_nonzero((sensing_pred < 0.0) | (sensing_pred > 1.0)))
+                if num_outputs <= 2 else 0
             )
             if n_out_batch:
                 n_out_range += n_out_batch
@@ -557,10 +560,9 @@ def evaluate_model_online(
                 if n_out_range_max is None or batch_max > n_out_range_max:
                     n_out_range_max = batch_max
 
-            sensing_pred_clamped = np.clip(sensing_pred, 0.0, 1.0)
-            tau_pred = sensing_pred_clamped[:, 0] * tau_max
+            tau_pred = decode_delay_samples(sensing_pred, tau_max)
             if num_outputs == 2:
-                fd_pred = sensing_pred_clamped[:, 1] * fd_max
+                fd_pred = np.clip(sensing_pred[:, 1], 0.0, 1.0) * fd_max
             else:
                 fd_pred = np.zeros_like(tau_pred)
 

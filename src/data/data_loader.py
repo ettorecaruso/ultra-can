@@ -440,17 +440,32 @@ def build_tf_dataset(
     else:
         reference = build_reference_matrix(data["bit"], data["seed"], config)
     features = _build_feature_matrix(data["x"], feature_mode, feature_norm, reference)
-    from src.models.heads import sensing_output_units
+    from src.models.heads import sensing_output_units, sensing_target_mode
 
-    num_outputs = sensing_output_units(config)
-    targets = normalize_targets(
-        data["tau"], data["f_d"], tau_max=max_delay, fd_max=max_doppler,
-        num_outputs=num_outputs,
-    )
     bits = np.asarray(data["bit"], dtype=np.int32)
+    if sensing_target_mode(config) == "matched_filter_peak":
+        # M1: supervision target = the matched-filter peak argmax_tau |R_xy(tau)|
+        # (integer lag class in [0, max_delay-1]); the matched filter is a TRAINING-TIME
+        # teacher only, never part of the model.
+        from src.evaluation.metrics import argmax_delay_from_profile
+
+        lags = int(max_delay)
+        peak_lag = argmax_delay_from_profile(data["x"], reference, lags)
+        peak_class = np.clip(
+            np.rint(np.asarray(peak_lag, dtype=np.float64)).astype(np.int64) - 1, 0, lags - 1
+        )
+        targets_y = {"comm": bits, "sensing": peak_class.astype(np.int32)}
+        num_outputs = int(sensing_output_units(config))
+    else:
+        num_outputs = int(sensing_output_units(config))
+        targets = normalize_targets(
+            data["tau"], data["f_d"], tau_max=max_delay, fd_max=max_doppler,
+            num_outputs=num_outputs,
+        )
+        targets_y = {"comm": bits, "sensing": targets}
 
     dataset = tf.data.Dataset.from_tensor_slices(
-        (features, {"comm": bits, "sensing": targets})
+        (features, targets_y)
     )
     if shuffle:
         dataset = dataset.shuffle(
@@ -469,7 +484,12 @@ def build_tf_dataset(
         )
     if comm_spec.shape.as_list() != [None]:
         raise ValueError(f"expected comm shape [None], got: {comm_spec.shape}")
-    if sensing_spec.shape.as_list() != [None, num_outputs]:
+    if sensing_target_mode(config) == "matched_filter_peak":
+        if sensing_spec.shape.as_list() != [None]:
+            raise ValueError(
+                f"expected sensing shape [None] (integer lag class), got: {sensing_spec.shape}"
+            )
+    elif sensing_spec.shape.as_list() != [None, num_outputs]:
         raise ValueError(
             f"expected sensing shape [None, {num_outputs}], got: {sensing_spec.shape}"
         )

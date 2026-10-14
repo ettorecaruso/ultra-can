@@ -195,7 +195,8 @@ ber_vs_snr:
           - {name: "k3_doppler_limited",  echoes: [3], max_doppler: 0.00004,
              channel: {scene: {radial_speed_mps: [5.0, 15.0]}}}
           - {name: "iod_peers",           echoes: [3], max_doppler: 0.00008,
-             peers: {enable: true, n_peers: 2}}
+             peers: {enable: true, n_peers: 2},
+             model: {sensing_head: {target: "geometric_label"}}}
           - {name: "k1_ablation_log_uniform", echoes: [1], max_doppler: 0.00008,
              channel: {generator: log_uniform}}
           - {name: "k3_b_tdl_d_retrained",    echoes: [3], max_doppler: 0.00008}

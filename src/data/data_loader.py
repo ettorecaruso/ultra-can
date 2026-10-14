@@ -440,10 +440,15 @@ def build_tf_dataset(
     else:
         reference = build_reference_matrix(data["bit"], data["seed"], config)
     features = _build_feature_matrix(data["x"], feature_mode, feature_norm, reference)
-    from src.models.heads import sensing_output_units, sensing_target_mode
+    from src.models.heads import (
+        sensing_output_units,
+        sensing_target_is_categorical,
+        sensing_target_mode,
+    )
 
     bits = np.asarray(data["bit"], dtype=np.int32)
-    if sensing_target_mode(config) == "matched_filter_peak":
+    target_mode = sensing_target_mode(config)
+    if target_mode == "matched_filter_peak":
         # M1: supervision target = the matched-filter peak argmax_tau |R_xy(tau)|
         # (integer lag class in [0, max_delay-1]); the matched filter is a TRAINING-TIME
         # teacher only, never part of the model.
@@ -455,6 +460,19 @@ def build_tf_dataset(
             np.rint(np.asarray(peak_lag, dtype=np.float64)).astype(np.int64) - 1, 0, lags - 1
         )
         targets_y = {"comm": bits, "sensing": peak_class.astype(np.int32)}
+        num_outputs = int(sensing_output_units(config))
+    elif target_mode == "geometric_label":
+        # Peer-aware supervision (iod_peers): same 33 lag-logits, but the class is the
+        # GEOMETRIC label tau (the dominant labelled tap). The generator removes the
+        # peer taps from that label (LABEL_EXCLUDED = -inf), so the head learns to
+        # reject the peers instead of copying the strongest peak.
+        lags = int(max_delay)
+        label_class = np.clip(
+            np.rint(np.asarray(data["tau"], dtype=np.float64)).astype(np.int64) - 1,
+            0,
+            lags - 1,
+        )
+        targets_y = {"comm": bits, "sensing": label_class.astype(np.int32)}
         num_outputs = int(sensing_output_units(config))
     else:
         num_outputs = int(sensing_output_units(config))
@@ -484,7 +502,7 @@ def build_tf_dataset(
         )
     if comm_spec.shape.as_list() != [None]:
         raise ValueError(f"expected comm shape [None], got: {comm_spec.shape}")
-    if sensing_target_mode(config) == "matched_filter_peak":
+    if sensing_target_is_categorical(config):
         if sensing_spec.shape.as_list() != [None]:
             raise ValueError(
                 f"expected sensing shape [None] (integer lag class), got: {sensing_spec.shape}"

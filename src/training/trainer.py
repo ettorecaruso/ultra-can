@@ -87,9 +87,9 @@ class Trainer:
 
     def _validate_sensing_component_weights(self) -> None:
         
-        from src.models.heads import sensing_output_units, sensing_target_mode
+        from src.models.heads import sensing_output_units, sensing_target_is_categorical
 
-        if sensing_target_mode(self.config) == "matched_filter_peak":
+        if sensing_target_is_categorical(self.config):
             # M1 has a single categorical sensing loss: component weights do not apply.
             self.sensing_component_weights = None
             return
@@ -125,9 +125,9 @@ class Trainer:
 
     def _validate_loss_weights(self) -> None:
         
-        from src.models.heads import sensing_target_mode
+        from src.models.heads import sensing_target_is_categorical
 
-        if sensing_target_mode(self.config) == "matched_filter_peak":
+        if sensing_target_is_categorical(self.config):
             # M1: the sensing head emits lag logits trained with sparse CE against the
             # matched-filter peak; there is no scalar MSE component.
             self.training_cfg["loss_weights"] = {
@@ -135,7 +135,7 @@ class Trainer:
                 "sensing": self.lambda_mse,
             }
             logger.info(
-                "target=matched_filter_peak: loss_weights=%s (sparse CE on lag logits)",
+                "categorical sensing target: loss_weights=%s (sparse CE on lag logits)",
                 self.training_cfg["loss_weights"],
             )
             return
@@ -322,10 +322,10 @@ class Trainer:
         except Exception as e:
             raise RuntimeError(f"Unable to fetch a batch from train_ds: {e}")
 
-        from src.models.heads import sensing_target_mode
+        from src.models.heads import sensing_target_is_categorical
         from src.training.losses import sensing_ce_loss
 
-        if sensing_target_mode(self.config) == "matched_filter_peak":
+        if sensing_target_is_categorical(self.config):
             sensing_loss_fn = sensing_ce_loss
         else:
             sensing_loss_fn = mse_sensing_loss_factory(
@@ -406,10 +406,10 @@ class Trainer:
         sensing_loss_fn = mse_sensing_loss_factory(
             sensing_range_penalty, self.sensing_component_weights
         )
-        from src.models.heads import sensing_target_mode
+        from src.models.heads import sensing_target_is_categorical
         from src.training.losses import sensing_ce_loss
 
-        if sensing_target_mode(self.config) == "matched_filter_peak":
+        if sensing_target_is_categorical(self.config):
             self.model.compile(
                 optimizer=optimizer,
                 loss={"comm": comm_loss_fn, "sensing": sensing_ce_loss},

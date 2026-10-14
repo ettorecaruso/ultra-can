@@ -45,7 +45,23 @@ _SENSING_PEAK_SHARPNESS_DEFAULT = 8.0
 _SENSING_TARGET_KEY = "target"
 _SENSING_TARGET_DEFAULT = "delay"
 _SENSING_TARGET_MATCHED_FILTER = "matched_filter_peak"
-_SENSING_TARGET_MODES: Tuple[str, ...] = ("delay", _SENSING_TARGET_MATCHED_FILTER)
+# Peer-aware supervision (2026-10), used by the ``iod_peers`` scenario:
+#   target="geometric_label"     -> same 33 lag-logits, but supervised with the *geometric*
+#                                   label tau (the dominant labelled tap). The scene
+#                                   generator already EXCLUDES the peer taps from that label
+#                                   (``LABEL_EXCLUDED = -inf``), so the head learns to reject
+#                                   peer echoes instead of copying the strongest peak.
+_SENSING_TARGET_GEOMETRIC_LABEL = "geometric_label"
+_SENSING_TARGET_MODES: Tuple[str, ...] = (
+    "delay",
+    _SENSING_TARGET_MATCHED_FILTER,
+    _SENSING_TARGET_GEOMETRIC_LABEL,
+)
+# Targets whose sensing head emits lag logits trained with sparse CE.
+_SENSING_CATEGORICAL_TARGETS: Tuple[str, ...] = (
+    _SENSING_TARGET_MATCHED_FILTER,
+    _SENSING_TARGET_GEOMETRIC_LABEL,
+)
 _MIN_MODULATION_ORDER = 2
 _HEAD_NAMES: Tuple[str, ...] = ("communication_head", "sensing_head")
 _COMM_REQUIRED_KEYS: Tuple[str, ...] = ("units", "activation", "modulation_order")
@@ -176,7 +192,7 @@ def _validate_head_config(
         output_units = _as_positive_int(
             head_cfg["output_units"], "model.sensing_head.output_units"
         )
-        if target == _SENSING_TARGET_MATCHED_FILTER:
+        if target in _SENSING_CATEGORICAL_TARGETS:
             lags = _as_positive_int(
                 head_cfg.get(_SENSING_PROFILE_LAG_KEY, output_units),
                 "model.sensing_head.profile_max_lag",
@@ -184,7 +200,7 @@ def _validate_head_config(
             if output_units != lags:
                 raise ValueError(
                     "model.sensing_head.output_units must equal profile_max_lag "
-                    f"for target='matched_filter_peak' ({lags}), got: {output_units}"
+                    f"for target='{target}' ({lags}), got: {output_units}"
                 )
         elif output_units not in _SENSING_OUTPUT_UNITS_ALLOWED:
             raise ValueError(
@@ -203,12 +219,16 @@ def _validate_head_config(
     return model_cfg, head_cfg
 
 def sensing_target_mode(config: Dict[str, Any]) -> str:
-    """Sensing supervision mode: 'delay' (legacy) or 'matched_filter_peak' (M1)."""
+    """Sensing supervision mode: 'delay', 'matched_filter_peak' (M1), 'geometric_label'."""
     model_cfg = config.get("model") or {}
     sens_cfg = model_cfg.get("sensing_head") or {}
     if not isinstance(sens_cfg, dict):
         return _SENSING_TARGET_DEFAULT
     return str(sens_cfg.get(_SENSING_TARGET_KEY, _SENSING_TARGET_DEFAULT))
+
+def sensing_target_is_categorical(config: Dict[str, Any]) -> bool:
+    """True when the sensing head emits lag logits trained with sparse CE (M1 / peer)."""
+    return sensing_target_mode(config) in _SENSING_CATEGORICAL_TARGETS
 
 def sensing_output_units(config: Dict[str, Any]) -> int:
     """Number of units of the sensing output (1/2 legacy, ``profile_max_lag`` in M1)."""
@@ -513,10 +533,11 @@ def build_sensing_head(
             f"{sorted(_SENSING_DELAY_MODES)}, got: {delay_mode!r}"
         )
     target = str(sens_cfg.get(_SENSING_TARGET_KEY, _SENSING_TARGET_DEFAULT))
-    if target == _SENSING_TARGET_MATCHED_FILTER:
-        # M1: 33 lag-logits supervised by sparse CE against the matched-filter peak
-        # argmax_tau |R_xy(tau)|. The decoded scalar tau is added by the container
-        # model (build_ultra_can / build_ultra_can_qkv) as "sensing".
+    if target in _SENSING_CATEGORICAL_TARGETS:
+        # M1 / peer-aware: 33 lag-logits supervised by sparse CE, either against the
+        # matched-filter peak argmax_tau |R_xy(tau)| (M1) or against the geometric label
+        # tau that excludes the peer taps (iod_peers). The decoded scalar tau is added
+        # by the container model (build_ultra_can / build_ultra_can_qkv) as "sensing".
         out = tf.keras.layers.Dense(
             units=output_units,
             activation="linear",

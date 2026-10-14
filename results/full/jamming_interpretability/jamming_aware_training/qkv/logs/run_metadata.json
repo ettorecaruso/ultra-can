@@ -1,12 +1,10 @@
 {
-  "timestamp": "2026-10-09T12:47:01.810006",
+  "timestamp": "2026-10-14T00:29:37.953217",
   "tensorflow_version": "2.21.0",
-  "config_snapshot_path": "/content/drive/MyDrive/DHUC_RUN/jama_train/qkv/logs/config_used.yaml",
+  "config_snapshot_path": "/content/drive/MyDrive/DHUC_RUN/common/full/jamming_interpretability/jamming_aware_training/qkv/logs/config_used.yaml",
   "lambda_mse": 2.0,
   "sensing_range_penalty": 1.0,
-  "sensing_component_weights": [
-    1.0
-  ],
+  "sensing_component_weights": null,
   "epochs": 30,
   "batch_size": 128,
   "learning_rate": 0.001,

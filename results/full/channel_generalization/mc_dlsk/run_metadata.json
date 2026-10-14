@@ -1,7 +1,7 @@
 {
   "experiment": "channel_generalization",
   "arch": "mc_dlsk",
-  "timestamp": "2026-10-08T23:36:56",
+  "timestamp": "2026-10-14T05:07:30",
   "channel_variants": [
     "nominal",
     "b_tdl_d",

@@ -1,7 +1,7 @@
 {
   "experiment": "jamming_interpretability",
   "arch": "qkv",
-  "timestamp": "2026-10-09T13:37:19",
+  "timestamp": "2026-10-14T02:31:17",
   "tensorflow_version": "2.21.0",
   "jsr_grid": [
     -10.0,
@@ -21,10 +21,5 @@
   "batch_size": 1024,
   "n_conditions": 19,
   "n_realizations": 5,
-  "tag": "jamming_aware_training",
-  "merged_passes": [
-    "jama_cw",
-    "jama_barrage",
-    "jama_pb"
-  ]
+  "tag": "jamming_aware_training"
 }

@@ -1,7 +1,7 @@
 {
   "experiment": "channel_generalization",
   "arch": "qkv",
-  "timestamp": "2026-10-08T22:53:38",
+  "timestamp": "2026-10-14T02:38:02",
   "channel_variants": [
     "nominal",
     "b_tdl_d",

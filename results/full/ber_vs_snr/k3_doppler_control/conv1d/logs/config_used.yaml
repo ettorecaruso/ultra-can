@@ -2,7 +2,7 @@ general:
   seed: 42
   experiment_name: ber_vs_snr_full
   log_level: INFO
-  run_output_dir: /content/dhuc/results/full/ber_vs_snr/k3_doppler_control/conv1d
+  run_output_dir: /content/drive/MyDrive/DHUC_RUN/conv1d/full/ber_vs_snr/k3_doppler_control/conv1d
 data:
   sequence_length: 100
   map_type: logistic
@@ -66,6 +66,7 @@ model:
     activation: relu
     output_units: 2
     output_activation: linear
+    target: delay
     use_max_pool_feature: true
     use_position_feature: false
     use_reference_profile: true
@@ -81,7 +82,7 @@ training:
   lambda_mse: 2
   loss_weights:
     comm: 1.0
-    sensing: 2
+    sensing: 2.0
   label_smoothing: 0.1
   lr_schedule: cosine
   sensing_range_penalty: 1.0
@@ -165,14 +166,15 @@ jamming:
       sensing_head:
         units: 32
         activation: relu
-        output_units: 1
+        output_units: 33
         output_activation: linear
+        target: matched_filter_peak
         use_max_pool_feature: true
         use_position_feature: false
         use_reference_profile: true
         profile_max_lag: 33
-        delay_mode: peak_residual
-        use_delay_peak_feature: true
+        delay_mode: regression
+        use_delay_peak_feature: false
         peak_sharpness: 8.0
     training:
       epochs: 30
@@ -552,6 +554,53 @@ experiments:
     - mc_dlsk
     - blind_stat
     scenarios:
+    - name: k1_doppler_full
+      echoes:
+      - 1
+      max_doppler: 8.0e-05
+    - name: k3_doppler_full
+      echoes:
+      - 3
+      max_doppler: 8.0e-05
+    - name: k3_doppler_limited
+      echoes:
+      - 3
+      max_doppler: 4.0e-05
+      channel:
+        scene:
+          radial_speed_mps:
+          - 5.0
+          - 15.0
+    - name: iod_peers
+      echoes:
+      - 3
+      max_doppler: 8.0e-05
+      peers:
+        enable: true
+        n_peers: 2
+    - name: k1_ablation_log_uniform
+      echoes:
+      - 1
+      max_doppler: 8.0e-05
+      channel:
+        generator: log_uniform
+    - name: k3_b_tdl_d_retrained
+      echoes:
+      - 3
+      max_doppler: 8.0e-05
+    - name: k3_ambiguity_mix
+      echoes:
+      - 3
+      max_doppler: 8.0e-05
+      channel:
+        scene:
+          obstacle_distance_m:
+          - 100.0
+          - 200.0
+          scatterer_distance_m:
+          - 100.0
+          - 215.0
+          scatterer_reflectivity: 0.3
     - name: k3_doppler_control
       echoes:
       - 3
@@ -559,6 +608,9 @@ experiments:
       model:
         sensing_head:
           output_units: 2
+          target: delay
+          delay_mode: peak_residual
+          use_delay_peak_feature: true
       training:
         sensing_component_weights:
           delay: 1.0
@@ -896,6 +948,9 @@ ber_vs_snr:
           model:
             sensing_head:
               output_units: 2
+              target: delay
+              delay_mode: peak_residual
+              use_delay_peak_feature: true
           training:
             sensing_component_weights:
               delay: 1.0

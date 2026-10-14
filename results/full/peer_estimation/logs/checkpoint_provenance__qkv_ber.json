@@ -1,0 +1,7 @@
+{
+  "peer_estimation:qkv": {
+    "checkpoint": "/content/drive/MyDrive/DHUC_RUN/qkv_ber/full/ber_vs_snr/iod_peers/qkv/best_model.keras",
+    "preferred_scenario": "iod_peers",
+    "matched_preferred_scenario": true
+  }
+}

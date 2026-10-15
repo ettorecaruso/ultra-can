@@ -51,7 +51,8 @@ defaults: &defaults
       activation: "relu"
       output_units: 33
       output_activation: "linear"
-      target: "matched_filter_peak"
+      # default geometrico: vedere il commento in configs/base_config.yaml
+      target: "geometric_label"
       use_max_pool_feature: true
       use_position_feature: false
       use_reference_profile: true
@@ -198,12 +199,14 @@ ber_vs_snr:
              peers: {enable: true, n_peers: 2},
              model: {sensing_head: {target: "geometric_label"}}}
           - {name: "k1_ablation_log_uniform", echoes: [1], max_doppler: 0.00008,
-             channel: {generator: log_uniform}}
+             channel: {generator: log_uniform},
+             model: {sensing_head: {target: "matched_filter_peak"}}}
           - {name: "k3_b_tdl_d_retrained",    echoes: [3], max_doppler: 0.00008}
           - {name: "k3_ambiguity_mix",        echoes: [3], max_doppler: 0.00008,
              channel: {scene: {obstacle_distance_m: [100.0, 200.0],
                                scatterer_distance_m: [100.0, 215.0],
-                               scatterer_reflectivity: 0.30}}}
+                               scatterer_reflectivity: 0.30}},
+             model: {sensing_head: {target: "matched_filter_peak"}}}
           - {name: "k3_doppler_control",      echoes: [3], max_doppler: 0.00008,
              model: {sensing_head: {output_units: 2, target: "delay",
                                     delay_mode: "peak_residual",

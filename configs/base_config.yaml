@@ -58,13 +58,18 @@ model:
     units: 32
     activation: "relu"
 
-    # M1 (2026-10): 33 lag-logits supervised by sparse CE against the matched-filter
-    # peak argmax_tau |R_xy(tau)| (a TRAINING-TIME teacher only, never in the model).
-    # The head learns the delay itself; the model exposes the decoded scalar tau and
-    # the 33 logits as "sensing"/"sensing_logits".
+    # Supervisione di default (2026-10): 33 lag-logits addestrati con CE sparsa contro la
+    # label geometrica `tau` = il tap OSTACOLO (il generatore esclude i peer dal label).
+    # E' l'unica supervisione che identifica il bersaglio quando NON e' l'eco piu' forte:
+    # qualsiasi peak-picker (matched filter, OFDM ISAC) e' limitato al tetto del picco.
+    # Eccezioni (label definite diversamente dal simulatore) in experiments.yaml:
+    #   k1_ablation_log_uniform -> matched_filter_peak (label = eco piu' forte)
+    #   k3_ambiguity_mix        -> matched_filter_peak (clutter con la stessa riflettivita')
+    #   k3_doppler_control      -> delay (controllo legacy a 2 uscite)
+    # La testa resta a 33 logit; il modello espone il tau decodificato e i logits.
     output_units: 33
     output_activation: "linear"
-    target: "matched_filter_peak"
+    target: "geometric_label"
 
     use_max_pool_feature: true
     use_position_feature: false

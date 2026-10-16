@@ -1,0 +1,116 @@
+2026-10-16 06:44:10 | root                           | INFO   | Logging configured: file=/content/drive/MyDrive/DHUC_RUN/common/full/logs/runner.log level=INFO
+2026-10-16 06:44:10 | __main__                       | INFO   | Mode: full
+2026-10-16 06:44:10 | __main__                       | INFO   | Run root: /content/drive/MyDrive/DHUC_RUN/common/full
+2026-10-16 06:44:10 | __main__                       | INFO   | Models: ALL (config)
+2026-10-16 06:44:10 | __main__                       | INFO   | No dataset regeneration: False
+2026-10-16 06:44:10 | __main__                       | INFO   | ================================================================================
+2026-10-16 06:44:10 | __main__                       | INFO   | EXPERIMENT classical_receivers
+2026-10-16 06:44:10 | __main__                       | INFO   | ================================================================================
+2026-10-16 06:44:10 | __main__                       | INFO   | experiment_name = classical_receivers_full
+2026-10-16 06:44:10 | __main__                       | INFO   | seed = 42
+2026-10-16 06:44:10 | __main__                       | INFO   | lambda_mse = 2
+2026-10-16 06:44:10 | __main__                       | INFO   | sequence_length = 100
+2026-10-16 06:44:10 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-16 06:44:10 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-16 06:44:10 | __main__                       | INFO   | epochs = 5
+2026-10-16 06:44:10 | src.utils.config_loader        | INFO   | config snapshot saved: /content/drive/MyDrive/DHUC_RUN/common/full/classical_receivers/logs/config_used.yaml
+2026-10-16 06:44:10 | __main__                       | INFO   | ============================================================
+2026-10-16 06:44:10 | __main__                       | INFO   | Experiment classical_receivers: equations only (no DL) - classical receivers
+2026-10-16 06:44:10 | __main__                       | INFO   | ============================================================
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=538, BER=0.269000
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=48, BER=0.024000
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=553, BER=0.276500
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=68, BER=0.034000
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=565, BER=0.282500
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=77, BER=0.038500
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=553, BER=0.276500
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=87, BER=0.043500
+2026-10-16 06:44:11 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=586, BER=0.293000
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=112, BER=0.056000
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=596, BER=0.298000
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=135, BER=0.067500
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=623, BER=0.311500
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=152, BER=0.076000
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=611, BER=0.305500
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=187, BER=0.093500
+2026-10-16 06:44:12 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=647, BER=0.323500
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=195, BER=0.097500
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=657, BER=0.328500
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=196, BER=0.098000
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=566, BER=0.283000
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=77, BER=0.038500
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=574, BER=0.287000
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=76, BER=0.038000
+2026-10-16 06:44:13 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=583, BER=0.291500
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=87, BER=0.043500
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=590, BER=0.295000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=107, BER=0.053500
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=607, BER=0.303500
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=144, BER=0.072000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=606, BER=0.303000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=178, BER=0.089000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=622, BER=0.311000
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=239, BER=0.119500
+2026-10-16 06:44:14 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=640, BER=0.320000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=312, BER=0.156000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=664, BER=0.332000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=421, BER=0.210500
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=682, BER=0.341000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=537, BER=0.268500
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=720, BER=0.360000
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=689, BER=0.344500
+2026-10-16 06:44:15 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:16 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=dcsk, n_bits=2000, n_errors=748, BER=0.374000
+2026-10-16 06:44:16 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=matched_filter, n_bits=2000, n_errors=812, BER=0.406000
+2026-10-16 06:44:16 | src.models.dcsk_correlator     | INFO   | evaluate_classical: detector=energy_detector, n_bits=2000, n_errors=1000, BER=0.500000
+2026-10-16 06:44:16 | __main__                       | INFO   | classical_receivers results saved to /content/drive/MyDrive/DHUC_RUN/common/full/classical_receivers/{ber_vs_k,ber_vs_doppler}.csv
+2026-10-16 06:44:16 | __main__                       | INFO   | classical_receivers experiment completed.
+2026-10-16 06:44:16 | __main__                       | INFO   | Experiment classical_receivers completed successfully.
+2026-10-16 06:44:16 | __main__                       | INFO   | ================================================================================
+2026-10-16 06:44:16 | __main__                       | INFO   | SUMMARY
+2026-10-16 06:44:16 | __main__                       | INFO   | ================================================================================
+2026-10-16 06:44:16 | __main__                       | INFO   | classical_receivers: OK
+2026-10-16 06:44:16 | __main__                       | INFO   | All requested experiments finished. Output in: /content/drive/MyDrive/DHUC_RUN/common
+2026-10-16 06:44:21 | root                           | INFO   | Logging configured: file=/content/drive/MyDrive/DHUC_RUN/common/full/logs/runner.log level=INFO
+2026-10-16 06:44:21 | __main__                       | INFO   | Mode: full
+2026-10-16 06:44:21 | __main__                       | INFO   | Run root: /content/drive/MyDrive/DHUC_RUN/common/full
+2026-10-16 06:44:21 | __main__                       | INFO   | Models: ['conv1d', 'qkv']
+2026-10-16 06:44:21 | __main__                       | INFO   | No dataset regeneration: False
+2026-10-16 06:44:21 | __main__                       | INFO   | ================================================================================
+2026-10-16 06:44:21 | __main__                       | INFO   | EXPERIMENT ber_vs_snr
+2026-10-16 06:44:21 | __main__                       | INFO   | ================================================================================
+2026-10-16 06:44:21 | __main__                       | INFO   | ber_vs_snr: scenarios limited to ['k3_b_tdl_d_retrained']
+2026-10-16 06:44:21 | __main__                       | INFO   | experiment_name = ber_vs_snr_full
+2026-10-16 06:44:21 | __main__                       | INFO   | seed = 42
+2026-10-16 06:44:21 | __main__                       | INFO   | lambda_mse = 2
+2026-10-16 06:44:21 | __main__                       | INFO   | sequence_length = 100
+2026-10-16 06:44:21 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-16 06:44:21 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-16 06:44:21 | __main__                       | INFO   | epochs = 30
+2026-10-16 06:44:21 | src.utils.config_loader        | INFO   | config snapshot saved: /content/drive/MyDrive/DHUC_RUN/common/full/ber_vs_snr/logs/config_used.yaml
+2026-10-16 06:44:21 | __main__                       | INFO   | ============================================================
+2026-10-16 06:44:21 | __main__                       | INFO   | ber_vs_snr experiment: BER vs SNR (5 architectures, 3 scenarios)
+2026-10-16 06:44:21 | __main__                       | INFO   | ============================================================
+2026-10-16 06:44:21 | __main__                       | INFO   | ber_vs_snr: --model=['conv1d', 'qkv'] filters architectures to: ['conv1d', 'qkv']
+2026-10-16 06:44:21 | __main__                       | INFO   | --- Scenario: k3_b_tdl_d_retrained ---
+2026-10-16 06:44:21 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/fa8b6843, generating...

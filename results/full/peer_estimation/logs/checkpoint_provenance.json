@@ -1,0 +1,7 @@
+{
+  "peer_estimation:conv1d": {
+    "checkpoint": "/content/drive/MyDrive/DHUC_RUN/conv1d/full/ber_vs_snr/iod_peers/conv1d/best_model.keras",
+    "preferred_scenario": "iod_peers",
+    "matched_preferred_scenario": true
+  }
+}

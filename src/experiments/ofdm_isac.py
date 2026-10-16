@@ -27,7 +27,12 @@ Limiti dichiarati: sincronizzazione perfetta (niente CFO/timing offset), un simb
 Uso:
   python src/experiments/ofdm_isac.py                       # 4 scenari, SNR di default
   python src/experiments/ofdm_isac.py --scenario k3_doppler_full --snr -5 21 --n-bursts 4000
-  python src/experiments/ofdm_isac.py --out-dir results/ofdm_isac --metrics-root results/full
+  python src/experiments/ofdm_isac.py --out-dir results/full/ofdm_isac --metrics-root results/full
+
+Nel campagna e' invocato come gli altri moduli standalone, una volta per scenario:
+  python src/experiments/ofdm_isac.py --scenario k3_doppler_full \
+      --output-dir results/full/k3_doppler_full/ofdm_isac
+(scrive ofdm_isac.csv, ofdm_isac_summary.csv e logs/config_used__<scenario>.yaml)
 """
 from __future__ import annotations
 
@@ -40,6 +45,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Sequence
 
 import numpy as np
+import yaml
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
@@ -252,7 +258,8 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--n-bursts", type=int, default=_DEFAULT_BURSTS)
     parser.add_argument("--seed", type=int, default=_DEFAULT_SEED)
     parser.add_argument("--metrics-root", type=Path, default=_REPO_ROOT / "results" / "full")
-    parser.add_argument("--out-dir", type=Path, default=_REPO_ROOT / "results" / "ofdm_isac")
+    parser.add_argument("--out-dir", type=Path,
+                        default=_REPO_ROOT / "results" / "full" / "ofdm_isac")
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -262,8 +269,12 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
 
     t0 = time.time()
     rows: List[Dict[str, Any]] = []
+    log_dir = args.out_dir / 'logs'
+    log_dir.mkdir(parents=True, exist_ok=True)
     for scenario in scenarios:
         config = resolve_scenario(base, scenario)
+        (log_dir / ('config_used__%s.yaml' % scenario)).write_text(
+            yaml.safe_dump(config, sort_keys=True, allow_unicode=True), encoding='utf-8')
         rows.extend(
             evaluate(config, scenario, int(args.n_bursts), args.snr, int(args.seed),
                      args.metrics_root)

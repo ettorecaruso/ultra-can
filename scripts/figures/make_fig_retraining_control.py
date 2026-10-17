@@ -1,6 +1,7 @@
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -17,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from style import figure_style as fs
 
 DEFAULT_RUN_ROOT = REPO / "results" / "full"
-ARCHS = ("conv1d", "qkv")
+ARCHS = tuple(a.strip() for a in os.environ.get("RETRAIN_ARCHS", "conv1d,qkv").split(",") if a.strip())
 ARCH_LABELS = {"conv1d": "Ultra-CAN (Conv1D)", "qkv": "Ultra-CAN-QKV"}
 VARIANT = "b_tdl_d"
 IN_DOMAIN = (("ber_vs_snr", "k3_doppler_full"), None)
@@ -28,15 +29,13 @@ X_STEP = 4.0
 MIN_FLOOR_RATIO = 100.0
 MAX_GAP_TO_IN_DOMAIN = 3.0
 ARMS = (
-    ("in_domain", "nominal channel (reference)",
-     {"color": "#111111", "marker": "o", "ls": "-", "lw": 2.0, "ms": 6.0,
-      "mfc": "white", "zorder": 5}),
-    ("frozen", "TDL-D, frozen head",
-     {"color": "#EF553B", "marker": "o", "ls": "-", "lw": 1.5, "ms": 5.5,
-      "zorder": 4}),
-    ("retrained", "TDL-D, retrained head",
-     {"color": "#636EFA", "marker": "s", "ls": (0, (5, 2)), "lw": 1.6, "ms": 5.5,
-      "zorder": 3}),
+    ("in_domain", "nominal channel",
+     {"color": "#7F7F7F", "marker": "o", "ls": (0, (1, 1.6)), "lw": 1.4,
+      "ms": 5.5}),
+    ("frozen", "TDL-D, frozen",
+     {"color": "#EF553B", "marker": "o", "ls": "-", "lw": 1.5, "ms": 5.5}),
+    ("retrained", "TDL-D, retrained",
+     {"color": "#636EFA", "marker": "s", "ls": (0, (6, 2)), "lw": 1.5, "ms": 5.5}),
 )
 
 def _curve(run_root: Path, arch: str, tree: tuple,
@@ -95,7 +94,9 @@ def main(argv: Optional[List[str]] = None) -> None:
               f"({gap:.2f}x above it)")
 
     fs.apply_style()
-    fig, axes = plt.subplots(2, 1, figsize=(3.5, 4.4), sharex=True)
+    fig, axes = plt.subplots(1, len(ARCHS), figsize=(3.6 * len(ARCHS), 2.6),
+                             sharey=True, squeeze=False)
+    axes = axes[0]
     for ax, arch in zip(axes, ARCHS):
         fs.log_axis(ax, Y_LO, Y_HI, x_step=X_STEP)
         for key, label, style in ARMS:
@@ -104,10 +105,10 @@ def main(argv: Optional[List[str]] = None) -> None:
                 continue
             ax.plot(frame["snr_db"], frame["ber"], label=label, **style)
         ax.set_title(ARCH_LABELS[arch], pad=7)
-        ax.set_ylabel("BER", rotation=0, labelpad=20)
-    axes[-1].set_xlabel("SNR (dB)")
+        ax.set_xlabel("SNR (dB)")
+    axes[0].set_ylabel("BER", rotation=0, labelpad=12)
     fig.tight_layout()
-    fs.legend_below_fig(fig, axes, ncol=1)
+    fs.legend_below_fig(fig, axes, ncol=3)
     fs.save(fig, "retraining_control")
     plt.close(fig)
 

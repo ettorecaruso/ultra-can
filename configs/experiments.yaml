@@ -231,6 +231,8 @@ ber_vs_snr:
       max_delay: 5
     evaluation:
       snr_test_range: [0, 5, 10]
+      eval_batch_symbols: 2000
+      max_symbols_per_snr: 4000
     experiments:
       ber_vs_snr:
         architectures: [conv1d, qkv, blind_stat]
@@ -238,6 +240,8 @@ ber_vs_snr:
           - {name: "k1_doppler_full", echoes: [1], max_doppler: 0.00008}
           - {name: "iod_peers", echoes: [3], max_doppler: 0.00008,
              peers: {enable: true, n_peers: 1}}
+          - {name: "k3_b_tdl_d_retrained", echoes: [3], max_doppler: 0.00008,
+             data: {max_delay: 33}}
     visualization:
       plot_format: "pdf"
 classical_receivers:

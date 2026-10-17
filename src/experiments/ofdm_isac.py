@@ -258,7 +258,9 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--n-bursts", type=int, default=_DEFAULT_BURSTS)
     parser.add_argument("--seed", type=int, default=_DEFAULT_SEED)
     parser.add_argument("--metrics-root", type=Path, default=_REPO_ROOT / "results" / "full")
-    parser.add_argument("--out-dir", type=Path,
+    # convenzione del repo: --output-dir (come unified_benchmark/ranging/ambiguity);
+    # --out-dir resta accettato per le run manuali.
+    parser.add_argument("--output-dir", "--out-dir", dest="out_dir", type=Path,
                         default=_REPO_ROOT / "results" / "full" / "ofdm_isac")
     args = parser.parse_args(argv)
 

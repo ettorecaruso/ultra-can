@@ -1,0 +1,2 @@
+n_symbols,k_geometric,n_taps,obstacle_amplitude_mean,obstacle_amplitude_std,delay_samples_min,delay_samples_max,doppler_hz_min,doppler_hz_max,obstacle_is_strongest_rate
+4096,1,3,0.41273362029726823,0.244521919325538,3.0,27.0,160.11083275031083,480.3252437406761,0.476806640625

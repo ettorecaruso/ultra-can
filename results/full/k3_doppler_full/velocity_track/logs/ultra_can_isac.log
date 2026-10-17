@@ -1,0 +1,9 @@
+2026-10-17 07:39:01 | root                           | INFO   | Logging configured: file=/content/drive/MyDrive/DHUC_RUN/w2_scene/full/k3_doppler_full/velocity_track/logs/ultra_can_isac.log level=INFO
+2026-10-17 07:39:01 | __main__                       | INFO   | experiment_name = ultra_can_isac
+2026-10-17 07:39:01 | __main__                       | INFO   | seed = 42
+2026-10-17 07:39:01 | __main__                       | INFO   | lambda_mse = 2
+2026-10-17 07:39:01 | __main__                       | INFO   | sequence_length = 100
+2026-10-17 07:39:01 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-17 07:39:01 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-17 07:39:01 | __main__                       | INFO   | epochs = 30
+2026-10-17 07:39:03 | __main__                       | INFO   | velocity_track: 4 rows

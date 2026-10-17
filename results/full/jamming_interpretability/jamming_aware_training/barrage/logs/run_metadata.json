@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-10-17T07:47:10.563198",
+  "tensorflow_version": "2.21.0",
+  "config_snapshot_path": "/content/drive/MyDrive/DHUC_RUN/w2_barrage/full/jamming_interpretability/jamming_aware_training/qkv/logs/config_used.yaml",
+  "lambda_mse": 2.0,
+  "sensing_range_penalty": 1.0,
+  "sensing_component_weights": null,
+  "epochs": 30,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "early_stopping_patience": 10,
+  "model_name": "ultra_can_qkv",
+  "train_batches": 821
+}

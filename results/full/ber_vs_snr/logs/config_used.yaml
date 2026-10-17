@@ -365,16 +365,16 @@ visualization:
   plot_format: pdf
   num_samples: 5
 channel:
-  model: aerial_multiecho
+  model: tdl_3gpp
   generator: geometry
   mode: monostatic
   direct_fading: rician
   echo_fading: none
   echo_fading_kappa_db: 6.0
-  direct_fading_kappa_db: null
+  direct_fading_kappa_db: 10.0
   num_echoes_model: fixed
   poisson_echoes_mean: 2.0
-  hold_mode: per_symbol
+  hold_mode: per_hop
   add_awgn: true
   echo_only_mode: false
   scene:
@@ -394,6 +394,20 @@ channel:
     speed_outlier_probability: 0.0
     reference_range_m: 100.0
     echo_power_fraction: 0.5
+  time_block_slots: 53
+  clutter_power_fraction: 0.25
+  clutter_fading: rayleigh
+  clutter_kappa_db: 0.0
+  clutter_doppler_max: 8.0e-05
+  max_pdp_truncation_fraction: 0.1
+  pdp:
+    profile: TDL-D
+    kind: exponential
+    n_taps: 13
+    rms_delay_spread_ns: 300.0
+    decay_db_per_ds: 4.343
+    delays_ns: []
+    powers_db: []
 peers:
   enable: false
   n_peers: 0
@@ -553,76 +567,10 @@ experiments:
     - mc_dlsk
     - blind_stat
     scenarios:
-    - name: k1_doppler_full
-      echoes:
-      - 1
-      max_doppler: 8.0e-05
-    - name: k3_doppler_full
-      echoes:
-      - 3
-      max_doppler: 8.0e-05
-    - name: k3_doppler_limited
-      echoes:
-      - 3
-      max_doppler: 4.0e-05
-      channel:
-        scene:
-          radial_speed_mps:
-          - 5.0
-          - 15.0
-    - name: iod_peers
-      echoes:
-      - 3
-      max_doppler: 8.0e-05
-      peers:
-        enable: true
-        n_peers: 2
-      model:
-        sensing_head:
-          target: geometric_label
-    - name: k1_ablation_log_uniform
-      echoes:
-      - 1
-      max_doppler: 8.0e-05
-      channel:
-        generator: log_uniform
-      model:
-        sensing_head:
-          target: matched_filter_peak
     - name: k3_b_tdl_d_retrained
       echoes:
       - 3
       max_doppler: 8.0e-05
-    - name: k3_ambiguity_mix
-      echoes:
-      - 3
-      max_doppler: 8.0e-05
-      channel:
-        scene:
-          obstacle_distance_m:
-          - 100.0
-          - 200.0
-          scatterer_distance_m:
-          - 100.0
-          - 215.0
-          scatterer_reflectivity: 0.3
-      model:
-        sensing_head:
-          target: matched_filter_peak
-    - name: k3_doppler_control
-      echoes:
-      - 3
-      max_doppler: 8.0e-05
-      model:
-        sensing_head:
-          output_units: 2
-          target: delay
-          delay_mode: peak_residual
-          use_delay_peak_feature: true
-      training:
-        sensing_component_weights:
-          delay: 1.0
-          doppler: 1.0
   classical_receivers:
     no_dl_models:
     - dcsk_correlator
@@ -1497,3 +1445,4 @@ peer_estimation:
     peers:
       enable: true
       n_peers: 1
+channel_variant: b_tdl_d

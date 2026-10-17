@@ -14,7 +14,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from style import figure_style as fs
 
-SRC = REPO / "results" / "full" / "k3_ambiguity_mix" / "ambiguity"
+SRC = REPO / "results" / "full" / "k3_doppler_full" / "ambiguity"
 ARCHS = ["conv1d", "qkv"]
 ARCH_TITLE = {"conv1d": "Ultra-CAN (Conv1D)", "qkv": "Ultra-CAN-QKV"}
 PILES = ["easy", "ambiguous"]

@@ -28,12 +28,15 @@ X_STEP = 4.0
 MIN_FLOOR_RATIO = 100.0
 MAX_GAP_TO_IN_DOMAIN = 3.0
 ARMS = (
-    ("in_domain", "nominal channel, frozen head",
-     {"color": "#7F7F7F", "marker": "o", "ls": (0, (1, 1.6))}),
+    ("in_domain", "nominal channel (reference)",
+     {"color": "#111111", "marker": "o", "ls": "-", "lw": 2.0, "ms": 6.0,
+      "mfc": "white", "zorder": 5}),
     ("frozen", "TDL-D, frozen head",
-     {"color": "#EF553B", "marker": "o", "ls": "-"}),
+     {"color": "#EF553B", "marker": "o", "ls": "-", "lw": 1.5, "ms": 5.5,
+      "zorder": 4}),
     ("retrained", "TDL-D, retrained head",
-     {"color": "#636EFA", "marker": "s", "ls": (0, (6, 2))}),
+     {"color": "#636EFA", "marker": "s", "ls": (0, (5, 2)), "lw": 1.6, "ms": 5.5,
+      "zorder": 3}),
 )
 
 def _curve(run_root: Path, arch: str, tree: tuple,
@@ -92,21 +95,19 @@ def main(argv: Optional[List[str]] = None) -> None:
               f"({gap:.2f}x above it)")
 
     fs.apply_style()
-    fig, axes = plt.subplots(1, 2, figsize=(11.0, 3.2), sharey=True)
+    fig, axes = plt.subplots(2, 1, figsize=(3.5, 4.4), sharex=True)
     for ax, arch in zip(axes, ARCHS):
         fs.log_axis(ax, Y_LO, Y_HI, x_step=X_STEP)
         for key, label, style in ARMS:
             frame = curves[key].get(arch)
             if frame is None:
                 continue
-            ax.plot(frame["snr_db"], frame["ber"], label=label, zorder=3, **style)
-        ax.set_title(ARCH_LABELS[arch], pad=8)
-        ax.set_xlabel("SNR (dB)")
-    axes[0].set_ylabel("BER", rotation=0, labelpad=14)
-    fig.suptitle("Retraining the heads on the new channel removes the BER floor "
-                 "of the frozen receivers (TDL-D, 25% clutter, K = 3)", y=1.02)
+            ax.plot(frame["snr_db"], frame["ber"], label=label, **style)
+        ax.set_title(ARCH_LABELS[arch], pad=7)
+        ax.set_ylabel("BER", rotation=0, labelpad=20)
+    axes[-1].set_xlabel("SNR (dB)")
     fig.tight_layout()
-    fs.legend_below_fig(fig, axes, ncol=3)
+    fs.legend_below_fig(fig, axes, ncol=1)
     fs.save(fig, "retraining_control")
     plt.close(fig)
 

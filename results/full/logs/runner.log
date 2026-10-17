@@ -2349,3 +2349,97 @@
 2026-10-16 11:18:14 | __main__                       | INFO   | ================================================================================
 2026-10-16 11:18:14 | __main__                       | INFO   | peer_estimation: OK
 2026-10-16 11:18:14 | __main__                       | INFO   | All requested experiments finished. Output in: /content/drive/MyDrive/DHUC_RUN/conv1d
+2026-10-17 22:50:00 | root                           | INFO   | Logging configured: file=/home/ettore/Documents/vs_code/ultra-can/results/full/logs/runner.log level=INFO
+2026-10-17 22:50:00 | __main__                       | INFO   | Mode: full
+2026-10-17 22:50:00 | __main__                       | INFO   | Run root: /home/ettore/Documents/vs_code/ultra-can/results/full
+2026-10-17 22:50:00 | __main__                       | INFO   | Models: ['conv1d', 'qkv']
+2026-10-17 22:50:00 | __main__                       | INFO   | No dataset regeneration: False
+2026-10-17 22:50:00 | __main__                       | INFO   | ================================================================================
+2026-10-17 22:50:00 | __main__                       | INFO   | EXPERIMENT ber_vs_snr
+2026-10-17 22:50:00 | __main__                       | INFO   | ================================================================================
+2026-10-17 22:50:00 | __main__                       | INFO   | ber_vs_snr: scenarios limited to ['k3_b_tdl_d_retrained']
+2026-10-17 22:50:00 | __main__                       | WARNING | --force: overwriting /home/ettore/Documents/vs_code/ultra-can/results/full/ber_vs_snr in place
+2026-10-17 22:50:00 | __main__                       | INFO   | experiment_name = ber_vs_snr_full
+2026-10-17 22:50:00 | __main__                       | INFO   | seed = 42
+2026-10-17 22:50:00 | __main__                       | INFO   | lambda_mse = 2
+2026-10-17 22:50:00 | __main__                       | INFO   | sequence_length = 100
+2026-10-17 22:50:00 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-17 22:50:00 | __main__                       | INFO   | backbone_type = conv1d
+2026-10-17 22:50:00 | __main__                       | INFO   | epochs = 30
+2026-10-17 22:50:01 | src.utils.config_loader        | INFO   | config snapshot saved: /home/ettore/Documents/vs_code/ultra-can/results/full/ber_vs_snr/logs/config_used.yaml
+2026-10-17 22:50:01 | __main__                       | INFO   | ============================================================
+2026-10-17 22:50:01 | __main__                       | INFO   | ber_vs_snr experiment: BER vs SNR (5 architectures, 3 scenarios)
+2026-10-17 22:50:01 | __main__                       | INFO   | ============================================================
+2026-10-17 22:50:01 | __main__                       | INFO   | ber_vs_snr: --model=['conv1d', 'qkv'] filters architectures to: ['conv1d', 'qkv']
+2026-10-17 22:50:01 | __main__                       | INFO   | --- Scenario: k3_b_tdl_d_retrained ---
+2026-10-17 22:50:01 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/64b43269, generating...
+2026-10-17 22:50:01 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr-5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.604e-05, 4.802e-05]
+2026-10-17 22:50:02 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr-3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.606e-05, 4.803e-05]
+2026-10-17 22:50:02 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr-1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.614e-05, 4.801e-05]
+2026-10-17 22:50:03 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 22:50:03 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.604e-05, 4.801e-05]
+2026-10-17 22:50:04 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.623e-05, 4.802e-05]
+2026-10-17 22:50:04 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr7_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-17 22:50:05 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr9_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.604e-05, 4.795e-05]
+2026-10-17 22:50:05 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr11_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.604e-05, 4.802e-05]
+2026-10-17 22:50:06 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr13_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.611e-05, 4.793e-05]
+2026-10-17 22:50:07 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr15_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.609e-05, 4.790e-05]
+2026-10-17 22:50:07 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr17_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.620e-05, 4.803e-05]
+2026-10-17 22:50:08 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr19_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.603e-05, 4.799e-05]
+2026-10-17 22:50:08 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/train_snr21_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 22:50:08 | src.data.dataset_generator     | INFO   | split 'train': 14 files generated, 7500 symbols per combination (combos=14)
+2026-10-17 22:50:09 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr-5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.603e-05, 4.797e-05]
+2026-10-17 22:50:09 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr-3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.801e-05]
+2026-10-17 22:50:09 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr-1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.610e-05, 4.802e-05]
+2026-10-17 22:50:10 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.604e-05, 4.802e-05]
+2026-10-17 22:50:10 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.607e-05, 4.790e-05]
+2026-10-17 22:50:10 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.604e-05, 4.803e-05]
+2026-10-17 22:50:11 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr7_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.606e-05, 4.803e-05]
+2026-10-17 22:50:11 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr9_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.612e-05, 4.795e-05]
+2026-10-17 22:50:11 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr11_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.793e-05]
+2026-10-17 22:50:12 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr13_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.793e-05]
+2026-10-17 22:50:12 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr15_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.608e-05, 4.802e-05]
+2026-10-17 22:50:12 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr17_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.799e-05]
+2026-10-17 22:50:13 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr19_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.801e-05]
+2026-10-17 22:50:13 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/val_snr21_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.606e-05, 4.789e-05]
+2026-10-17 22:50:13 | src.data.dataset_generator     | INFO   | split 'val': 14 files generated, 5000 symbols per combination (combos=14)
+2026-10-17 22:50:14 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr-5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.603e-05, 4.801e-05]
+2026-10-17 22:50:16 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr-3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.604e-05, 4.803e-05]
+2026-10-17 22:50:17 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr-1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 22:50:19 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-17 22:50:21 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-17 22:50:22 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 22:50:23 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr7_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.603e-05, 4.800e-05]
+2026-10-17 22:50:24 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr9_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.607e-05, 4.801e-05]
+2026-10-17 22:50:26 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr11_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.602e-05, 4.800e-05]
+2026-10-17 22:50:27 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr13_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.602e-05, 4.801e-05]
+2026-10-17 22:50:29 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr15_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 22:50:30 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr17_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 22:50:32 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr19_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-17 22:50:33 | src.data.dataset_generator     | INFO   | saved data/raw/64b43269/test_snr21_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 22:50:33 | src.data.dataset_generator     | INFO   | split 'test': 14 files generated, 20000 symbols per combination (combos=14)
+2026-10-17 22:50:33 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [3.00, 27.00], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 22:50:33 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 22:50:43 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 22:50:43 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 22:50:43 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 22:50:49 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 22:50:50 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 22:50:50 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 22:50:50 | __main__                       | INFO   | Architecture: conv1d
+2026-10-17 22:50:50 | src.experiments.pipeline       | INFO   | build_model 'conv1d': model seed applied = 21 (from model.seeds.conv1d, dataset seed stays 42)
+2026-10-17 22:50:50 | src.models.heads               | INFO   | communication_head built: input_dim=64, units=128, M=2, params=8578
+2026-10-17 22:50:50 | src.models.heads               | INFO   | sensing_head built: input_dim=227, units=32, output_units=33, params=8385
+2026-10-17 22:50:50 | src.models.ultra_can           | INFO   | model 'ultra_can' built: comm=8578 params, sensing=8385 params, TOTAL=27620 params
+2026-10-17 22:50:51 | src.experiments.pipeline       | INFO   | Model 'ultra_can' built: 27620 trainable parameters.
+2026-10-17 22:50:51 | src.experiments.pipeline       | INFO   | Training for 30 epochs, lambda_mse=2.0000
+2026-10-17 22:50:51 | src.training.trainer           | INFO   | Trainer initialized: lambda_mse = 2.0
+2026-10-17 22:50:51 | src.training.trainer           | INFO   | categorical sensing target: loss_weights={'comm': 1.0, 'sensing': 2.0} (sparse CE on lag logits)
+2026-10-17 22:50:51 | src.training.trainer           | INFO   | Model compiled: loss_weights = {'comm': 1.0, 'sensing': 2.0}, lr=0.001000, optimizer=adam, label_smoothing=0.1, lr_schedule=cosine, sensing_range_penalty=1.0, sensing_component_weights=None
+2026-10-17 22:50:52 | src.training.trainer           | INFO   | Callbacks configured: 5
+2026-10-17 22:50:52 | src.training.trainer           | INFO   | Starting training: epochs=30, batch_size=128
+2026-10-17 22:56:51 | src.training.trainer           | INFO   | History saved to /home/ettore/Documents/vs_code/ultra-can/results/full/ber_vs_snr/k3_b_tdl_d_retrained/conv1d/logs/history.csv
+2026-10-17 22:56:51 | src.training.trainer           | INFO   | Metadata saved to /home/ettore/Documents/vs_code/ultra-can/results/full/ber_vs_snr/k3_b_tdl_d_retrained/conv1d/logs/run_metadata.json
+2026-10-17 22:56:51 | src.training.trainer           | INFO   | Training completed in 19 epochs. Best val_loss = 6.682713, best loss = 6.633453
+2026-10-17 22:56:51 | src.training.trainer           | INFO   | Best weights reloaded from /home/ettore/Documents/vs_code/ultra-can/results/full/ber_vs_snr/k3_b_tdl_d_retrained/conv1d/logs/best_weights.weights.h5 before evaluation/saving
+2026-10-17 22:56:51 | src.evaluation.evaluator       | INFO   | ONLINE evaluation over 14 SNR points (batch=100000, max_symbols=2000000, floor BER=2.5e-07)

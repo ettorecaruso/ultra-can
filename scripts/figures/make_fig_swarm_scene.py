@@ -16,14 +16,14 @@ from style import figure_style as fs
 SRC = REPO / "results" / "full" / "diagnostics" / "scene"
 OBS = "#EF553B"
 SCA = "#636EFA"
-WIDTH = 11.8
+WIDTH = 3.5
 
 def main() -> None:
     frame = pd.read_csv(SRC / "geometry.csv").sort_values("distance_m")
     summary = pd.read_csv(SRC / "summary.csv").iloc[0]
 
     fs.apply_style()
-    fig, axes = plt.subplots(1, 2, figsize=(WIDTH, 3.6))
+    fig, axes = plt.subplots(2, 1, figsize=(WIDTH, 4.4))
 
     ax = axes[0]
     ax.plot(frame["distance_m"], frame["obstacle_amplitude"], marker="o",
@@ -31,8 +31,7 @@ def main() -> None:
     ax.plot(frame["distance_m"], frame["scatterer_amplitude"], marker="s",
             color=SCA, lw=1.7, ms=7.0, ls=(0, (6, 2)), label="scatterer (peer, link loss)")
     ax.set_xlabel("link distance [m]")
-    ax.set_ylabel("echo amplitude before normalisation", rotation=90, labelpad=10)
-    ax.set_title("The sky is a scene, not a die", pad=8)
+    ax.set_ylabel("echo amplitude", rotation=90, labelpad=8)
     ax.grid(True, which="major", color=fs.GRID_COLOR, lw=1.0)
     ax.set_axisbelow(True)
     ax.annotate("1/d$^4$ in power", xy=(float(frame["distance_m"].iloc[-2]),
@@ -46,7 +45,6 @@ def main() -> None:
             lw=1.7, ms=7.0, label="round-trip delay (15 m per sample)")
     ax.set_xlabel("link distance [m]")
     ax.set_ylabel("delay [samples]", rotation=90, labelpad=10)
-    ax.set_title("Distance maps to the delay window", pad=8)
     ax.set_ylim(0, 34)
     ax.axhline(1.0, color=fs.GRID_COLOR, lw=1.0)
     ax.axhline(33.0, color=fs.TARGET_COLOR, lw=1.4, ls=(0, (6, 2)))
@@ -62,7 +60,7 @@ def main() -> None:
             spine.set_linewidth(1.0)
 
     fig.tight_layout()
-    fs.legend_below_fig(fig, axes, ncol=3)
+    fs.legend_below_fig(fig, axes, ncol=2)
     fs.save(fig, "swarm_scene")
     plt.close(fig)
 

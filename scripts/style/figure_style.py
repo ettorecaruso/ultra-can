@@ -116,7 +116,7 @@ def log_axis(ax, y_lo: float, y_hi: float, x_step: float | None = None) -> None:
         spine.set_linewidth(1.0)
     ax.tick_params(direction="out", color="black")
 
-def legend_below(ax, ncol: int, y: float = -0.17) -> None:
+def legend_below(ax, ncol: int, y: float = -0.17, fontsize: float = 8.0) -> None:
     handles, labels, seen = [], [], set()
     for handle, label in zip(*ax.get_legend_handles_labels()):
         if label not in seen:
@@ -125,9 +125,11 @@ def legend_below(ax, ncol: int, y: float = -0.17) -> None:
             labels.append(label)
     ax.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, y),
               ncol=ncol, framealpha=0.8, edgecolor="gray", facecolor="white",
-              borderpad=0.6, labelspacing=0.4, handlelength=2.6)
+              fontsize=fontsize, borderpad=0.35, labelspacing=0.3,
+              handlelength=1.9, handletextpad=0.5, columnspacing=1.1)
 
-def legend_below_fig(fig, axes, ncol: int, gap: float = 0.055) -> None:
+def legend_below_fig(fig, axes, ncol: int, gap: float = 0.055,
+                     fontsize: float = 8.0) -> None:
     if not isinstance(axes, (list, tuple, np.ndarray)):
         axes = [axes]
     handles, labels, seen = [], [], set()
@@ -145,7 +147,8 @@ def legend_below_fig(fig, axes, ncol: int, gap: float = 0.055) -> None:
     )
     fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, bottom - gap),
                ncol=ncol, framealpha=0.8, edgecolor="gray", facecolor="white",
-               borderpad=0.6, labelspacing=0.4, handlelength=2.6)
+               fontsize=fontsize, borderpad=0.35, labelspacing=0.3,
+               handlelength=1.9, handletextpad=0.5, columnspacing=1.1)
 
 def save(fig, stem: str) -> None:
     fig_dir = REPO / "figures"

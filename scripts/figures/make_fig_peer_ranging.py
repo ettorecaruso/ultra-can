@@ -26,7 +26,6 @@ RATIO_LABEL = {
 }
 RATIO_BINS = [0.0, 0.75, 1.25, 2.0, np.inf]
 REF_GUARD = 1.5
-WIDTH = 7.2
 PEER_COLOR = "#EF553B"
 OBST_COLOR = "#00A37A"
 
@@ -34,7 +33,7 @@ OBST_COLOR = "#00A37A"
 def _spines(ax) -> None:
     for spine in ax.spines.values():
         spine.set_color("black")
-        spine.set_linewidth(1.0)
+        spine.set_linewidth(0.8)
 
 
 def _samples(arch: str) -> pd.DataFrame:
@@ -59,46 +58,14 @@ def main() -> None:
     samples = {arch: _samples(arch) for arch in ARCHS}
     summary = {arch: pd.read_csv(SRC / arch / "peer_estimation.csv")
                for arch in ARCHS}
-
     fs.apply_style()
-    fig, axes = plt.subplots(1, 3, figsize=(WIDTH, 2.6))
 
-    # (a) gate coverage and peer confusion
-    ax = axes[0]
-    frame = samples["conv1d"]
-    ref = frame.groupby("guard_factor").agg(
-        answered=("fallback", lambda s: 1.0 - float(np.mean(s))))
-    guards = [float(v) for v in ref.index]
-    answered = 100.0 * ref["answered"].to_numpy(dtype=float)
-    peer_ungated = 100.0 * float(frame["peer_false"].mean())
-    peer_after = []
-    for guard in guards:
-        sub = frame[np.isclose(frame["guard_factor"], guard)]
-        kept = ~sub["fallback"].to_numpy(dtype=bool)
-        peer_after.append(100.0 * float(sub["peer_false"].to_numpy(dtype=bool)[kept].mean()))
-
-    ax.plot(guards, answered, marker="o", color=fs.ARCH_COLORS["conv1d"], lw=1.5,
-            ms=5.0, label="range reported")
-    ax.plot(guards, peer_after, marker="s", color="#7F7F7F", lw=1.5, ms=5.0,
-            ls=(0, (6, 2)), label="peer reported")
-    ax.axhline(peer_ungated, color="#a33a27", lw=1.0, ls=(0, (1, 1.6)))
-    ax.text(1.55, 90.0, f"ungated: {peer_ungated:.1f}%", color="#a33a27",
-            fontsize=7.5, va="top", ha="right")
-    ax.set_xlim(guards[0] - 0.08, guards[-1] + 0.08)
-    ax.set_xticks(guards)
-    ax.set_ylim(0.0, 100.0)
-    ax.set_yticks([0, 20, 40, 60, 80, 100])
-    ax.set_xlabel("guard $\\gamma$")
-    ax.set_ylabel("rate [%]", rotation=90, labelpad=5)
-    ax.set_title("(a) Coverage", pad=6)
-    ax.grid(True, which="major", color=fs.GRID_COLOR, lw=0.9)
-    ax.set_axisbelow(True)
-    _spines(ax)
-
-    # (b) range error of the answered bursts
-    ax = axes[1]
+    # ---------------- double figure: range error + reported outcome ----------
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.45))
     x = np.arange(len(RATIO_ORDER))
     width = 0.36
+
+    ax = axes[0]
     for offset, arch in zip((-width / 2.0, width / 2.0), ARCHS):
         frame = samples[arch]
         frame = frame[np.isclose(frame["guard_factor"], REF_GUARD)]
@@ -117,22 +84,19 @@ def main() -> None:
     ax.set_xticklabels([RATIO_LABEL[k] for k in RATIO_ORDER], fontsize=7.5)
     ax.set_ylim(0.0, 8.0)
     ax.set_yticks(np.arange(0, 9, 2))
-    ax.set_xlabel("obstacle / peer amplitude")
-    ax.set_ylabel("mean $|\\Delta\\tau|$ [smp]", rotation=90, labelpad=5)
-    ax.set_title("(b) Range error", pad=6)
-    ax.grid(True, which="major", axis="y", color=fs.GRID_COLOR, lw=0.9)
+    ax.set_xlabel("obstacle / peer amplitude", labelpad=2)
+    ax.set_ylabel("mean $|\\Delta\\tau|$ [samples]", rotation=90, labelpad=4)
+    ax.set_title("(a) Range error of the answered bursts", pad=5)
+    ax.grid(True, which="major", axis="y", color=fs.GRID_COLOR, lw=0.8)
     ax.set_axisbelow(True)
     _spines(ax)
 
-    # (c) what is reported, by amplitude ratio
-    ax = axes[2]
+    ax = axes[1]
     obstacle, peer = _rates(summary["conv1d"], "amplitude_ratio", list(RATIO_ORDER))
-    x = np.arange(len(RATIO_ORDER))
-    width = 0.38
     ax.bar(x - width / 2.0, obstacle, width=width, color=OBST_COLOR, zorder=3,
-           label="obstacle")
+           label="reports the obstacle")
     ax.bar(x + width / 2.0, peer, width=width, color=PEER_COLOR, zorder=3,
-           label="peer")
+           label="reports a peer")
     for xi, value in zip(x, obstacle):
         ax.annotate(f"{100 * value:.0f}%", (xi - width / 2.0, value),
                     textcoords="offset points", xytext=(0, 2), ha="center",
@@ -147,17 +111,53 @@ def main() -> None:
     ax.set_ylim(0.0, 1.08)
     ax.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
     ax.set_yticklabels(["0%", "20%", "40%", "60%", "80%", "100%"])
-    ax.set_xlabel("obstacle / peer amplitude")
-    ax.set_ylabel("share of bursts", rotation=90, labelpad=5)
-    ax.set_title("(c) Reported outcome", pad=6)
-    ax.grid(True, which="major", axis="y", color=fs.GRID_COLOR, lw=0.9)
+    ax.set_xlabel("obstacle / peer amplitude", labelpad=2)
+    ax.set_ylabel("share of bursts", rotation=90, labelpad=4)
+    ax.set_title("(b) Reported outcome", pad=5)
+    ax.grid(True, which="major", axis="y", color=fs.GRID_COLOR, lw=0.8)
     ax.set_axisbelow(True)
     _spines(ax)
 
     fig.tight_layout()
-    fig.subplots_adjust(wspace=0.34)
-    fs.legend_below_fig(fig, axes, ncol=3)
-    fs.save(fig, "peer_ranging")
+    fig.subplots_adjust(wspace=0.32)
+    fs.legend_below_fig(fig, axes, ncol=4, fontsize=7.2, gap=0.03)
+    fs.save(fig, "peer_range_outcome")
+    plt.close(fig)
+
+    # ---------------- single figure: coverage and peer confusion ------------
+    frame = samples["conv1d"]
+    ref = frame.groupby("guard_factor").agg(
+        answered=("fallback", lambda s: 1.0 - float(np.mean(s))))
+    guards = [float(v) for v in ref.index]
+    answered = 100.0 * ref["answered"].to_numpy(dtype=float)
+    peer_ungated = 100.0 * float(frame["peer_false"].mean())
+    peer_after = []
+    for guard in guards:
+        sub = frame[np.isclose(frame["guard_factor"], guard)]
+        kept = ~sub["fallback"].to_numpy(dtype=bool)
+        peer_after.append(100.0 * float(sub["peer_false"].to_numpy(dtype=bool)[kept].mean()))
+
+    fig, ax = plt.subplots(figsize=(3.2, 1.95))
+    ax.plot(guards, answered, marker="o", color=fs.ARCH_COLORS["conv1d"], lw=1.4,
+            ms=4.5, label="range reported")
+    ax.plot(guards, peer_after, marker="s", color="#7F7F7F", lw=1.4, ms=4.5,
+            ls=(0, (5, 2)), label="peer reported")
+    ax.axhline(peer_ungated, color="#a33a27", lw=0.9, ls=(0, (1, 1.5)))
+    ax.text(1.55, 92.0, f"ungated: {peer_ungated:.1f}%", color="#a33a27",
+            fontsize=6.5, va="top", ha="right")
+    ax.set_xlim(guards[0] - 0.08, guards[-1] + 0.08)
+    ax.set_xticks(guards)
+    ax.set_ylim(0.0, 100.0)
+    ax.set_yticks([0, 20, 40, 60, 80, 100])
+    ax.set_xlabel("peer-exclusion guard $\\gamma$", labelpad=2)
+    ax.set_ylabel("rate [%]", rotation=90, labelpad=3)
+    ax.grid(True, which="major", color=fs.GRID_COLOR, lw=0.8)
+    ax.set_axisbelow(True)
+    ax.tick_params(direction="out", color="black", length=2.5)
+    _spines(ax)
+    fig.tight_layout(pad=0.3)
+    fs.legend_below(ax, ncol=2, fontsize=6.5, y=-0.40)
+    fs.save(fig, "peer_coverage")
     plt.close(fig)
 
     print("answered [%]:", np.round(answered, 1))

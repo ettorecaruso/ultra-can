@@ -1083,6 +1083,7 @@ def apply_channel_batch(
     slot_ids: Optional[np.ndarray] = None,
     hop_channels: Optional[np.ndarray] = None,
     return_peer_info: bool = False,
+    direct_scale: float = 1.0,
 ) -> Tuple:
     x_arr = np.asarray(x_norm, dtype=np.float64)
     if x_arr.ndim != 2:
@@ -1092,6 +1093,9 @@ def apply_channel_batch(
     k = int(k)
     if not math.isfinite(float(snr_db)):
         raise ValueError(f"snr_db must be finite, got: {snr_db!r}")
+    direct_scale = float(direct_scale)
+    if not (math.isfinite(direct_scale) and direct_scale >= 0.0):
+        raise ValueError(f"direct_scale must be finite and >= 0, got: {direct_scale!r}")
 
     data = config["data"]
     seq_len = int(data["sequence_length"])
@@ -1261,7 +1265,7 @@ def apply_channel_batch(
     echo_power = geometry.echo_power
     k_max = geometry.k_total
 
-    h_c_eff = h_c * np.sqrt(1.0 - echo_power)
+    h_c_eff = direct_scale * h_c * np.sqrt(1.0 - echo_power)
 
     y = h_c_eff[:, None] * x_arr * np.exp(1j * 2.0 * math.pi * f_dc[:, None] * n_idx)
     integer_delays = bool(np.all(taus == np.round(taus)))
@@ -1387,6 +1391,7 @@ def generate_test_batch(
     slot_ids: Optional[np.ndarray] = None,
     slot_offset: int = 0,
     hop_channels: Optional[np.ndarray] = None,
+    direct_scale: float = 1.0,
 ) -> Dict[str, np.ndarray]:
     if isinstance(num_symbols, bool) or int(num_symbols) <= 0:
         raise ValueError(
@@ -1425,6 +1430,7 @@ def generate_test_batch(
         slot_ids=slot_ids,
         hop_channels=hop_channels,
         return_peer_info=True,
+        direct_scale=direct_scale,
     )
     batch = {
         "x": y,

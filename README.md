@@ -4,11 +4,12 @@ Reference implementation and full experimental pipeline of the paper
 
 > **Ultra-CAN: A Lightweight Blind Edge AI Receiver for Integrated Sensing and Chaos-Based Communications in Internet of Drones**
 
-A single chaos-based waveform is decoded and ranged by one ultra-light neural receiver. The
-node transmits a burst, regenerates the chaotic reference locally from the seed it drew for
-that burst (monostatic ISAC, no state exchanged over the air) and reads the delay of the
-dominant echo from the correlation profile, so telemetry and ranging come from the same burst
-and the same forward pass.
+One ultra-light neural receiver supports a dual-mode ISAC link. In telemetry mode it decodes
+a peer's chaos-based burst blindly from the received I/Q. In radar mode the node transmits its
+own burst, regenerates the chaotic reference locally from the seed it drew for that burst, and
+reads the delay of the dominant echo after self-interference cancellation. The two modes are
+time-multiplexed and share the same backbone, the same waveform family and one forward pass per
+burst.
 
 This repository contains the channel/scene simulator, the receivers, the training and
 evaluation code, the scripts that produce every figure and table of the paper, and the exact
@@ -87,9 +88,10 @@ Additional experiments have their own entry points:
 | Blind vs reference-aided (price of blindness) | `python src/experiments/blind_vs_oracle.py --scenario k3_doppler_full` |
 | Ranging benchmark with per-burst dumps | `python src/experiments/ranging_benchmark.py --scenario k3_doppler_full` |
 | Ambiguous pile (negative control) | `python src/experiments/ambiguity.py --scenario k3_ambiguity_mix` |
-| Velocity from a track of bursts | `python src/experiments/velocity_track.py` |
+| Velocity from a track of bursts | `python src/experiments/velocity_track.py` (model-free profile; add `--range-source head --arch conv1d` for the learned head) |
 | 5G-NR OFDM-ISAC baseline | `python src/experiments/ofdm_isac.py --scenario k3_doppler_full` |
 | On-board footprint and single-burst latency | `python src/experiments/board_footprint.py` |
+| SIC residual sensitivity (evaluation only) | `python scripts/diagnostics/sic_residual_sensitivity.py` |
 
 ### 3. Figures and tables
 

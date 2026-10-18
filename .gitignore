@@ -23,6 +23,7 @@ leg_errors/
 # (the blind reference and the per-figure mirrors), so it is not versioned.
 results/newRes/
 results/figures/
+results/full/figures_data/
 figures/_data/
 
 results_old/

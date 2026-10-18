@@ -1,38 +1,38 @@
-"""Baseline ISAC OFDM 5G-NR contro il radar caotico a zero parametri (CPU, numpy, ~2 s).
+"""5G-NR OFDM-ISAC baseline against the zero-parameter chaotic radar (CPU, numpy, about 2 s).
 
-Perche' esiste
---------------
-Il task delle metriche di sensing e' stimare il ritardo del tap **OSTACOLO** (indice 0 nella
-scena), non dell'eco piu' forte: il clutter (riflettivita' 0.08) e i peer cooperativi possono
-essere piu' forti. Qualsiasi processore che prende il picco (matched filter caotico *o* un
-ISAC OFDM) e' quindi limitato al "tetto del peak-picker", che questo modulo misura.
+Purpose
+-------
+The sensing metrics estimate the delay of the OBSTACLE tap (index 0 in the
+scene), not the strongest echo: clutter (reflectivity 0.08) and cooperative
+peers can be stronger. Any peak picker (chaotic matched filter or OFDM-ISAC) is
+therefore bounded by the peak-picker ceiling measured here.
 
-Cosa produce (per scenario e per SNR)
--------------------------------------
-* ``chaotic_mf``          : profilo DCA+MF del repo sui tap della scena (zero parametri);
-* ``ofdm_<num>_<pattern>``: ISAC OFDM 5G-NR (Sturm/Wiesbeck): divisione per la griglia nota,
-                            IFFT, rimozione della direttrice, argmax. Numerologie FR1 con
-                            CP esteso (60 kHz, 14 PRB = 168 sottoportanti = 10.08 MHz) e
-                            15 kHz (55 PRB = 660), pattern DMRS comb-1/2/4;
-* ``peak_picker_ceiling`` : P(ostacolo = tap piu' forte tra i non-peer)  -> tetto teorico;
-* ``peak_picker_ceiling_all_taps``: idem includendo i peer (tetto vero con peer);
-* ``head_M1`` / ``head_geom``  : testa appresa, letta dai CSV della campagna (se presenti),
-                            cosi' il confronto e' in un unico file.
+Outputs (per scenario and per SNR)
+----------------------------------
+* ``chaotic_mf``          : DCA+MF profile of the repository on the scene taps (zero parameters);
+* ``ofdm_<num>_<pattern>``: 5G-NR OFDM-ISAC (Sturm/Wiesbeck): division by the known grid,
+                            IFFT, direct-path removal, argmax. FR1 numerologies with
+                            extended CP (60 kHz, 14 PRB = 168 subcarriers = 10.08 MHz) and
+                            15 kHz (55 PRB = 660), DMRS comb-1/2/4 patterns;
+* ``peak_picker_ceiling`` : P(obstacle = strongest non-peer tap) -> theoretical ceiling;
+* ``peak_picker_ceiling_all_taps``: same including peers (true ceiling with peers);
+* ``head_M1`` / ``head_geom``  : learned head, read from the campaign CSVs when present,
+                            so that the comparison lives in a single file.
 
-Garanzie di equita': stessa scena, stessa banda, stessa energia per burst (il rumore del
-lato OFDM e' riferito alla potenza reale della waveform caotica), stessa verita' (ostacolo).
-Limiti dichiarati: sincronizzazione perfetta (niente CFO/timing offset), un simbolo OFDM
-(niente integrazione su slot da 14 simboli ne' Doppler), direttrice rimossa analiticamente.
+Fairness guarantees: same scene, same bandwidth, same energy per burst (the OFDM-side
+noise is referred to the actual chaotic-waveform power), same ground truth (obstacle).
+Declared limits: perfect synchronization (no CFO/timing offset), one OFDM symbol
+(no integration over 14-symbol slots and no Doppler), direct path removed analytically.
 
-Uso:
-  python src/experiments/ofdm_isac.py                       # 4 scenari, SNR di default
+Usage:
+  python src/experiments/ofdm_isac.py
   python src/experiments/ofdm_isac.py --scenario k3_doppler_full --snr -5 21 --n-bursts 4000
   python src/experiments/ofdm_isac.py --out-dir results/full/ofdm_isac --metrics-root results/full
 
-Nel campagna e' invocato come gli altri moduli standalone, una volta per scenario:
+In the campaign it is invoked like the other standalone modules, once per scenario:
   python src/experiments/ofdm_isac.py --scenario k3_doppler_full \
       --output-dir results/full/k3_doppler_full/ofdm_isac
-(scrive ofdm_isac.csv, ofdm_isac_summary.csv e logs/config_used__<scenario>.yaml)
+(writes ofdm_isac.csv, ofdm_isac_summary.csv and logs/config_used__<scenario>.yaml)
 """
 from __future__ import annotations
 
@@ -51,15 +51,15 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from src.data.dataset_generator import _sample_peer_taps, generate_transmitted_batch_fast  # noqa: E402
-from src.data.scene import sample_scene_taps  # noqa: E402
-from src.evaluation.metrics import argmax_delay_from_profile  # noqa: E402
-from src.experiments.pipeline import resolve_scenario  # noqa: E402
-from src.utils.config_loader import DEFAULT_BASE_CONFIG_PATH, load_config  # noqa: E402
+from src.data.dataset_generator import _sample_peer_taps, generate_transmitted_batch_fast
+from src.data.scene import sample_scene_taps
+from src.evaluation.metrics import argmax_delay_from_profile
+from src.experiments.pipeline import resolve_scenario
+from src.utils.config_loader import DEFAULT_BASE_CONFIG_PATH, load_config
 
 logger = logging.getLogger(__name__)
 
-_TOL_SAMPLES = 0.5  # stessa tolleranza di exact_tau dell'evaluator (_EXACT_TOL)
+_TOL_SAMPLES = 0.5
 _DEFAULT_SCENARIOS = (
     "k1_doppler_full", "k3_doppler_full", "k3_doppler_limited", "iod_peers",
 )
@@ -67,8 +67,6 @@ _DEFAULT_SNR = (-5.0, -1.0, 3.0, 7.0, 11.0, 15.0, 21.0)
 _DEFAULT_BURSTS = 4000
 _DEFAULT_SEED = 20261014
 
-# 5G-NR FR1: (SCS, PRB, CP). Il CP esteso (4.69 us) copre il delay spread della scena
-# (33 campioni @10 MHz = 3.3 us); a 120 kHz il CP normale (0.59 us) non lo coprirebbe.
 NUMEROLOGIES: Dict[str, Dict[str, float]] = {
     "ofdm_60k_extcp": {"scs": 60e3, "prb": 14, "cp": 4.69e-6, "n_fft": 1024},
     "ofdm_15k": {"scs": 15e3, "prb": 55, "cp": 4.69e-6, "n_fft": 4096},
@@ -78,7 +76,7 @@ _RICIAN_KAPPA_DB = 10.0
 
 
 def sample_geometry(config: Dict[str, Any], n: int, rng: np.random.Generator, k: int):
-    
+
     max_delay = int(config["data"]["max_delay"])
     scene = sample_scene_taps(n, rng, config, max_delay, max(0, k - 1))
     taus = np.asarray(scene["taus"], dtype=np.float64)
@@ -105,12 +103,12 @@ def sample_geometry(config: Dict[str, Any], n: int, rng: np.random.Generator, k:
 
 
 def _label_lag(taus: np.ndarray, max_delay: int) -> np.ndarray:
-    """Verita' del task: ritardo del tap OSTACOLO (indice 0), come il generatore reale."""
+    """Task label: delay of the OBSTACLE tap (index 0), as in the real generator."""
     return np.clip(np.rint(taus[:, 0]).astype(np.int64), 1, max_delay)
 
 
 def _chaotic_received(x, taus, alphas, dopplers, config, noise_var, rng):
-    """Ricevuto caotico (stesso modello del generatore): direttrice Rician + echi/peer + AWGN."""
+    """Chaotic received signal (same model as the generator): Rician direct path + echoes/peers + AWGN."""
     n, seq_len = x.shape
     kappa = 10.0 ** (_RICIAN_KAPPA_DB / 10.0)
     echo_power = np.sum(alphas ** 2, axis=1)
@@ -141,7 +139,7 @@ def _chaotic_received(x, taus, alphas, dopplers, config, noise_var, rng):
 
 
 def _ofdm_lag(taus, alphas, num, fs, noise_var, rng, max_delay, comb):
-    """OFDM radar classico: H=Y/X sulla griglia nota -> IFFT -> argmax (tau in campioni)."""
+    """Classical OFDM radar: H=Y/X on the known grid -> IFFT -> argmax (tau in samples)."""
     n_sc = 12 * int(num["prb"])
     n_fft = int(num["n_fft"])
     k = np.arange(n_sc, dtype=np.float64)
@@ -178,7 +176,7 @@ def _rates(pred: np.ndarray, label: np.ndarray, taus, is_peer) -> Dict[str, floa
 
 
 def _head_rows(metrics_root: Path, scenario: str) -> List[Dict[str, Any]]:
-    """Righe della testa appresa, lette dai metrics.csv della campagna (se presenti)."""
+    """Learned-head rows read from the campaign metrics.csv files when present."""
     rows: List[Dict[str, Any]] = []
     for method, sub in (("head_conv1d", "conv1d"), ("head_qkv", "qkv")):
         path = metrics_root / "ber_vs_snr" / scenario / sub / "metrics.csv"
@@ -198,7 +196,7 @@ def _head_rows(metrics_root: Path, scenario: str) -> List[Dict[str, Any]]:
 
 def evaluate(config: Dict[str, Any], scenario: str, n_bursts: int, snr_values: Sequence[float],
              seed: int, metrics_root: Path) -> List[Dict[str, Any]]:
-    
+
     k = int(max(config["data"]["echoes"]))
     fs = float(config["data"]["fs_hz"])
     rng = np.random.default_rng(seed)
@@ -214,8 +212,8 @@ def evaluate(config: Dict[str, Any], scenario: str, n_bursts: int, snr_values: S
     )
     signal_power = float(np.mean(np.abs(x) ** 2))
     logger.info(
-        "%s: n=%d tap=%d peer=%s | potenza waveform=%.5f | tetto peak-picker %.4f "
-        "(tutti i tap %.4f)", scenario, n_bursts, alphas.shape[1], is_peer.any(),
+        "%s: n=%d taps=%d peer=%s | waveform power=%.5f | peak-picker ceiling %.4f "
+        "(all taps %.4f)", scenario, n_bursts, alphas.shape[1], is_peer.any(),
         signal_power, ceiling_non_peer, ceiling_all,
     )
     rows: List[Dict[str, Any]] = []
@@ -230,7 +228,6 @@ def evaluate(config: Dict[str, Any], scenario: str, n_bursts: int, snr_values: S
                      "n": n_bursts, "radar_exact_tau": float("nan"), **_rates(mf, label, taus, is_peer)})
         for tag, num in NUMEROLOGIES.items():
             n_sc = 12 * int(num["prb"])
-            # stessa energia per burst della waveform caotica (seq_len campioni a potenza 1)
             noise_var_ofdm = noise_var / (x.shape[1] * signal_power / n_sc)
             for pattern, comb in DMRS_PATTERNS:
                 pred = _ofdm_lag(taus, alphas, num, fs, noise_var_ofdm, rng, max_delay, comb)
@@ -258,8 +255,6 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
     parser.add_argument("--n-bursts", type=int, default=_DEFAULT_BURSTS)
     parser.add_argument("--seed", type=int, default=_DEFAULT_SEED)
     parser.add_argument("--metrics-root", type=Path, default=_REPO_ROOT / "results" / "full")
-    # convenzione del repo: --output-dir (come unified_benchmark/ranging/ambiguity);
-    # --out-dir resta accettato per le run manuali.
     parser.add_argument("--output-dir", "--out-dir", dest="out_dir", type=Path,
                         default=_REPO_ROOT / "results" / "full" / "ofdm_isac")
     args = parser.parse_args(argv)
@@ -297,9 +292,9 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
         writer.writeheader()
         for row in summary:
             writer.writerow(row)
-    logger.info("scritto %s (%d righe) e %s in %.1f s", out_csv, len(rows), out_summary,
+    logger.info("wrote %s (%d rows) and %s in %.1f s", out_csv, len(rows), out_summary,
                 time.time() - t0)
-    print("\n== riepilogo a %.1f dB ==" % high)
+    print("\n== summary at %.1f dB ==" % high)
     for row in sorted(summary, key=lambda r: (r["scenario"], -r["exact_tau"])):
         print("  %-24s %-28s exact_tau=%.4f" % (row["scenario"], row["method"], row["exact_tau"]))
 

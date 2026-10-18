@@ -94,7 +94,7 @@ def main(argv: Optional[List[str]] = None) -> None:
               f"({gap:.2f}x above it)")
 
     fs.apply_style()
-    fig, axes = plt.subplots(1, len(ARCHS), figsize=(3.6 * len(ARCHS), 2.6),
+    fig, axes = plt.subplots(1, len(ARCHS), figsize=(3.6 * len(ARCHS), 1.95),
                              sharey=True, squeeze=False)
     axes = axes[0]
     for ax, arch in zip(axes, ARCHS):

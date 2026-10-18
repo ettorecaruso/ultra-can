@@ -1,0 +1,5 @@
+receiver,batch1_median_us,batch1_mean_us,batch1_std_us,batch1_min_us,batch1_max_us
+Ultra-CAN (Conv1D),147.5,161.6,22.7,136.8,191.2
+Ultra-CAN-QKV,544.3,554.7,96.4,443.6,715.2
+LSTM-OFDM-DCSK,2574.2,2771.4,561.0,2197.1,3486.2
+MC-DLCSK,4668.0,4626.1,132.2,4449.2,4801.1

@@ -1,0 +1,8 @@
+scenario,method,snr_db,n,exact_tau,medae_samples,peer_false,radar_exact_tau
+iod_peers,chaotic_mf,21.0,200000,0.42248,7.0,0.22447,
+iod_peers,head_conv1d,21.0,200000,0.667675,0.0,0.096755,0.42248
+iod_peers,head_qkv,21.0,200000,0.66579,0.0,0.094855,0.42248
+iod_peers,ofdm_15k_all,21.0,200000,0.44162,6.0,0.228615,
+iod_peers,ofdm_60k_extcp_all,21.0,200000,0.44075,6.0,0.229835,
+iod_peers,peak_picker_ceiling,21.0,200000,0.45338,,,
+iod_peers,peak_picker_ceiling_all_taps,21.0,200000,0.45338,,,

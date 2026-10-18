@@ -24,16 +24,16 @@ def main() -> None:
     values = [float(v) for v in frame["speed_error_abs_median_mps"]]
 
     fs.apply_style()
-    fig, ax = plt.subplots(figsize=(3.0, 1.75))
+    fig, ax = plt.subplots(figsize=(3.0, 1.35))
     y = np.arange(len(windows))[::-1]
     bars = ax.barh(y, values, height=0.58, color=COLOR, alpha=0.85, zorder=3)
     for bar, value in zip(bars, values):
         ax.annotate(f"{value:.2f}",
                     (value, bar.get_y() + bar.get_height() / 2.0),
                     textcoords="offset points", xytext=(4, 0), va="center",
-                    fontsize=7.5, color=COLOR)
+                    fontsize=6.5, color=COLOR)
     ax.set_yticks(y)
-    ax.set_yticklabels([str(v) for v in windows], fontsize=8)
+    ax.set_yticklabels([str(v) for v in windows], fontsize=7)
     ax.set_xlim(0.0, 2.35)
     ax.set_xticks([0.0, 0.5, 1.0, 1.5, 2.0])
     ax.set_ylim(-0.6, len(windows) - 0.4)

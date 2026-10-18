@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-#
-# Reproduce every figure and table of the paper from the existing results.
-# Run the experiments first (see README); this script only reads results/full
-# and writes into figures/ and results/full/tables/.
 
 set -euo pipefail
 
@@ -30,7 +26,13 @@ do
 done
 
 echo "== figures =="
-for script in scripts/figures/make_fig_*.py; do
+for script in \
+    scripts/figures/make_fig_architecture.py \
+    scripts/figures/make_fig_ber_full_linear.py \
+    scripts/figures/make_fig_peer_ranging.py \
+    scripts/figures/make_fig_retraining_control.py \
+    scripts/figures/make_fig_velocity_track.py
+do
     echo "-- ${script}"
     "${PYTHON}" "${script}"
 done

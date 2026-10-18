@@ -152,7 +152,6 @@ def latency_us() -> None:
     rows = []
     for receiver, blocks in payload.items():
         batch1 = blocks.get("batch1", {})
-        batch32 = blocks.get("batch32_amortized", {})
         rows.append({
             "receiver": receiver,
             "batch1_median_us": batch1.get("median_us"),
@@ -160,7 +159,6 @@ def latency_us() -> None:
             "batch1_std_us": batch1.get("stdev_us"),
             "batch1_min_us": batch1.get("min_us"),
             "batch1_max_us": batch1.get("max_us"),
-            "batch32_median_us": batch32.get("median_us"),
         })
     _write(pd.DataFrame(rows), "latency_us.csv")
 

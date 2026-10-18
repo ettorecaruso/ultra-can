@@ -1,13 +1,13 @@
 """Price of blindness on a short probe: the bit head blind vs with the reference.
 
-Marco asked for a small probe that hands the regenerated reference ``x[n]`` to
-the bit decision and shows, with a number, that the blind setting is the harder
-one and was chosen deliberately.  The communication head cannot literally take
-``x[n]`` as an input (the reference channel is sliced out before the backbone,
-see ``src/models/ultra_can.py``), so the reference-aided bound is the same
+A small probe hands the regenerated reference ``x[n]`` to the bit decision and
+shows, with a number, that the blind setting is the harder one and was chosen
+deliberately. The communication head cannot literally take ``x[n]`` as an input
+(the reference channel is sliced out before the backbone, see
+``src/models/ultra_can.py``), so the reference-aided bound is the same
 seed-aware oracle correlator used by ``blind_vs_oracle.py``; the blind column is
-the trained head.  A short count (the requested "ten bursts" sanity check) and a
-statistically usable count are both reported.
+the trained head. A short count and a statistically usable count are both
+reported.
 """
 
 from __future__ import annotations

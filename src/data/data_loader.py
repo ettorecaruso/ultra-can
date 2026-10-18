@@ -449,9 +449,8 @@ def build_tf_dataset(
     bits = np.asarray(data["bit"], dtype=np.int32)
     target_mode = sensing_target_mode(config)
     if target_mode == "matched_filter_peak":
-        # M1: supervision target = the matched-filter peak argmax_tau |R_xy(tau)|
-        # (integer lag class in [0, max_delay-1]); the matched filter is a TRAINING-TIME
-        # teacher only, never part of the model.
+
+
         from src.evaluation.metrics import argmax_delay_from_profile
 
         lags = int(max_delay)
@@ -462,10 +461,8 @@ def build_tf_dataset(
         targets_y = {"comm": bits, "sensing": peak_class.astype(np.int32)}
         num_outputs = int(sensing_output_units(config))
     elif target_mode == "geometric_label":
-        # Peer-aware supervision (iod_peers): same 33 lag-logits, but the class is the
-        # GEOMETRIC label tau (the dominant labelled tap). The generator removes the
-        # peer taps from that label (LABEL_EXCLUDED = -inf), so the head learns to
-        # reject the peers instead of copying the strongest peak.
+
+
         lags = int(max_delay)
         label_class = np.clip(
             np.rint(np.asarray(data["tau"], dtype=np.float64)).astype(np.int64) - 1,
@@ -751,4 +748,3 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
 
 if __name__ == "__main__":
     main()
-

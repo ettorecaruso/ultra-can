@@ -1,12 +1,6 @@
 scenario,method,snr_db,n,exact_tau,medae_samples,peer_false,radar_exact_tau
-iod_peers,chaotic_mf,21.0,4000,0.4135,7.0,0.1695,nan
-iod_peers,ofdm_60k_extcp_all,21.0,4000,0.43225,6.0,0.17625,nan
-iod_peers,ofdm_60k_extcp_dmrs_comb2,21.0,4000,0.43025,7.0,0.17725,nan
-iod_peers,ofdm_60k_extcp_dmrs_comb4,21.0,4000,0.432,6.0,0.17525,nan
-iod_peers,ofdm_15k_all,21.0,4000,0.43325,6.0,0.175,nan
-iod_peers,ofdm_15k_dmrs_comb2,21.0,4000,0.43325,6.0,0.1745,nan
-iod_peers,ofdm_15k_dmrs_comb4,21.0,4000,0.43075,6.0,0.17725,nan
-iod_peers,peak_picker_ceiling,21.0,4000,0.4665,nan,nan,nan
-iod_peers,peak_picker_ceiling_all_taps,21.0,4000,0.44375,nan,nan,nan
-iod_peers,head_conv1d,21.0,200000,0.66857,nan,nan,0.42245
-iod_peers,head_qkv,21.0,200000,0.665805,nan,nan,0.42245
+iod_peers,chaotic_mf,21.0,200000,0.42413,7.0,0.17428,
+iod_peers,ofdm_15k_all,21.0,200000,0.442995,6.0,0.178085,
+iod_peers,ofdm_60k_extcp_all,21.0,200000,0.442305,6.0,0.17927,
+iod_peers,peak_picker_ceiling,21.0,200000,0.479665,,,
+iod_peers,peak_picker_ceiling_all_taps,21.0,200000,0.454275,,,

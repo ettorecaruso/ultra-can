@@ -37,27 +37,20 @@ _SENSING_DELAY_MODES: Tuple[str, ...] = ("regression", "peak_residual")
 _SENSING_PEAK_KEY = "use_delay_peak_feature"
 _SENSING_PEAK_SHARPNESS_KEY = "peak_sharpness"
 _SENSING_PEAK_SHARPNESS_DEFAULT = 8.0
-# M1 "radar-matching" sensing supervision (2026-10):
-#   target="delay"               -> legacy: regress the normalized geometric label (MSE)
-#   target="matched_filter_peak" -> train 33 lag-logits against the matched-filter peak
-#                                   argmax_tau |R_xy(tau)| (sparse CE), head emits logits and
-#                                   the model also exposes the decoded scalar tau (M1).
+
+
 _SENSING_TARGET_KEY = "target"
 _SENSING_TARGET_DEFAULT = "delay"
 _SENSING_TARGET_MATCHED_FILTER = "matched_filter_peak"
-# Peer-aware supervision (2026-10), used by the ``iod_peers`` scenario:
-#   target="geometric_label"     -> same 33 lag-logits, but supervised with the *geometric*
-#                                   label tau (the dominant labelled tap). The scene
-#                                   generator already EXCLUDES the peer taps from that label
-#                                   (``LABEL_EXCLUDED = -inf``), so the head learns to reject
-#                                   peer echoes instead of copying the strongest peak.
+
+
 _SENSING_TARGET_GEOMETRIC_LABEL = "geometric_label"
 _SENSING_TARGET_MODES: Tuple[str, ...] = (
     "delay",
     _SENSING_TARGET_MATCHED_FILTER,
     _SENSING_TARGET_GEOMETRIC_LABEL,
 )
-# Targets whose sensing head emits lag logits trained with sparse CE.
+
 _SENSING_CATEGORICAL_TARGETS: Tuple[str, ...] = (
     _SENSING_TARGET_MATCHED_FILTER,
     _SENSING_TARGET_GEOMETRIC_LABEL,
@@ -68,7 +61,7 @@ _COMM_REQUIRED_KEYS: Tuple[str, ...] = ("units", "activation", "modulation_order
 _SENSING_REQUIRED_KEYS: Tuple[str, ...] = ("units", "activation", "output_units")
 
 def _iter_config_leaves(config: Any, prefix: str = "config") -> Iterator[Tuple[str, Any]]:
-    
+
     if isinstance(config, dict):
         for key, value in config.items():
             yield from _iter_config_leaves(value, f"{prefix}.{key}")
@@ -79,13 +72,13 @@ def _iter_config_leaves(config: Any, prefix: str = "config") -> Iterator[Tuple[s
         yield prefix, config
 
 def _assert_config_finite(config: Any) -> None:
-    
+
     for path, value in _iter_config_leaves(config):
         if isinstance(value, (int, float)) and not math.isfinite(float(value)):
             raise ValueError(f"non-finite value in the config: {path} = {value!r}")
 
 def _as_positive_int(value: Any, label: str) -> int:
-    
+
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise ValueError(f"{label} must be a positive integer, got: {value!r}")
     number = float(value)
@@ -94,7 +87,7 @@ def _as_positive_int(value: Any, label: str) -> int:
     return int(number)
 
 def _head_input_dim(config: Dict[str, Any]) -> int:
-    
+
     model_cfg = config.get("model")
     if not isinstance(model_cfg, dict):
         raise ValueError("'model' section missing or not a dict in config")
@@ -128,7 +121,7 @@ def _validate_head_config(
     config: Dict[str, Any],
     head_name: str,
 ) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-    
+
     if not isinstance(config, dict):
         raise TypeError(f"config must be a dict, got: {type(config).__name__}")
     if head_name not in _HEAD_NAMES:
@@ -258,7 +251,7 @@ def _smoke_check(
     expected_output_shape: Sequence[Optional[int]],
     tag: str,
 ) -> None:
-    
+
     if not tf.executing_eagerly():
         logger.debug("smoke check skipped (non-eager context): %s", tag)
         return
@@ -285,7 +278,7 @@ def _smoke_check(
     logger.debug("smoke check OK: %s output_shape=%s", tag, actual)
 
 def build_communication_head(config: Dict[str, Any]) -> tf.keras.Model:
-    
+
     model_cfg, comm_cfg = _validate_head_config(config, "communication_head")
     dropout_rate = float(model_cfg["dropout_rate"])
     units = int(comm_cfg["units"])
@@ -325,7 +318,7 @@ except ImportError:
 
 @_register_serializable(package="src.models.heads")
 def _position_feature(t: tf.Tensor) -> tf.Tensor:
-    
+
     length = tf.shape(t)[1]
     t_pos = tf.cast(tf.range(length), tf.float32) / tf.cast(length, tf.float32)
     w = tf.abs(t)
@@ -336,14 +329,14 @@ def _position_feature(t: tf.Tensor) -> tf.Tensor:
 
 @_register_serializable(package="src.models.heads")
 def _slice_received(inputs: tf.Tensor, num_features: int) -> tf.Tensor:
-    
+
     return inputs[..., :num_features]
 
 @_register_serializable(package="src.models.heads")
 def _dca_mf_profile(
     inputs: tf.Tensor, max_delay: int, num_features: int
 ) -> tf.Tensor:
-    
+
     received = inputs[..., :num_features]
     xref = inputs[..., -1:]
     if num_features == 2:
@@ -373,7 +366,7 @@ def _dca_mf_profile(
     return profile
 
 def _delay_peak_enabled(sensing_cfg: Any) -> bool:
-    
+
     if not isinstance(sensing_cfg, dict):
         return False
     mode = str(sensing_cfg.get(_SENSING_DELAY_MODE_KEY, _SENSING_DELAY_MODE_DEFAULT))
@@ -383,14 +376,14 @@ def _delay_peak_enabled(sensing_cfg: Any) -> bool:
 
 @_register_serializable(package="src.models.heads")
 def _last_column(t: tf.Tensor) -> tf.Tensor:
-    
+
     return t[..., -1:]
 
 @_register_serializable(package="src.models.heads")
 def _soft_argmax_lag(
     profile: tf.Tensor, max_delay: int, sharpness: float
 ) -> tf.Tensor:
-    
+
     max_delay = int(max_delay)
     magnitude = tf.abs(profile[:, :max_delay])
     peak = tf.reduce_max(magnitude, axis=-1, keepdims=True)
@@ -412,7 +405,7 @@ def _decode_lag_norm(logits: tf.Tensor, max_delay: int) -> tf.Tensor:
 
 @_register_serializable(package="src.models.heads")
 def _attention_pool(alpha_and_h: list) -> tf.Tensor:
-    
+
     alpha, h = alpha_and_h
     return tf.reduce_sum(alpha * h, axis=1)
 
@@ -423,7 +416,7 @@ def build_sensing_features(
     attention_mode: str = "gap",
     pool_projection: bool = False,
 ) -> Tuple[tf.keras.KerasTensor, tf.keras.KerasTensor]:
-    
+
     if not isinstance(config, dict):
         raise TypeError(f"config must be a dict, got: {type(config).__name__}")
     if not isinstance(h_att, tf.keras.KerasTensor) or len(h_att.shape) != 3:
@@ -501,7 +494,7 @@ def build_sensing_head(
     config: Dict[str, Any],
     input_dim: Optional[int] = None,
 ) -> tf.keras.Model:
-    
+
     _model_cfg, sens_cfg = _validate_head_config(config, "sensing_head")
     units = int(sens_cfg["units"])
     activation = str(sens_cfg["activation"])
@@ -534,10 +527,8 @@ def build_sensing_head(
         )
     target = str(sens_cfg.get(_SENSING_TARGET_KEY, _SENSING_TARGET_DEFAULT))
     if target in _SENSING_CATEGORICAL_TARGETS:
-        # M1 / peer-aware: 33 lag-logits supervised by sparse CE, either against the
-        # matched-filter peak argmax_tau |R_xy(tau)| (M1) or against the geometric label
-        # tau that excludes the peer taps (iod_peers). The decoded scalar tau is added
-        # by the container model (build_ultra_can / build_ultra_can_qkv) as "sensing".
+
+
         out = tf.keras.layers.Dense(
             units=output_units,
             activation="linear",
@@ -585,7 +576,7 @@ def build_sensing_head(
     return model
 
 def num_params(model: tf.keras.Model) -> int:
-    
+
     if not isinstance(model, tf.keras.Model):
         raise TypeError(
             f"model must be a tf.keras.Model, got: {type(model).__name__}"
@@ -609,7 +600,7 @@ def num_params(model: tf.keras.Model) -> int:
     return total
 
 def main(argv: Optional[Sequence[str]] = None) -> None:
-    
+
     parser = argparse.ArgumentParser(
         description="Smoke test for the Ultra-CAN (ISAC in IoD) heads"
     )
@@ -648,4 +639,3 @@ def main(argv: Optional[Sequence[str]] = None) -> None:
 
 if __name__ == "__main__":
     main()
-

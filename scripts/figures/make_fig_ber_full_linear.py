@@ -289,18 +289,6 @@ def plot_full_range(out_dir) -> None:
     _save(fig, out_dir, "ber_full_linear")
     plt.close(fig)
 
-    for scenario in SCENARIOS:
-        if not curves.get(scenario):
-            continue
-        fig, ax = plt.subplots(figsize=(6.1, 6.1))
-        _draw_panel(ax, curves[scenario], SCENARIO_TITLES[scenario],
-                    _decade_floor(curves[scenario]), y_hi)
-        ax.set_ylabel("BER")
-        fig.tight_layout()
-        _legend_below(ax, ncol=2)
-        _save(fig, out_dir, f"ber_full_{SCENARIO_SLUGS[scenario]}")
-        plt.close(fig)
-
 def plot_full_range_plotly(out_dir) -> None:
     import plotly.graph_objects as go
     from plotly.subplots import make_subplots
@@ -371,7 +359,8 @@ def plot_full_range_plotly(out_dir) -> None:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--output-dir", type=Path, default=REPO / "figures" / "_data")
+    ap.add_argument("--output-dir", type=Path,
+                    default=REPO / "results" / "full" / "figures_data" / "ber_full_linear")
     ap.add_argument("--symbols", type=int, default=20000)
     ap.add_argument("--skip-figure", action="store_true")
     ap.add_argument("--only-figure", action="store_true",

@@ -27,7 +27,7 @@ src/
   visualization/         attention and layer-activity tools
 scripts/
   data/                  dataset generation shell entry points
-  figures/               one script per paper figure
+  figures/               scripts that build the paper figures
   tables/                one script per paper table
   diagnostics/           model-free controls (label observability, scene report, LPI)
   tools/                 latency bench, jamming-aware runner, reproduction probes
@@ -88,7 +88,8 @@ Additional experiments have their own entry points:
 | Ranging benchmark with per-burst dumps | `python src/experiments/ranging_benchmark.py --scenario k3_doppler_full` |
 | Ambiguous pile (negative control) | `python src/experiments/ambiguity.py --scenario k3_ambiguity_mix` |
 | Velocity from a track of bursts | `python src/experiments/velocity_track.py` |
-| On-board footprint and latency | `python src/experiments/board_footprint.py` |
+| 5G-NR OFDM-ISAC baseline | `python src/experiments/ofdm_isac.py --scenario k3_doppler_full` |
+| On-board footprint and single-burst latency | `python src/experiments/board_footprint.py` |
 
 ### 3. Figures and tables
 
@@ -96,7 +97,7 @@ Additional experiments have their own entry points:
 bash scripts/make_all.sh
 ```
 
-Each script in `scripts/figures/` writes one PDF into `figures/`; each script in
+Each script in `scripts/figures/` writes its paper PDF(s) into `figures/`; each script in
 `scripts/tables/` writes the CSVs into `results/full/tables/`. Model-free controls live in
 `scripts/diagnostics/` (label observability, swarm-scene report, LPI detectability).
 
@@ -107,9 +108,9 @@ locally:
 
 - `00_Setup_and_Datasets.ipynb` — environment check and dataset generation.
 - `01_Communication_Benchmark.ipynb` — `ber_vs_snr`, `classical_receivers`, unified benchmark, BER figures.
-- `02_Sensing_Ranging_and_Velocity.ipynb` — ranging benchmark, ambiguity control, velocity track, observability diagnostics.
+- `02_Sensing_Ranging_and_Velocity.ipynb` — ranging benchmark, ambiguity control, velocity track, OFDM-ISAC baseline, observability diagnostics.
 - `03_Cross_Channel_and_Jamming.ipynb` — cross-channel generalization, jamming and interpretability, frequency agility, LPI.
-- `04_Report_Figures_and_Tables.ipynb` — final report, latency bench, all tables and figures.
+- `04_Report_Figures_and_Tables.ipynb` — final report, on-board footprint, single-burst latency, all paper tables and figures.
 - `orchestrator.ipynb` — prepares the environment and runs 00–04 in order.
 
 The notebooks detect the repository root automatically, so they work both on Colab (after
@@ -129,7 +130,7 @@ and tables can be rebuilt without retraining.
 - Operating-region metrics are the pooled BER over SNR ≥ 5 dB and the minimum SNR at which
   BER ≤ 1e-4 is reached; the per-point 1σ relative uncertainty at the 100-error rule is ≈10%,
   so differences below that level are not claimed.
-- Latency numbers are a relative complexity index measured on one reference general-purpose
-  CPU (single-threaded TensorFlow, static graph); they are not a measurement on a
-  microcontroller.
+- Latency numbers are a single-burst relative complexity index measured on one reference
+  general-purpose CPU (single-threaded TensorFlow, static graph); they are not a measurement
+  on a microcontroller.
 

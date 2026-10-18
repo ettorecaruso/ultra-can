@@ -48,7 +48,7 @@ def main() -> None:
         hatches.append("//" if key == "peak" else "")
 
     fs.apply_style()
-    fig, ax = plt.subplots(figsize=(WIDTH, 1.95))
+    fig, ax = plt.subplots(figsize=(WIDTH, 1.45))
     y = np.arange(len(values))[::-1]
     bars = ax.barh(y, values, height=0.62, color=colors, zorder=3,
                    edgecolor=["#111111" if h else "none" for h in hatches],
@@ -56,9 +56,9 @@ def main() -> None:
     for bar, value in zip(bars, values):
         ax.annotate(f"{value:.0f}%", (value, bar.get_y() + bar.get_height() / 2.0),
                     textcoords="offset points", xytext=(4, 0), va="center",
-                    fontsize=8)
+                    fontsize=6.5)
     ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=8)
+    ax.set_yticklabels(labels, fontsize=7)
     ax.set_xlim(0.0, 82.0)
     ax.set_xticks([0, 20, 40, 60, 80])
     ax.set_xlabel("exact obstacle [%]", labelpad=3)

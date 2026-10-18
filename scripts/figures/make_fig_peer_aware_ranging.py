@@ -48,7 +48,7 @@ def main() -> None:
     fs.apply_style()
     fig, axes = plt.subplots(2, 1, figsize=(WIDTH, 5.2))
 
-    # ---- (a) gate coverage and peer confusion -------------------------------
+
     ax = axes[0]
     frame = frames["conv1d"]
     ref = frame.groupby("guard_factor").agg(
@@ -85,7 +85,7 @@ def main() -> None:
     ax.set_axisbelow(True)
     _spines(ax)
 
-    # ---- (b) range error of the answered bursts ----------------------------
+
     ax = axes[1]
     x = np.arange(len(RATIO_ORDER))
     width = 0.36

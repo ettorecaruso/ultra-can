@@ -45,7 +45,7 @@ def _settings(config: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 def _shift(x: np.ndarray, lag: np.ndarray) -> np.ndarray:
-    """Ritardo frazionario via rampa di fase (niente wrap: FFT su lunghezza doppia)."""
+    """Fractional delay via a phase ramp (no wrap: FFT on twice the length)."""
     n, length = x.shape
     padded = 2 * length
     freq = np.fft.rfftfreq(padded)

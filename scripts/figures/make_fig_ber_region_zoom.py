@@ -44,9 +44,8 @@ SCENARIOS = [
     ("k3_doppler_limited", "k3_low_doppler", "Multi-echo, low Doppler (K = 3)"),
 ]
 MIN_DB = 5.0
-# Nessuna linea-obiettivo. Il confine dei 10^-4 non e' piu' un traguardo che il grafico
-# possa mostrare: sul canale nuovo nessun ricevitore ci arriva. Il fondo dell'asse sta
-# appena SOPRA 10^-4, cosi' il valore non compare nemmeno come tacca dell'asse y.
+
+
 Y_BOTTOM = 1.1e-4
 Y_TOP = 0.011999999999999999
 

@@ -29,7 +29,7 @@ class Trainer:
         train_ds: tf.data.Dataset,
         val_ds: Optional[tf.data.Dataset] = None,
     ) -> None:
-        
+
         if not isinstance(config, dict):
             raise TypeError(f"config must be a dict, got: {type(config).__name__}")
         if not isinstance(model, tf.keras.Model):
@@ -86,11 +86,11 @@ class Trainer:
             logger.info("val_ds not provided: early stopping and validation disabled")
 
     def _validate_sensing_component_weights(self) -> None:
-        
+
         from src.models.heads import sensing_output_units, sensing_target_is_categorical
 
         if sensing_target_is_categorical(self.config):
-            # M1 has a single categorical sensing loss: component weights do not apply.
+
             self.sensing_component_weights = None
             return
         weights = self.training_cfg.get("sensing_component_weights")
@@ -124,12 +124,12 @@ class Trainer:
         logger.info("Sensing component weights: %s", self.sensing_component_weights)
 
     def _validate_loss_weights(self) -> None:
-        
+
         from src.models.heads import sensing_target_is_categorical
 
         if sensing_target_is_categorical(self.config):
-            # M1: the sensing head emits lag logits trained with sparse CE against the
-            # matched-filter peak; there is no scalar MSE component.
+
+
             self.training_cfg["loss_weights"] = {
                 "comm": 1.0,
                 "sensing": self.lambda_mse,
@@ -167,7 +167,7 @@ class Trainer:
                      loss_weights["comm"], loss_weights["sensing"])
 
     def _build_callbacks(self) -> List[tf.keras.callbacks.Callback]:
-        
+
         callbacks: List[tf.keras.callbacks.Callback] = []
 
         if self.val_ds is not None:
@@ -266,7 +266,7 @@ class Trainer:
         return callbacks
 
     def restore_best_weights(self) -> bool:
-        
+
         run_output_dir = (self.config.get("general") or {}).get("run_output_dir")
         if run_output_dir:
             ckpt = Path(str(run_output_dir)) / "logs" / "best_weights.weights.h5"
@@ -292,7 +292,7 @@ class Trainer:
         return True
 
     def _get_log_dir(self) -> Path:
-        
+
         general = self.config.get("general") or {}
         run_output_dir = general.get("run_output_dir")
         if run_output_dir:
@@ -307,7 +307,7 @@ class Trainer:
         return log_dir
 
     def verify_finite_gradients(self) -> None:
-        
+
         if self.train_ds is None:
             logger.warning("verify_finite_gradients: train_ds is None, cannot verify")
             return
@@ -357,7 +357,7 @@ class Trainer:
         logger.debug("Finite gradients verified (%d gradients)", len(gradients))
 
     def save_artifacts(self, history: tf.keras.callbacks.History) -> None:
-        
+
         if not isinstance(history, tf.keras.callbacks.History):
             raise TypeError(f"history must be a tf.keras.callbacks.History, got: {type(history).__name__}")
 
@@ -388,7 +388,7 @@ class Trainer:
         logger.info("Metadata saved to %s", metadata_path)
 
     def train(self) -> tf.keras.callbacks.History:
-        
+
         self._validate_loss_weights()
 
         learning_rate = self.training_cfg.get("learning_rate", 0.001)
@@ -477,4 +477,3 @@ class Trainer:
         )
 
         return history
-

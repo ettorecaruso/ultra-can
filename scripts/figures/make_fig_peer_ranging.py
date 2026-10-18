@@ -60,8 +60,8 @@ def main() -> None:
                for arch in ARCHS}
     fs.apply_style()
 
-    # ---------------- double figure: range error + reported outcome ----------
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.45))
+
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 1.80))
     x = np.arange(len(RATIO_ORDER))
     width = 0.36
 
@@ -79,9 +79,9 @@ def main() -> None:
         for bar, value in zip(bars, values):
             ax.annotate(f"{value:.1f}", (bar.get_x() + bar.get_width() / 2.0, value),
                         textcoords="offset points", xytext=(0, 2), ha="center",
-                        fontsize=7, color=fs.ARCH_COLORS[arch])
+                        fontsize=6.5, color=fs.ARCH_COLORS[arch])
     ax.set_xticks(x)
-    ax.set_xticklabels([RATIO_LABEL[k] for k in RATIO_ORDER], fontsize=7.5)
+    ax.set_xticklabels([RATIO_LABEL[k] for k in RATIO_ORDER], fontsize=6.5)
     ax.set_ylim(0.0, 8.0)
     ax.set_yticks(np.arange(0, 9, 2))
     ax.set_xlabel("obstacle / peer amplitude", labelpad=2)
@@ -100,14 +100,14 @@ def main() -> None:
     for xi, value in zip(x, obstacle):
         ax.annotate(f"{100 * value:.0f}%", (xi - width / 2.0, value),
                     textcoords="offset points", xytext=(0, 2), ha="center",
-                    fontsize=7, color=OBST_COLOR)
+                    fontsize=6.5, color=OBST_COLOR)
     for xi, value in zip(x, peer):
         if value > 0.02:
             ax.annotate(f"{100 * value:.0f}%", (xi + width / 2.0, value),
                         textcoords="offset points", xytext=(0, 2), ha="center",
-                        fontsize=7, color=PEER_COLOR)
+                        fontsize=6.5, color=PEER_COLOR)
     ax.set_xticks(x)
-    ax.set_xticklabels([RATIO_LABEL[k] for k in RATIO_ORDER], fontsize=7.5)
+    ax.set_xticklabels([RATIO_LABEL[k] for k in RATIO_ORDER], fontsize=6.5)
     ax.set_ylim(0.0, 1.08)
     ax.set_yticks([0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
     ax.set_yticklabels(["0%", "20%", "40%", "60%", "80%", "100%"])
@@ -120,11 +120,11 @@ def main() -> None:
 
     fig.tight_layout()
     fig.subplots_adjust(wspace=0.32)
-    fs.legend_below_fig(fig, axes, ncol=4, fontsize=7.2, gap=0.03)
+    fs.legend_below_fig(fig, axes, ncol=4, fontsize=6.8, gap=0.03)
     fs.save(fig, "peer_range_outcome")
     plt.close(fig)
 
-    # ---------------- single figure: coverage and peer confusion ------------
+
     frame = samples["conv1d"]
     ref = frame.groupby("guard_factor").agg(
         answered=("fallback", lambda s: 1.0 - float(np.mean(s))))
@@ -137,7 +137,7 @@ def main() -> None:
         kept = ~sub["fallback"].to_numpy(dtype=bool)
         peer_after.append(100.0 * float(sub["peer_false"].to_numpy(dtype=bool)[kept].mean()))
 
-    fig, ax = plt.subplots(figsize=(3.2, 1.95))
+    fig, ax = plt.subplots(figsize=(3.2, 1.45))
     ax.plot(guards, answered, marker="o", color=fs.ARCH_COLORS["conv1d"], lw=1.4,
             ms=4.5, label="range reported")
     ax.plot(guards, peer_after, marker="s", color="#7F7F7F", lw=1.4, ms=4.5,
@@ -166,4 +166,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

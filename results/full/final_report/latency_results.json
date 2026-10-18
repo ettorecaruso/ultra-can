@@ -1,0 +1,38 @@
+{
+  "Ultra-CAN (Conv1D)": {
+    "batch1": {
+      "mean_us": 161.6,
+      "median_us": 147.5,
+      "min_us": 136.8,
+      "max_us": 191.2,
+      "stdev_us": 22.7
+    }
+  },
+  "Ultra-CAN-QKV": {
+    "batch1": {
+      "mean_us": 554.7,
+      "median_us": 544.3,
+      "min_us": 443.6,
+      "max_us": 715.2,
+      "stdev_us": 96.4
+    }
+  },
+  "LSTM-OFDM-DCSK": {
+    "batch1": {
+      "mean_us": 2771.4,
+      "median_us": 2574.2,
+      "min_us": 2197.1,
+      "max_us": 3486.2,
+      "stdev_us": 561.0
+    }
+  },
+  "MC-DLCSK": {
+    "batch1": {
+      "mean_us": 4626.1,
+      "median_us": 4668.0,
+      "min_us": 4449.2,
+      "max_us": 4801.1,
+      "stdev_us": 132.2
+    }
+  }
+}

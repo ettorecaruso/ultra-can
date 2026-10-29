@@ -1,0 +1,129 @@
+
+
+nominal:
+  model: aerial_multiecho
+  generator: geometry
+  mode: monostatic
+  direct_fading: rician
+  echo_fading: none
+  echo_fading_kappa_db: 6.0
+  direct_fading_kappa_db: null
+  num_echoes_model: fixed
+  poisson_echoes_mean: 2.0
+  hold_mode: per_symbol
+  add_awgn: true
+  echo_only_mode: false
+  scene:
+    node_altitude_m: 50.0
+    obstacle_distance_m: [40.0, 400.0]
+    obstacle_reflectivity: 0.30
+    scatterer_distance_m: [20.0, 300.0]
+    scatterer_reflectivity: 0.08
+    radial_speed_mps: [10.0, 30.0]
+    speed_outlier_mps: 100.0
+    speed_outlier_probability: 0.0
+    reference_range_m: 100.0
+    echo_power_fraction: 0.5
+
+ablation_log_uniform:
+  generator: log_uniform
+
+b_tdl_d:
+  model: tdl_3gpp
+  direct_fading: rician
+  direct_fading_kappa_db: 10.0
+  time_block_slots: 53
+  echo_fading: none
+  echo_fading_kappa_db: 6.0
+  num_echoes_model: fixed
+  poisson_echoes_mean: 2.0
+  hold_mode: per_hop
+  add_awgn: true
+  echo_only_mode: false
+  clutter_power_fraction: 0.25
+  clutter_fading: rayleigh
+  clutter_kappa_db: 0.0
+  clutter_doppler_max: 0.00008
+  max_pdp_truncation_fraction: 0.1
+  pdp:
+    profile: TDL-D
+    kind: exponential
+    n_taps: 13
+    rms_delay_spread_ns: 300.0
+    decay_db_per_ds: 4.343
+    delays_ns: []
+    powers_db: []
+
+b_tdl_d_light:
+  model: tdl_3gpp
+  direct_fading: rician
+  direct_fading_kappa_db: 10.0
+  time_block_slots: 53
+  echo_fading: none
+  echo_fading_kappa_db: 6.0
+  num_echoes_model: fixed
+  poisson_echoes_mean: 2.0
+  hold_mode: per_hop
+  add_awgn: true
+  echo_only_mode: false
+  clutter_power_fraction: 0.05
+  clutter_fading: rayleigh
+  clutter_kappa_db: 0.0
+  clutter_doppler_max: 0.00008
+  max_pdp_truncation_fraction: 0.1
+  pdp:
+    profile: TDL-D
+    kind: exponential
+    n_taps: 13
+    rms_delay_spread_ns: 300.0
+    decay_db_per_ds: 4.343
+    delays_ns: []
+    powers_db: []
+
+b_tdl_a:
+  model: tdl_3gpp
+  direct_fading: rayleigh
+  direct_fading_kappa_db: 0.0
+  time_block_slots: 53
+  echo_fading: none
+  echo_fading_kappa_db: 6.0
+  num_echoes_model: fixed
+  poisson_echoes_mean: 2.0
+  hold_mode: per_hop
+  add_awgn: true
+  echo_only_mode: false
+  clutter_power_fraction: 0.25
+  clutter_fading: rayleigh
+  clutter_kappa_db: 0.0
+  clutter_doppler_max: 0.00008
+  max_pdp_truncation_fraction: 0.1
+  pdp:
+    profile: TDL-A
+    kind: exponential
+    n_taps: 13
+    rms_delay_spread_ns: 300.0
+    decay_db_per_ds: 4.343
+    delays_ns: []
+    powers_db: []
+
+c_two_ray_jakes:
+  model: two_ray_jakes
+  direct_fading: rician
+  direct_fading_kappa_db: 10.0
+  time_block_slots: 53
+  echo_fading: none
+  echo_fading_kappa_db: 6.0
+  num_echoes_model: fixed
+  poisson_echoes_mean: 2.0
+  hold_mode: per_hop
+  add_awgn: true
+  echo_only_mode: false
+  two_ray:
+    h_tx_m: 50.0
+    h_rx_m: 50.0
+    d_m: 100.0
+    reflection_coeff: 0.7
+    velocity_mps: 20.0
+    n_cisoids: 16
+    min_delay_samples: 1.0
+    power_fraction: null

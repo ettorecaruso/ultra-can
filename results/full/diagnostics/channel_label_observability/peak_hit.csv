@@ -1,0 +1,7 @@
+channel_variant,n_symbols,p_label_is_strongest,p_peak_hit,n_taps,k_geometric
+nominal,200000,1.0,0.45507,3,3
+ablation_log_uniform,200000,1.0,0.85503,3,3
+b_tdl_d,200000,0.952845,0.02609,14,3
+b_tdl_d_light,200000,1.0,0.026385,14,3
+b_tdl_a,200000,0.95338,0.026485,15,3
+c_two_ray_jakes,200000,0.87638,0.026705,4,3

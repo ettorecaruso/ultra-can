@@ -1,0 +1,441 @@
+2026-10-17 08:31:15 | root                           | INFO   | Logging configured: file=/content/drive/MyDrive/DHUC_RUN/w2_cross/full/logs/runner.log level=INFO
+2026-10-17 08:31:15 | __main__                       | INFO   | Mode: full
+2026-10-17 08:31:15 | __main__                       | INFO   | Run root: /content/drive/MyDrive/DHUC_RUN/w2_cross/full
+2026-10-17 08:31:15 | __main__                       | INFO   | Models: blind_stat
+2026-10-17 08:31:15 | __main__                       | INFO   | No dataset regeneration: False
+2026-10-17 08:31:15 | __main__                       | INFO   | ================================================================================
+2026-10-17 08:31:15 | __main__                       | INFO   | EXPERIMENT ber_vs_snr
+2026-10-17 08:31:15 | __main__                       | INFO   | ================================================================================
+2026-10-17 08:31:15 | __main__                       | INFO   | experiment_name = ber_vs_snr_full
+2026-10-17 08:31:15 | __main__                       | INFO   | seed = 42
+2026-10-17 08:31:15 | __main__                       | INFO   | lambda_mse = 2
+2026-10-17 08:31:15 | __main__                       | INFO   | sequence_length = 100
+2026-10-17 08:31:15 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-17 08:31:15 | __main__                       | INFO   | backbone_type = blind_stat
+2026-10-17 08:31:15 | __main__                       | INFO   | epochs = 30
+2026-10-17 08:31:15 | src.utils.config_loader        | INFO   | config snapshot saved: /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/logs/config_used.yaml
+2026-10-17 08:31:15 | __main__                       | INFO   | ============================================================
+2026-10-17 08:31:15 | __main__                       | INFO   | ber_vs_snr experiment: BER vs SNR (5 architectures, 3 scenarios)
+2026-10-17 08:31:15 | __main__                       | INFO   | ============================================================
+2026-10-17 08:31:15 | __main__                       | INFO   | ber_vs_snr: --model=blind_stat filters architectures to: ['blind_stat']
+2026-10-17 08:31:15 | __main__                       | INFO   | --- Scenario: k1_doppler_full ---
+2026-10-17 08:31:15 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/4f0e2fd0, generating...
+2026-10-17 08:31:16 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr-5_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:16 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr-3_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:16 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr-1_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:17 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr1_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:17 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr3_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:18 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr5_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:31:18 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr7_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:18 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr9_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:19 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr11_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-17 08:31:19 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr13_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:19 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr15_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:20 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr17_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:20 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr19_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:21 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/train_snr21_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:21 | src.data.dataset_generator     | INFO   | split 'train': 14 files generated, 7500 symbols per combination (combos=14)
+2026-10-17 08:31:21 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr-5_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:31:21 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr-3_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:21 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr-1_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:22 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr1_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:31:22 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr3_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:31:22 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr5_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:22 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr7_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:23 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr9_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.801e-05]
+2026-10-17 08:31:23 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr11_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:23 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr13_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:23 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr15_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-17 08:31:24 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr17_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:31:24 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr19_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:24 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/val_snr21_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:24 | src.data.dataset_generator     | INFO   | split 'val': 14 files generated, 5000 symbols per combination (combos=14)
+2026-10-17 08:31:25 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr-5_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:26 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr-3_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:27 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr-1_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:28 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr1_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:29 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr3_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:30 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr5_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:31 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr7_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:32 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr9_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:33 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr11_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:34 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr13_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:35 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr15_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:36 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr17_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:37 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr19_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:38 | src.data.dataset_generator     | INFO   | saved data/raw/4f0e2fd0/test_snr21_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:38 | src.data.dataset_generator     | INFO   | split 'test': 14 files generated, 20000 symbols per combination (combos=14)
+2026-10-17 08:31:38 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:38 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:31:52 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 08:31:52 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:31:52 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:32:01 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 08:32:02 | src.data.data_loader           | INFO   | split 'test': 280000 total samples, x shape=(280000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:02 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:32:38 | src.experiments.pipeline       | INFO   | Split 'test': 280000 samples
+2026-10-17 08:32:40 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 08:32:41 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 08:32:41 | __main__                       | INFO   | Architecture: blind_stat
+2026-10-17 08:32:46 | src.evaluation.compare_baselines | WARNING | Fallback style for unknown architecture: 'blind_stat'
+2026-10-17 08:32:47 | src.evaluation.compare_baselines | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k1_doppler_full.pdf
+2026-10-17 08:32:47 | src.experiments.pipeline       | INFO   | Overlay saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k1_doppler_full.pdf
+2026-10-17 08:32:47 | __main__                       | INFO   | RSS [ber_vs_snr k1_doppler_full scenario done] = 1.50 GB
+2026-10-17 08:32:47 | __main__                       | INFO   | --- Scenario: k3_doppler_full ---
+2026-10-17 08:32:47 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/fa8b6843, generating...
+2026-10-17 08:32:48 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr-5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:48 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr-3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:48 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr-1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:49 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:49 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:50 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:32:50 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr7_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:51 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr9_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:51 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr11_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-17 08:32:51 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr13_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:52 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr15_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:52 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr17_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:53 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr19_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:53 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/train_snr21_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:53 | src.data.dataset_generator     | INFO   | split 'train': 14 files generated, 7500 symbols per combination (combos=14)
+2026-10-17 08:32:53 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr-5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:32:54 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr-3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:54 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr-1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:54 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:32:55 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:32:55 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:55 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr7_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:56 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr9_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.801e-05]
+2026-10-17 08:32:56 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr11_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:56 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr13_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:56 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr15_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-17 08:32:57 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr17_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:32:57 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr19_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:57 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/val_snr21_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:32:57 | src.data.dataset_generator     | INFO   | split 'val': 14 files generated, 5000 symbols per combination (combos=14)
+2026-10-17 08:32:59 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr-5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:00 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr-3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:01 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr-1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:02 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:03 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:04 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:06 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr7_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:07 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr9_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:08 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr11_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:09 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr13_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:10 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr15_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:11 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr17_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:12 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr19_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:14 | src.data.dataset_generator     | INFO   | saved data/raw/fa8b6843/test_snr21_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:14 | src.data.dataset_generator     | INFO   | split 'test': 14 files generated, 20000 symbols per combination (combos=14)
+2026-10-17 08:33:14 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:14 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:33:28 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 08:33:28 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:28 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:33:37 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 08:33:37 | src.data.data_loader           | INFO   | split 'test': 280000 total samples, x shape=(280000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:33:38 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:34:14 | src.experiments.pipeline       | INFO   | Split 'test': 280000 samples
+2026-10-17 08:34:14 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 08:34:15 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 08:34:15 | __main__                       | INFO   | Architecture: blind_stat
+2026-10-17 08:34:20 | src.evaluation.compare_baselines | WARNING | Fallback style for unknown architecture: 'blind_stat'
+2026-10-17 08:34:20 | src.evaluation.compare_baselines | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_doppler_full.pdf
+2026-10-17 08:34:20 | src.experiments.pipeline       | INFO   | Overlay saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_doppler_full.pdf
+2026-10-17 08:34:21 | __main__                       | INFO   | RSS [ber_vs_snr k3_doppler_full scenario done] = 1.78 GB
+2026-10-17 08:34:21 | __main__                       | INFO   | --- Scenario: k3_doppler_limited ---
+2026-10-17 08:34:21 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/f50f23d2, generating...
+2026-10-17 08:34:21 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr-5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.007e-06, 2.402e-05]
+2026-10-17 08:34:21 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr-3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:22 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr-1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.011e-06, 2.401e-05]
+2026-10-17 08:34:22 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.006e-06, 2.401e-05]
+2026-10-17 08:34:23 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:23 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.008e-06, 2.401e-05]
+2026-10-17 08:34:24 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr7_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.008e-06, 2.402e-05]
+2026-10-17 08:34:24 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr9_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.010e-06, 2.401e-05]
+2026-10-17 08:34:24 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr11_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.014e-06, 2.401e-05]
+2026-10-17 08:34:25 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr13_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.009e-06, 2.402e-05]
+2026-10-17 08:34:25 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr15_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.008e-06, 2.402e-05]
+2026-10-17 08:34:26 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr17_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.009e-06, 2.402e-05]
+2026-10-17 08:34:26 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr19_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:27 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/train_snr21_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [8.010e-06, 2.402e-05]
+2026-10-17 08:34:27 | src.data.dataset_generator     | INFO   | split 'train': 14 files generated, 7500 symbols per combination (combos=14)
+2026-10-17 08:34:27 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr-5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.010e-06, 2.401e-05]
+2026-10-17 08:34:27 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr-3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.009e-06, 2.402e-05]
+2026-10-17 08:34:28 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr-1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.010e-06, 2.401e-05]
+2026-10-17 08:34:28 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.008e-06, 2.401e-05]
+2026-10-17 08:34:28 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.009e-06, 2.401e-05]
+2026-10-17 08:34:28 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.007e-06, 2.401e-05]
+2026-10-17 08:34:29 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr7_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.007e-06, 2.402e-05]
+2026-10-17 08:34:29 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr9_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.006e-06, 2.400e-05]
+2026-10-17 08:34:29 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr11_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.009e-06, 2.401e-05]
+2026-10-17 08:34:30 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr13_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.009e-06, 2.402e-05]
+2026-10-17 08:34:30 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr15_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.007e-06, 2.401e-05]
+2026-10-17 08:34:30 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr17_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.009e-06, 2.401e-05]
+2026-10-17 08:34:30 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr19_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.007e-06, 2.401e-05]
+2026-10-17 08:34:31 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/val_snr21_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [8.007e-06, 2.401e-05]
+2026-10-17 08:34:31 | src.data.dataset_generator     | INFO   | split 'val': 14 files generated, 5000 symbols per combination (combos=14)
+2026-10-17 08:34:32 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr-5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:33 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr-3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:34 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr-1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:35 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.007e-06, 2.401e-05]
+2026-10-17 08:34:37 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.401e-05]
+2026-10-17 08:34:38 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.007e-06, 2.402e-05]
+2026-10-17 08:34:39 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr7_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:40 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr9_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:41 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr11_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:43 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr13_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:44 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr15_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:45 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr17_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:46 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr19_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.007e-06, 2.402e-05]
+2026-10-17 08:34:47 | src.data.dataset_generator     | INFO   | saved data/raw/f50f23d2/test_snr21_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:47 | src.data.dataset_generator     | INFO   | split 'test': 14 files generated, 20000 symbols per combination (combos=14)
+2026-10-17 08:34:47 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [3.00, 27.00], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:34:48 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:35:02 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 08:35:02 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [3.00, 27.00], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:35:02 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:35:11 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 08:35:12 | src.data.data_loader           | INFO   | split 'test': 280000 total samples, x shape=(280000, 100), tau in [3.00, 27.00], f_d in [8.006e-06, 2.402e-05]
+2026-10-17 08:35:12 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:35:48 | src.experiments.pipeline       | INFO   | Split 'test': 280000 samples
+2026-10-17 08:35:48 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 08:35:49 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 08:35:49 | __main__                       | INFO   | Architecture: blind_stat
+2026-10-17 08:35:54 | src.evaluation.compare_baselines | WARNING | Fallback style for unknown architecture: 'blind_stat'
+2026-10-17 08:35:54 | src.evaluation.compare_baselines | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_doppler_limited.pdf
+2026-10-17 08:35:54 | src.experiments.pipeline       | INFO   | Overlay saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_doppler_limited.pdf
+2026-10-17 08:35:55 | __main__                       | INFO   | RSS [ber_vs_snr k3_doppler_limited scenario done] = 1.78 GB
+2026-10-17 08:35:55 | __main__                       | INFO   | --- Scenario: iod_peers ---
+2026-10-17 08:35:55 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/32118386, generating...
+2026-10-17 08:35:55 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr-5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:35:56 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr-3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:35:56 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr-1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:35:57 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:35:57 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:35:58 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:35:58 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr7_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:35:59 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr9_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:35:59 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr11_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-17 08:36:00 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr13_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:00 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr15_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:01 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr17_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:01 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr19_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:02 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/train_snr21_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:02 | src.data.dataset_generator     | INFO   | split 'train': 14 files generated, 7500 symbols per combination (combos=14)
+2026-10-17 08:36:02 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr-5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:36:02 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr-3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:03 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr-1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:03 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:36:03 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:36:04 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:04 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr7_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:04 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr9_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.801e-05]
+2026-10-17 08:36:05 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr11_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:05 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr13_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:05 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr15_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-17 08:36:06 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr17_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:36:06 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr19_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:06 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/val_snr21_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:06 | src.data.dataset_generator     | INFO   | split 'val': 14 files generated, 5000 symbols per combination (combos=14)
+2026-10-17 08:36:08 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr-5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:09 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr-3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:10 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr-1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:12 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:13 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:14 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:16 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr7_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:17 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr9_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:19 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr11_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:20 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr13_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:21 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr15_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:23 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr17_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:24 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr19_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:25 | src.data.dataset_generator     | INFO   | saved data/raw/32118386/test_snr21_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:25 | src.data.dataset_generator     | INFO   | split 'test': 14 files generated, 20000 symbols per combination (combos=14)
+2026-10-17 08:36:26 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:26 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:36:39 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 08:36:40 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:40 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:36:49 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 08:36:50 | src.data.data_loader           | INFO   | split 'test': 280000 total samples, x shape=(280000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:36:50 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:37:25 | src.experiments.pipeline       | INFO   | Split 'test': 280000 samples
+2026-10-17 08:37:26 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 08:37:27 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 08:37:27 | __main__                       | INFO   | Architecture: blind_stat
+2026-10-17 08:37:32 | src.evaluation.compare_baselines | WARNING | Fallback style for unknown architecture: 'blind_stat'
+2026-10-17 08:37:32 | src.evaluation.compare_baselines | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_iod_peers.pdf
+2026-10-17 08:37:32 | src.experiments.pipeline       | INFO   | Overlay saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_iod_peers.pdf
+2026-10-17 08:37:33 | __main__                       | INFO   | RSS [ber_vs_snr iod_peers scenario done] = 1.78 GB
+2026-10-17 08:37:33 | __main__                       | INFO   | --- Scenario: k1_ablation_log_uniform ---
+2026-10-17 08:37:33 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/196a86d4, generating...
+2026-10-17 08:37:33 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr-5_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [5.123e-10, 8.000e-05]
+2026-10-17 08:37:33 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr-3_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [1.469e-08, 7.997e-05]
+2026-10-17 08:37:34 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr-1_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [2.723e-08, 7.999e-05]
+2026-10-17 08:37:34 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr1_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [3.223e-08, 7.998e-05]
+2026-10-17 08:37:35 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr3_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [2.007e-08, 7.999e-05]
+2026-10-17 08:37:35 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr5_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [1.977e-08, 7.999e-05]
+2026-10-17 08:37:35 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr7_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [1.223e-09, 7.998e-05]
+2026-10-17 08:37:36 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr9_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [9.979e-10, 7.999e-05]
+2026-10-17 08:37:36 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr11_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [1.370e-08, 8.000e-05]
+2026-10-17 08:37:36 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr13_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [2.273e-09, 8.000e-05]
+2026-10-17 08:37:37 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr15_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [5.939e-09, 7.997e-05]
+2026-10-17 08:37:37 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr17_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [1.867e-08, 7.999e-05]
+2026-10-17 08:37:37 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr19_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [3.120e-10, 8.000e-05]
+2026-10-17 08:37:38 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/train_snr21_echo1.npz: 7500 symbols, x shape=(7500, 100), tau in [1, 33], f_d in [6.065e-09, 7.997e-05]
+2026-10-17 08:37:38 | src.data.dataset_generator     | INFO   | split 'train': 14 files generated, 7500 symbols per combination (combos=14)
+2026-10-17 08:37:38 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr-5_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [2.454e-08, 7.999e-05]
+2026-10-17 08:37:38 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr-3_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [2.144e-08, 7.999e-05]
+2026-10-17 08:37:39 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr-1_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [2.573e-10, 8.000e-05]
+2026-10-17 08:37:39 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr1_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [2.121e-08, 7.998e-05]
+2026-10-17 08:37:39 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr3_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [2.391e-08, 7.994e-05]
+2026-10-17 08:37:39 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr5_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [4.377e-09, 8.000e-05]
+2026-10-17 08:37:39 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr7_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [4.595e-10, 7.997e-05]
+2026-10-17 08:37:40 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr9_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [8.012e-09, 7.998e-05]
+2026-10-17 08:37:40 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr11_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [3.124e-09, 8.000e-05]
+2026-10-17 08:37:40 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr13_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [7.868e-09, 7.998e-05]
+2026-10-17 08:37:40 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr15_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [1.013e-08, 7.999e-05]
+2026-10-17 08:37:41 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr17_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [1.550e-09, 7.999e-05]
+2026-10-17 08:37:41 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr19_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [2.254e-08, 7.998e-05]
+2026-10-17 08:37:41 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/val_snr21_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [1, 33], f_d in [1.250e-08, 7.997e-05]
+2026-10-17 08:37:41 | src.data.dataset_generator     | INFO   | split 'val': 14 files generated, 5000 symbols per combination (combos=14)
+2026-10-17 08:37:42 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr-5_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [5.907e-09, 7.999e-05]
+2026-10-17 08:37:43 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr-3_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [7.431e-10, 7.999e-05]
+2026-10-17 08:37:44 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr-1_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [3.074e-09, 8.000e-05]
+2026-10-17 08:37:45 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr1_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [4.446e-09, 7.999e-05]
+2026-10-17 08:37:46 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr3_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [6.471e-09, 7.999e-05]
+2026-10-17 08:37:47 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr5_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [2.703e-09, 8.000e-05]
+2026-10-17 08:37:48 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr7_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [8.244e-09, 7.997e-05]
+2026-10-17 08:37:49 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr9_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [3.030e-08, 8.000e-05]
+2026-10-17 08:37:50 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr11_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [4.338e-09, 7.999e-05]
+2026-10-17 08:37:50 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr13_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [6.262e-10, 8.000e-05]
+2026-10-17 08:37:51 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr15_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [8.955e-10, 7.999e-05]
+2026-10-17 08:37:52 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr17_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [7.527e-10, 8.000e-05]
+2026-10-17 08:37:53 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr19_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [8.022e-09, 8.000e-05]
+2026-10-17 08:37:54 | src.data.dataset_generator     | INFO   | saved data/raw/196a86d4/test_snr21_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [1, 33], f_d in [3.473e-10, 7.999e-05]
+2026-10-17 08:37:54 | src.data.dataset_generator     | INFO   | split 'test': 14 files generated, 20000 symbols per combination (combos=14)
+2026-10-17 08:37:55 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [1.00, 33.00], f_d in [3.120e-10, 8.000e-05]
+2026-10-17 08:37:55 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:38:08 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 08:38:08 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [1.00, 33.00], f_d in [2.573e-10, 8.000e-05]
+2026-10-17 08:38:08 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:38:17 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 08:38:18 | src.data.data_loader           | INFO   | split 'test': 280000 total samples, x shape=(280000, 100), tau in [1.00, 33.00], f_d in [3.473e-10, 8.000e-05]
+2026-10-17 08:38:18 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:38:54 | src.experiments.pipeline       | INFO   | Split 'test': 280000 samples
+2026-10-17 08:38:58 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 08:39:00 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 08:39:00 | __main__                       | INFO   | Architecture: blind_stat
+2026-10-17 08:39:06 | src.evaluation.compare_baselines | WARNING | Fallback style for unknown architecture: 'blind_stat'
+2026-10-17 08:39:06 | src.evaluation.compare_baselines | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k1_ablation_log_uniform.pdf
+2026-10-17 08:39:06 | src.experiments.pipeline       | INFO   | Overlay saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k1_ablation_log_uniform.pdf
+2026-10-17 08:39:06 | __main__                       | INFO   | RSS [ber_vs_snr k1_ablation_log_uniform scenario done] = 1.78 GB
+2026-10-17 08:39:06 | __main__                       | INFO   | --- Scenario: k3_b_tdl_d_retrained ---
+2026-10-17 08:39:06 | src.experiments.pipeline       | INFO   | Dataset already present in data/raw/fa8b6843
+2026-10-17 08:39:07 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:39:07 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:39:21 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 08:39:21 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:39:21 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:39:30 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 08:39:31 | src.data.data_loader           | INFO   | split 'test': 280000 total samples, x shape=(280000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:39:31 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:40:07 | src.experiments.pipeline       | INFO   | Split 'test': 280000 samples
+2026-10-17 08:40:07 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 08:40:08 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 08:40:08 | __main__                       | INFO   | Architecture: blind_stat
+2026-10-17 08:40:13 | src.evaluation.compare_baselines | WARNING | Fallback style for unknown architecture: 'blind_stat'
+2026-10-17 08:40:13 | src.evaluation.compare_baselines | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_b_tdl_d_retrained.pdf
+2026-10-17 08:40:13 | src.experiments.pipeline       | INFO   | Overlay saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_b_tdl_d_retrained.pdf
+2026-10-17 08:40:14 | __main__                       | INFO   | RSS [ber_vs_snr k3_b_tdl_d_retrained scenario done] = 1.78 GB
+2026-10-17 08:40:14 | __main__                       | INFO   | --- Scenario: k3_ambiguity_mix ---
+2026-10-17 08:40:14 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/a2f18efa, generating...
+2026-10-17 08:40:14 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr-5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:15 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr-3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:15 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr-1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:16 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr1_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:16 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr3_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:16 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr5_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:40:17 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr7_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:17 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr9_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:18 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr11_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.603e-05, 4.803e-05]
+2026-10-17 08:40:18 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr13_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:19 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr15_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:19 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr17_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:19 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr19_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:20 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/train_snr21_echo3.npz: 7500 symbols, x shape=(7500, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:20 | src.data.dataset_generator     | INFO   | split 'train': 14 files generated, 7500 symbols per combination (combos=14)
+2026-10-17 08:40:20 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr-5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:40:21 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr-3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:21 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr-1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:21 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:40:21 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.602e-05, 4.802e-05]
+2026-10-17 08:40:22 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:22 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr7_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:22 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr9_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.601e-05, 4.801e-05]
+2026-10-17 08:40:23 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr11_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:23 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr13_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:23 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr15_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.601e-05, 4.802e-05]
+2026-10-17 08:40:23 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr17_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.602e-05, 4.803e-05]
+2026-10-17 08:40:24 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr19_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:24 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/val_snr21_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:24 | src.data.dataset_generator     | INFO   | split 'val': 14 files generated, 5000 symbols per combination (combos=14)
+2026-10-17 08:40:25 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr-5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:26 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr-3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:28 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr-1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:29 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:30 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:31 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:32 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr7_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:33 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr9_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:34 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr11_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:36 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr13_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:37 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr15_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:38 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr17_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:39 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr19_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:40 | src.data.dataset_generator     | INFO   | saved data/raw/a2f18efa/test_snr21_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [7, 13], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:40 | src.data.dataset_generator     | INFO   | split 'test': 14 files generated, 20000 symbols per combination (combos=14)
+2026-10-17 08:40:40 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [7.00, 13.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:40 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:40:54 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 08:40:54 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [7.00, 13.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:40:55 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:41:04 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 08:41:05 | src.data.data_loader           | INFO   | split 'test': 280000 total samples, x shape=(280000, 100), tau in [7.00, 13.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:41:05 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:41:41 | src.experiments.pipeline       | INFO   | Split 'test': 280000 samples
+2026-10-17 08:41:44 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 08:41:47 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 08:41:47 | __main__                       | INFO   | Architecture: blind_stat
+2026-10-17 08:41:52 | src.evaluation.compare_baselines | WARNING | Fallback style for unknown architecture: 'blind_stat'
+2026-10-17 08:41:52 | src.evaluation.compare_baselines | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_ambiguity_mix.pdf
+2026-10-17 08:41:52 | src.experiments.pipeline       | INFO   | Overlay saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_ambiguity_mix.pdf
+2026-10-17 08:41:53 | __main__                       | INFO   | RSS [ber_vs_snr k3_ambiguity_mix scenario done] = 1.78 GB
+2026-10-17 08:41:53 | __main__                       | INFO   | --- Scenario: k3_doppler_control ---
+2026-10-17 08:41:53 | src.experiments.pipeline       | INFO   | Dataset already present in data/raw/fa8b6843
+2026-10-17 08:41:53 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:41:53 | src.data.data_loader           | INFO   | balancing verified: 7500 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:42:07 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-17 08:42:07 | src.data.data_loader           | INFO   | split 'val': 70000 total samples, x shape=(70000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:42:07 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:42:16 | src.experiments.pipeline       | INFO   | Split 'val': 70000 samples
+2026-10-17 08:42:17 | src.data.data_loader           | INFO   | split 'test': 280000 total samples, x shape=(280000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-17 08:42:17 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 14 (SNR, K) combinations
+2026-10-17 08:42:53 | src.experiments.pipeline       | INFO   | Split 'test': 280000 samples
+2026-10-17 08:42:53 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-17 08:42:54 | src.data.data_loader           | INFO   | dataset built: n=70000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-17 08:42:54 | __main__                       | INFO   | Architecture: blind_stat
+2026-10-17 08:42:59 | src.evaluation.compare_baselines | WARNING | Fallback style for unknown architecture: 'blind_stat'
+2026-10-17 08:42:59 | src.evaluation.compare_baselines | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_doppler_control.pdf
+2026-10-17 08:42:59 | src.experiments.pipeline       | INFO   | Overlay saved to /content/drive/MyDrive/DHUC_RUN/w2_cross/full/ber_vs_snr/plots/ber_vs_snr_k3_doppler_control.pdf
+2026-10-17 08:43:00 | __main__                       | INFO   | RSS [ber_vs_snr k3_doppler_control scenario done] = 1.78 GB
+2026-10-17 08:43:00 | __main__                       | INFO   | ber_vs_snr experiment completed.
+2026-10-17 08:43:00 | __main__                       | INFO   | Experiment ber_vs_snr completed successfully.
+2026-10-17 08:43:00 | __main__                       | INFO   | ================================================================================
+2026-10-17 08:43:00 | __main__                       | INFO   | SUMMARY
+2026-10-17 08:43:00 | __main__                       | INFO   | ================================================================================
+2026-10-17 08:43:00 | __main__                       | INFO   | ber_vs_snr: OK
+2026-10-17 08:43:00 | __main__                       | INFO   | All requested experiments finished. Output in: /content/drive/MyDrive/DHUC_RUN/w2_cross

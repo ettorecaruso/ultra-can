@@ -1,0 +1,87 @@
+BENCH_PREP stage=ref     runs=20 min_us=14 median_us=14 p95_us=14 max_us=14 mean_us=14.00
+BENCH_PREP stage=sic     runs=20 min_us=35 median_us=36 p95_us=36 max_us=36 mean_us=35.95
+BENCH_PREP stage=profile runs=20 min_us=494 median_us=494 p95_us=495 max_us=500 mean_us=494.35
+BENCH_PREP stage=total   runs=20 min_us=544 median_us=544 p95_us=544 max_us=550 mean_us=544.30
+PREP_CHECK profile_argmax=7 peak=13.1016
+PREP_PROFILE p1=0.5549 p2=0.5405 p3=-0.1256
+=== qkv-int8 : 80688 bytes flatbuffer ===
+MODEL qkv-int8 inputs=2 outputs=2 arena_used=190040 heap=8565099
+OUTPUT idx=0 type=9 bytes=33 data=0x3fc95450 dims=1x33
+OUTPUT idx=1 type=9 bytes=2 data=0x3fc96e10 dims=1x2
+INPUT idx=0 type=9 bytes=99 data=0x3fcbff60 dims=1x99
+INPUT idx=1 type=9 bytes=200 data=0x3fc95450 dims=1x100x2
+PROFILE qkv-int8 tags=11
+OP RESHAPE            calls=6 total_us=129 avg_us=21.5
+OP CONV_2D            calls=2 total_us=4602 avg_us=2301.0
+OP ADD                calls=2 total_us=3308 avg_us=1654.0
+OP FULLY_CONNECTED    calls=9 total_us=20131 avg_us=2236.8
+OP TRANSPOSE          calls=4 total_us=1341 avg_us=335.2
+OP BATCH_MATMUL       calls=2 total_us=99855 avg_us=49927.5
+OP MUL                calls=1 total_us=28175 avg_us=28175.0
+OP SOFTMAX            calls=1 total_us=28156 avg_us=28156.0
+OP MEAN               calls=1 total_us=3752 avg_us=3752.0
+OP REDUCE_MAX         calls=1 total_us=3839 avg_us=3839.0
+OP CONCATENATION      calls=1 total_us=62 avg_us=62.0
+RUN qkv-int8 i=0 us=193652
+RUN qkv-int8 i=1 us=193641
+RUN qkv-int8 i=2 us=193640
+RUN qkv-int8 i=3 us=193619
+RUN qkv-int8 i=4 us=193653
+RUN qkv-int8 i=5 us=193638
+RUN qkv-int8 i=6 us=193642
+RUN qkv-int8 i=7 us=193625
+RUN qkv-int8 i=8 us=193633
+RUN qkv-int8 i=9 us=193648
+RUN qkv-int8 i=10 us=193647
+RUN qkv-int8 i=11 us=193626
+RUN qkv-int8 i=12 us=193639
+RUN qkv-int8 i=13 us=193629
+RUN qkv-int8 i=14 us=193659
+RUN qkv-int8 i=15 us=193631
+RUN qkv-int8 i=16 us=193642
+RUN qkv-int8 i=17 us=193632
+RUN qkv-int8 i=18 us=193632
+RUN qkv-int8 i=19 us=193640
+BENCH qkv-int8 warmup=5 runs=20 min_us=193619 median_us=193640 p95_us=193653 max_us=193659 mean_us=193638.4 arena_used=190040 heap=8564935
+=== conv1d-int8 : 46704 bytes flatbuffer ===
+MODEL conv1d-int8 inputs=2 outputs=2 arena_used=24776 heap=8565099
+OUTPUT idx=0 type=9 bytes=33 data=0x3fc95450 dims=1x33
+OUTPUT idx=1 type=9 bytes=2 data=0x3fc95580 dims=1x2
+INPUT idx=0 type=9 bytes=99 data=0x3fc99fd0 dims=1x99
+INPUT idx=1 type=9 bytes=200 data=0x3fc95450 dims=1x100x2
+PROFILE conv1d-int8 tags=8
+OP RESHAPE            calls=4 total_us=45 avg_us=11.2
+OP CONV_2D            calls=3 total_us=5515 avg_us=1838.3
+OP FULLY_CONNECTED    calls=5 total_us=429 avg_us=85.8
+OP SOFTMAX            calls=1 total_us=486 avg_us=486.0
+OP MUL                calls=1 total_us=2353 avg_us=2353.0
+OP SUM                calls=1 total_us=3711 avg_us=3711.0
+OP REDUCE_MAX         calls=1 total_us=3811 avg_us=3811.0
+OP CONCATENATION      calls=1 total_us=31 avg_us=31.0
+RUN conv1d-int8 i=0 us=17029
+RUN conv1d-int8 i=1 us=16889
+RUN conv1d-int8 i=2 us=16940
+RUN conv1d-int8 i=3 us=16851
+RUN conv1d-int8 i=4 us=16932
+RUN conv1d-int8 i=5 us=16886
+RUN conv1d-int8 i=6 us=16933
+RUN conv1d-int8 i=7 us=16848
+RUN conv1d-int8 i=8 us=16948
+RUN conv1d-int8 i=9 us=16877
+RUN conv1d-int8 i=10 us=16911
+RUN conv1d-int8 i=11 us=16872
+RUN conv1d-int8 i=12 us=16952
+RUN conv1d-int8 i=13 us=16875
+RUN conv1d-int8 i=14 us=16917
+RUN conv1d-int8 i=15 us=16874
+RUN conv1d-int8 i=16 us=16945
+RUN conv1d-int8 i=17 us=16874
+RUN conv1d-int8 i=18 us=16916
+RUN conv1d-int8 i=19 us=16884
+BENCH conv1d-int8 warmup=5 runs=20 min_us=16848 median_us=16911 p95_us=16952 max_us=17029 mean_us=16907.7 arena_used=24776 heap=8564935
+BENCH_DONE heap=8565099
+BENCH_ALIVE t=11621645
+BENCH_ALIVE t=16617726
+BENCH_ALIVE t=21617726
+BENCH_ALIVE t=26617726
+BENCH_ALIVE t=31617726

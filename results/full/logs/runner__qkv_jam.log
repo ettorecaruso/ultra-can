@@ -1,0 +1,803 @@
+2026-10-16 06:43:57 | root                           | INFO   | Logging configured: file=/content/drive/MyDrive/DHUC_RUN/qkv_jam/full/logs/runner.log level=INFO
+2026-10-16 06:43:57 | __main__                       | INFO   | Mode: full
+2026-10-16 06:43:57 | __main__                       | INFO   | Run root: /content/drive/MyDrive/DHUC_RUN/qkv_jam/full
+2026-10-16 06:43:57 | __main__                       | INFO   | Models: qkv
+2026-10-16 06:43:57 | __main__                       | INFO   | No dataset regeneration: False
+2026-10-16 06:43:57 | __main__                       | INFO   | ================================================================================
+2026-10-16 06:43:57 | __main__                       | INFO   | EXPERIMENT jamming
+2026-10-16 06:43:57 | __main__                       | INFO   | ================================================================================
+2026-10-16 06:43:57 | __main__                       | INFO   | experiment_name = jamming_full
+2026-10-16 06:43:57 | __main__                       | INFO   | seed = 42
+2026-10-16 06:43:57 | __main__                       | INFO   | lambda_mse = 2
+2026-10-16 06:43:57 | __main__                       | INFO   | sequence_length = 100
+2026-10-16 06:43:57 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-16 06:43:57 | __main__                       | INFO   | backbone_type = qkv
+2026-10-16 06:43:57 | __main__                       | INFO   | epochs = 30
+2026-10-16 06:43:57 | src.utils.config_loader        | INFO   | config snapshot saved: /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/logs/config_used.yaml
+2026-10-16 06:43:57 | __main__                       | INFO   | ============================================================
+2026-10-16 06:43:57 | __main__                       | INFO   | Experiment jamming: jamming robustness + explainability
+2026-10-16 06:43:57 | __main__                       | INFO   | ============================================================
+2026-10-16 06:43:57 | __main__                       | INFO   | jamming: --model=qkv -> models filtered to: ['qkv']
+2026-10-16 06:43:57 | __main__                       | INFO   | Models to test: ['qkv']
+2026-10-16 06:43:57 | src.experiments.pipeline       | INFO   | Dataset not found in data/raw/01634829, generating...
+2026-10-16 06:43:57 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr-5_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-16 06:43:58 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr-5_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:43:58 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr-3_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-16 06:43:58 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr-3_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:43:58 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr-1_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-16 06:43:59 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr-1_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:43:59 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr1_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-16 06:43:59 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr1_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:43:59 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr3_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-16 06:43:59 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr3_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:43:59 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr5_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:00 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr5_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:00 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr7_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:00 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr7_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:00 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr9_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:01 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr9_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-16 06:44:01 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr11_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-16 06:44:01 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr11_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:01 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr13_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:01 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr13_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:02 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr15_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.603e-05, 4.799e-05]
+2026-10-16 06:44:02 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr15_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-16 06:44:02 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr17_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-16 06:44:02 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr17_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:02 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr19_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-16 06:44:03 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr19_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.603e-05, 4.802e-05]
+2026-10-16 06:44:03 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr21_echo1.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.603e-05, 4.803e-05]
+2026-10-16 06:44:03 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/train_snr21_echo3.npz: 3750 symbols, x shape=(3750, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:03 | src.data.dataset_generator     | INFO   | split 'train': 28 files generated, 3750 symbols per combination (combos=28)
+2026-10-16 06:44:03 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr-5_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-16 06:44:04 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr-5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:04 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr-3_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:04 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr-3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-16 06:44:04 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr-1_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-16 06:44:05 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr-1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:05 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr1_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:05 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr1_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.801e-05]
+2026-10-16 06:44:06 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr3_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:06 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr3_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:06 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr5_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.802e-05]
+2026-10-16 06:44:06 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr5_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:07 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr7_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:07 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr7_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:07 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr9_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.604e-05, 4.803e-05]
+2026-10-16 06:44:08 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr9_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:08 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr11_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.603e-05, 4.802e-05]
+2026-10-16 06:44:08 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr11_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.603e-05, 4.802e-05]
+2026-10-16 06:44:08 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr13_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-16 06:44:09 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr13_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-16 06:44:09 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr15_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.802e-05]
+2026-10-16 06:44:09 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr15_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:09 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr17_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:10 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr17_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:10 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr19_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:10 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr19_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:11 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr21_echo1.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:11 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/val_snr21_echo3.npz: 5000 symbols, x shape=(5000, 100), tau in [3, 27], f_d in [1.604e-05, 4.801e-05]
+2026-10-16 06:44:11 | src.data.dataset_generator     | INFO   | split 'val': 28 files generated, 5000 symbols per combination (combos=28)
+2026-10-16 06:44:12 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr-5_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:13 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr-5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:14 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr-3_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:15 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr-3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:16 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr-1_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:18 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr-1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:19 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr1_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:20 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr1_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:21 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr3_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:22 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr3_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:23 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr5_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:25 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr5_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:26 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr7_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:27 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr7_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:28 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr9_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:30 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr9_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:31 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr11_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:32 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr11_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:33 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr13_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:34 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr13_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:35 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr15_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:37 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr15_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:38 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr17_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:39 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr17_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.602e-05, 4.803e-05]
+2026-10-16 06:44:40 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr19_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:42 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr19_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:43 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr21_echo1.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:44 | src.data.dataset_generator     | INFO   | saved data/raw/01634829/test_snr21_echo3.npz: 20000 symbols, x shape=(20000, 100), tau in [3, 27], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:44 | src.data.dataset_generator     | INFO   | split 'test': 28 files generated, 20000 symbols per combination (combos=28)
+2026-10-16 06:44:45 | src.data.data_loader           | INFO   | split 'test': 560000 total samples, x shape=(560000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:44:46 | src.data.data_loader           | INFO   | balancing verified: 20000 samples for each of the 28 (SNR, K) combinations
+2026-10-16 06:46:03 | src.experiments.pipeline       | INFO   | Static test set loaded: 560000 samples
+2026-10-16 06:46:03 | __main__                       | INFO   | ============================================================
+2026-10-16 06:46:03 | __main__                       | INFO   | Model: qkv
+2026-10-16 06:46:03 | __main__                       | INFO   | ============================================================
+2026-10-16 06:46:03 | src.experiments.pipeline       | INFO   | Dataset already present in data/raw/01634829
+2026-10-16 06:46:03 | src.data.data_loader           | INFO   | split 'train': 105000 total samples, x shape=(105000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:46:03 | src.data.data_loader           | INFO   | balancing verified: 3750 samples for each of the 28 (SNR, K) combinations
+2026-10-16 06:46:18 | src.experiments.pipeline       | INFO   | Split 'train': 105000 samples
+2026-10-16 06:46:18 | src.data.data_loader           | INFO   | split 'val': 140000 total samples, x shape=(140000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 06:46:18 | src.data.data_loader           | INFO   | balancing verified: 5000 samples for each of the 28 (SNR, K) combinations
+2026-10-16 06:46:38 | src.experiments.pipeline       | INFO   | Split 'val': 140000 samples
+2026-10-16 06:46:41 | src.data.data_loader           | INFO   | dataset built: n=105000, batch_size=128, feature_mode=iq, shuffle=True, seed=42
+2026-10-16 06:46:41 | src.data.data_loader           | INFO   | dataset built: n=140000, batch_size=128, feature_mode=iq, shuffle=False, seed=42
+2026-10-16 06:46:41 | src.experiments.pipeline       | INFO   | build_model 'qkv': model seed applied = 15 (from model.seeds.qkv, dataset seed stays 42)
+2026-10-16 06:46:43 | src.models.heads               | INFO   | communication_head built: input_dim=64, units=128, M=2, params=8578
+2026-10-16 06:46:43 | src.models.heads               | INFO   | sensing_head built: input_dim=227, units=32, output_units=33, params=8385
+2026-10-16 06:46:46 | src.models.ultra_can_qkv       | INFO   | model 'ultra_can_qkv' built: comm=8578 params, sensing=8385 params, TOTAL=44195 params, lambda_mse=2
+2026-10-16 06:46:46 | src.experiments.pipeline       | INFO   | Model 'ultra_can_qkv' built: 44195 trainable parameters.
+2026-10-16 06:46:46 | src.experiments.pipeline       | INFO   | Training for 30 epochs, lambda_mse=2.0000
+2026-10-16 06:46:46 | src.training.trainer           | INFO   | Trainer initialized: lambda_mse = 2.0
+2026-10-16 06:46:47 | src.training.trainer           | INFO   | categorical sensing target: loss_weights={'comm': 1.0, 'sensing': 2.0} (sparse CE on lag logits)
+2026-10-16 06:46:47 | src.training.trainer           | INFO   | Model compiled: loss_weights = {'comm': 1.0, 'sensing': 2.0}, lr=0.001000, optimizer=adam, label_smoothing=0.1, lr_schedule=cosine, sensing_range_penalty=1.0, sensing_component_weights=None
+2026-10-16 06:46:48 | src.training.trainer           | INFO   | Callbacks configured: 5
+2026-10-16 06:46:48 | src.training.trainer           | INFO   | Starting training: epochs=30, batch_size=128
+2026-10-16 06:53:57 | src.training.trainer           | INFO   | History saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/logs/history.csv
+2026-10-16 06:53:57 | src.training.trainer           | INFO   | Metadata saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/logs/run_metadata.json
+2026-10-16 06:53:57 | src.training.trainer           | INFO   | Training completed in 30 epochs. Best val_loss = 1.766636, best loss = 1.623371
+2026-10-16 06:53:58 | src.training.trainer           | INFO   | Best weights reloaded from /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/logs/best_weights.weights.h5 before evaluation/saving
+2026-10-16 06:53:58 | src.evaluation.evaluator       | INFO   | ONLINE evaluation over 14 SNR points (batch=100000, max_symbols=2000000, floor BER=2.5e-07)
+2026-10-16 07:00:44 | src.evaluation.evaluator       | INFO   | Online evaluation completed for 14 SNR points
+2026-10-16 07:00:44 | src.experiments.pipeline       | INFO   | Metrics saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/metrics.csv
+2026-10-16 07:00:46 | src.evaluation.evaluator       | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/plots/ber_vs_snr_ultra_can_qkv.pdf
+2026-10-16 07:00:46 | src.experiments.pipeline       | INFO   | BER vs SNR plot saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/plots/ber_vs_snr_ultra_can_qkv.pdf
+2026-10-16 07:00:46 | src.experiments.pipeline       | INFO   | Model saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/best_model.keras
+2026-10-16 07:00:46 | src.utils.config_loader        | INFO   | config snapshot saved: /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/logs/config_used.yaml
+2026-10-16 07:00:46 | src.evaluation.evaluator       | INFO   | ONLINE evaluation over 14 SNR points (batch=100000, max_symbols=2000000, floor BER=2.5e-07)
+2026-10-16 07:07:17 | src.evaluation.evaluator       | INFO   | Online evaluation completed for 14 SNR points
+2026-10-16 07:07:17 | __main__                       | INFO   | Sensing OK: corr(tau) max = 0.956, MSE_tau high-SNR = 32.08
+2026-10-16 07:07:17 | __main__                       | INFO   | Sensing head matches its peak picker: corr(tau) 0.956 vs 1.000, exact delay rate 0.829 vs 0.728
+2026-10-16 07:07:17 | __main__                       | WARNING | fD is not resolvable from the current parameters (max corr(fD) = 0.000): the Doppler phase accumulated over N_seq=100 samples with max_doppler=8e-05 is ~0.05 rad (Cramer-Rao bound). Estimating fD requires longer windows or a larger max_doppler.
+2026-10-16 07:07:18 | src.evaluation.evaluator       | INFO   | BER plot saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/plots/ber_vs_snr_ultra_can_qkv.pdf
+2026-10-16 07:07:18 | src.experiments.pipeline       | INFO   | Starting jamming evaluation for JSR = [-10.0, -8.0, -6.0, -4.0, -2.0, 0.0, 2.0, 4.0, 6.0, 8.0, 10.0], types = ['cw', 'barrage', 'partial_band'], max_symbols = 40000, realizations = 5
+2026-10-16 07:07:18 | src.experiments.run_jamming    | INFO   | Running baseline evaluation...
+2026-10-16 07:07:18 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:11:38 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:11:39 | src.experiments.run_jamming    | INFO   | Baseline saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/baseline_metrics.csv
+2026-10-16 07:11:39 | src.experiments.run_jamming    | INFO   | Baseline mean BER = 0.014349
+2026-10-16 07:11:39 | src.experiments.jamming_interpretability | INFO   | [jamming] test set thinned to 40000 of 560000 symbols per realization
+2026-10-16 07:11:39 | src.experiments.run_jamming    | INFO   | Processing jamming: cw (5 realization(s))
+2026-10-16 07:11:39 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:00 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:00 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=-10.0 dB | BER=0.04493
+2026-10-16 07:12:00 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:10 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:10 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=-8.0 dB | BER=0.10369
+2026-10-16 07:12:11 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:14 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:14 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=-6.0 dB | BER=0.26028
+2026-10-16 07:12:15 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:17 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:17 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=-4.0 dB | BER=0.43443
+2026-10-16 07:12:17 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:19 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:19 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=-2.0 dB | BER=0.49777
+2026-10-16 07:12:19 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:22 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:22 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=0.0 dB | BER=0.50837
+2026-10-16 07:12:22 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:24 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:24 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=2.0 dB | BER=0.51032
+2026-10-16 07:12:24 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:27 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:27 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=4.0 dB | BER=0.51032
+2026-10-16 07:12:27 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:29 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:29 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=6.0 dB | BER=0.51032
+2026-10-16 07:12:29 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:31 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:31 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=8.0 dB | BER=0.51032
+2026-10-16 07:12:32 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:34 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:34 | src.experiments.run_jamming    | INFO   | jamming cw r=0 JSR=10.0 dB | BER=0.51032
+2026-10-16 07:12:34 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:12:57 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:12:57 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=-10.0 dB | BER=0.03448
+2026-10-16 07:12:57 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:13 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:13 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=-8.0 dB | BER=0.06911
+2026-10-16 07:13:13 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:18 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:18 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=-6.0 dB | BER=0.17682
+2026-10-16 07:13:18 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:21 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:21 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=-4.0 dB | BER=0.36305
+2026-10-16 07:13:22 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:24 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:24 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=-2.0 dB | BER=0.47480
+2026-10-16 07:13:24 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:26 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:26 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=0.0 dB | BER=0.50670
+2026-10-16 07:13:26 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:29 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:29 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=2.0 dB | BER=0.51032
+2026-10-16 07:13:29 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:31 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:31 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=4.0 dB | BER=0.51032
+2026-10-16 07:13:31 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:34 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:34 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=6.0 dB | BER=0.51032
+2026-10-16 07:13:34 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:36 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:36 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=8.0 dB | BER=0.51032
+2026-10-16 07:13:36 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:13:38 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:13:38 | src.experiments.run_jamming    | INFO   | jamming cw r=1 JSR=10.0 dB | BER=0.51032
+2026-10-16 07:13:38 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:14:02 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:14:02 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=-10.0 dB | BER=0.01550
+2026-10-16 07:14:02 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:14:26 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:14:26 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=-8.0 dB | BER=0.01612
+2026-10-16 07:14:26 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:14:51 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:14:51 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=-6.0 dB | BER=0.01662
+2026-10-16 07:14:52 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:15:17 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:15:17 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=-4.0 dB | BER=0.01793
+2026-10-16 07:15:17 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:15:42 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:15:42 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=-2.0 dB | BER=0.01919
+2026-10-16 07:15:42 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:16:06 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:16:06 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=0.0 dB | BER=0.02054
+2026-10-16 07:16:06 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:16:29 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:16:29 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=2.0 dB | BER=0.02385
+2026-10-16 07:16:29 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:16:52 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:16:52 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=4.0 dB | BER=0.03082
+2026-10-16 07:16:52 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:17:14 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:17:14 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=6.0 dB | BER=0.04325
+2026-10-16 07:17:14 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:17:30 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:17:31 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=8.0 dB | BER=0.07863
+2026-10-16 07:17:31 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:17:35 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:17:35 | src.experiments.run_jamming    | INFO   | jamming cw r=2 JSR=10.0 dB | BER=0.21575
+2026-10-16 07:17:36 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:17:59 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:17:59 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=-10.0 dB | BER=0.02292
+2026-10-16 07:17:59 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:21 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:21 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=-8.0 dB | BER=0.04273
+2026-10-16 07:18:21 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:29 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:29 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=-6.0 dB | BER=0.11380
+2026-10-16 07:18:30 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:33 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:33 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=-4.0 dB | BER=0.30073
+2026-10-16 07:18:33 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:36 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:36 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=-2.0 dB | BER=0.44903
+2026-10-16 07:18:36 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:38 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:38 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=0.0 dB | BER=0.48549
+2026-10-16 07:18:38 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:41 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:41 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=2.0 dB | BER=0.48912
+2026-10-16 07:18:41 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:43 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:43 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=4.0 dB | BER=0.48968
+2026-10-16 07:18:43 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:45 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:45 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=6.0 dB | BER=0.48968
+2026-10-16 07:18:46 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:48 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:48 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=8.0 dB | BER=0.48968
+2026-10-16 07:18:48 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:18:50 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:18:50 | src.experiments.run_jamming    | INFO   | jamming cw r=3 JSR=10.0 dB | BER=0.48968
+2026-10-16 07:18:50 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:14 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:14 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=-10.0 dB | BER=0.02994
+2026-10-16 07:19:14 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:30 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:30 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=-8.0 dB | BER=0.06765
+2026-10-16 07:19:30 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:35 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:35 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=-6.0 dB | BER=0.19802
+2026-10-16 07:19:35 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:38 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:38 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=-4.0 dB | BER=0.38132
+2026-10-16 07:19:38 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:40 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:40 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=-2.0 dB | BER=0.46894
+2026-10-16 07:19:40 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:43 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:43 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=0.0 dB | BER=0.48661
+2026-10-16 07:19:43 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:45 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:45 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=2.0 dB | BER=0.48884
+2026-10-16 07:19:45 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:48 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:48 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=4.0 dB | BER=0.48968
+2026-10-16 07:19:48 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:50 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:50 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=6.0 dB | BER=0.48968
+2026-10-16 07:19:50 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:53 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:53 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=8.0 dB | BER=0.48968
+2026-10-16 07:19:53 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:19:55 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:19:55 | src.experiments.run_jamming    | INFO   | jamming cw r=4 JSR=10.0 dB | BER=0.48968
+2026-10-16 07:19:55 | src.experiments.run_jamming    | INFO   | Results for cw saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/jamming_results_cw.csv
+2026-10-16 07:19:55 | src.experiments.run_jamming    | INFO   | Per-realization results for cw saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/jamming_realizations_cw.csv
+2026-10-16 07:19:55 | src.experiments.run_jamming    | INFO   | Processing jamming: barrage (5 realization(s))
+2026-10-16 07:19:56 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:20:21 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:20:21 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=-10.0 dB | BER=0.01707
+2026-10-16 07:20:21 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:20:45 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:20:45 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=-8.0 dB | BER=0.01872
+2026-10-16 07:20:46 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:21:10 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:21:10 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=-6.0 dB | BER=0.02181
+2026-10-16 07:21:10 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:21:33 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:21:33 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=-4.0 dB | BER=0.02849
+2026-10-16 07:21:33 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:21:55 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:21:55 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=-2.0 dB | BER=0.04168
+2026-10-16 07:21:55 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:22:12 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:22:12 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=0.0 dB | BER=0.06885
+2026-10-16 07:22:13 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:22:21 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:22:21 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=2.0 dB | BER=0.12026
+2026-10-16 07:22:22 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:22:27 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:22:27 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=4.0 dB | BER=0.19651
+2026-10-16 07:22:27 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:22:31 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:22:31 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=6.0 dB | BER=0.27809
+2026-10-16 07:22:31 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:22:34 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:22:34 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=8.0 dB | BER=0.36421
+2026-10-16 07:22:34 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:22:37 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:22:37 | src.experiments.run_jamming    | INFO   | jamming barrage r=0 JSR=10.0 dB | BER=0.42020
+2026-10-16 07:22:37 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:23:02 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:23:02 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=-10.0 dB | BER=0.01724
+2026-10-16 07:23:02 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:23:26 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:23:26 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=-8.0 dB | BER=0.01983
+2026-10-16 07:23:26 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:23:49 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:23:49 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=-6.0 dB | BER=0.02446
+2026-10-16 07:23:49 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:24:13 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:24:13 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=-4.0 dB | BER=0.03108
+2026-10-16 07:24:13 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:24:35 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:24:35 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=-2.0 dB | BER=0.04389
+2026-10-16 07:24:35 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:24:52 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:24:52 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=0.0 dB | BER=0.07117
+2026-10-16 07:24:52 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:25:01 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:25:01 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=2.0 dB | BER=0.12036
+2026-10-16 07:25:01 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:25:06 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:25:06 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=4.0 dB | BER=0.19615
+2026-10-16 07:25:06 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:25:10 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:25:10 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=6.0 dB | BER=0.26972
+2026-10-16 07:25:10 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:25:14 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:25:14 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=8.0 dB | BER=0.35268
+2026-10-16 07:25:14 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:25:16 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:25:16 | src.experiments.run_jamming    | INFO   | jamming barrage r=1 JSR=10.0 dB | BER=0.42411
+2026-10-16 07:25:16 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:25:41 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:25:41 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=-10.0 dB | BER=0.01755
+2026-10-16 07:25:41 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:26:05 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:26:05 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=-8.0 dB | BER=0.01975
+2026-10-16 07:26:05 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:26:29 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:26:29 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=-6.0 dB | BER=0.02403
+2026-10-16 07:26:29 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:26:52 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:26:52 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=-4.0 dB | BER=0.02965
+2026-10-16 07:26:52 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:27:14 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:27:14 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=-2.0 dB | BER=0.04275
+2026-10-16 07:27:14 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:27:32 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:27:32 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=0.0 dB | BER=0.06764
+2026-10-16 07:27:32 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:27:41 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:27:41 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=2.0 dB | BER=0.11308
+2026-10-16 07:27:41 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:27:47 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:27:47 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=4.0 dB | BER=0.18837
+2026-10-16 07:27:47 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:27:51 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:27:51 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=6.0 dB | BER=0.27125
+2026-10-16 07:27:51 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:27:54 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:27:54 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=8.0 dB | BER=0.36663
+2026-10-16 07:27:54 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:27:57 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:27:57 | src.experiments.run_jamming    | INFO   | jamming barrage r=2 JSR=10.0 dB | BER=0.42727
+2026-10-16 07:27:57 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:28:21 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:28:21 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=-10.0 dB | BER=0.01763
+2026-10-16 07:28:21 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:28:45 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:28:45 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=-8.0 dB | BER=0.01979
+2026-10-16 07:28:45 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:29:09 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:29:09 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=-6.0 dB | BER=0.02292
+2026-10-16 07:29:09 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:29:32 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:29:32 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=-4.0 dB | BER=0.02927
+2026-10-16 07:29:32 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:29:54 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:29:54 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=-2.0 dB | BER=0.04193
+2026-10-16 07:29:54 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:30:11 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:30:11 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=0.0 dB | BER=0.06850
+2026-10-16 07:30:11 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:30:20 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:30:20 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=2.0 dB | BER=0.11903
+2026-10-16 07:30:20 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:30:26 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:30:26 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=4.0 dB | BER=0.19652
+2026-10-16 07:30:26 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:30:29 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:30:29 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=6.0 dB | BER=0.27627
+2026-10-16 07:30:30 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:30:33 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:30:33 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=8.0 dB | BER=0.34673
+2026-10-16 07:30:33 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:30:36 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:30:36 | src.experiments.run_jamming    | INFO   | jamming barrage r=3 JSR=10.0 dB | BER=0.40885
+2026-10-16 07:30:36 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:31:00 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:31:00 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=-10.0 dB | BER=0.01818
+2026-10-16 07:31:00 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:31:24 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:31:24 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=-8.0 dB | BER=0.01994
+2026-10-16 07:31:24 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:31:48 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:31:48 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=-6.0 dB | BER=0.02344
+2026-10-16 07:31:48 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:32:10 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:32:10 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=-4.0 dB | BER=0.03005
+2026-10-16 07:32:11 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:32:33 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:32:33 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=-2.0 dB | BER=0.04337
+2026-10-16 07:32:33 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:32:50 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:32:50 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=0.0 dB | BER=0.06834
+2026-10-16 07:32:50 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:32:59 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:32:59 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=2.0 dB | BER=0.12003
+2026-10-16 07:32:59 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:33:04 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:33:04 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=4.0 dB | BER=0.18936
+2026-10-16 07:33:04 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:33:08 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:33:08 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=6.0 dB | BER=0.27674
+2026-10-16 07:33:08 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:33:11 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:33:11 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=8.0 dB | BER=0.35584
+2026-10-16 07:33:11 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:33:14 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:33:14 | src.experiments.run_jamming    | INFO   | jamming barrage r=4 JSR=10.0 dB | BER=0.41871
+2026-10-16 07:33:14 | src.experiments.run_jamming    | INFO   | Results for barrage saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/jamming_results_barrage.csv
+2026-10-16 07:33:14 | src.experiments.run_jamming    | INFO   | Per-realization results for barrage saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/jamming_realizations_barrage.csv
+2026-10-16 07:33:14 | src.experiments.run_jamming    | INFO   | Processing jamming: partial_band (5 realization(s))
+2026-10-16 07:33:14 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:33:38 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:33:38 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=-10.0 dB | BER=0.02073
+2026-10-16 07:33:38 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:02 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:02 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=-8.0 dB | BER=0.02975
+2026-10-16 07:34:02 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:23 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:23 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=-6.0 dB | BER=0.05363
+2026-10-16 07:34:23 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:32 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:32 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=-4.0 dB | BER=0.10737
+2026-10-16 07:34:32 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:37 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:37 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=-2.0 dB | BER=0.23586
+2026-10-16 07:34:37 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:40 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:40 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=0.0 dB | BER=0.37119
+2026-10-16 07:34:40 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:42 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:42 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=2.0 dB | BER=0.46233
+2026-10-16 07:34:42 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:44 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:44 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=4.0 dB | BER=0.49526
+2026-10-16 07:34:45 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:47 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:47 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=6.0 dB | BER=0.50502
+2026-10-16 07:34:47 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:49 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:49 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=8.0 dB | BER=0.50837
+2026-10-16 07:34:49 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:34:52 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:34:52 | src.experiments.run_jamming    | INFO   | jamming partial_band r=0 JSR=10.0 dB | BER=0.50921
+2026-10-16 07:34:52 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:35:16 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:35:16 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=-10.0 dB | BER=0.02033
+2026-10-16 07:35:16 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:35:40 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:35:40 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=-8.0 dB | BER=0.02913
+2026-10-16 07:35:40 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:35:58 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:35:58 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=-6.0 dB | BER=0.06087
+2026-10-16 07:35:58 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:04 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:04 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=-4.0 dB | BER=0.16304
+2026-10-16 07:36:04 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:07 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:07 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=-2.0 dB | BER=0.32896
+2026-10-16 07:36:07 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:10 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:10 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=0.0 dB | BER=0.44234
+2026-10-16 07:36:10 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:12 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:12 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=2.0 dB | BER=0.47963
+2026-10-16 07:36:12 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:15 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:15 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=4.0 dB | BER=0.48856
+2026-10-16 07:36:15 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:17 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:17 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=6.0 dB | BER=0.48968
+2026-10-16 07:36:17 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:19 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:19 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=8.0 dB | BER=0.48968
+2026-10-16 07:36:19 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:22 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:22 | src.experiments.run_jamming    | INFO   | jamming partial_band r=1 JSR=10.0 dB | BER=0.48968
+2026-10-16 07:36:22 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:36:45 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:36:45 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=-10.0 dB | BER=0.03063
+2026-10-16 07:36:45 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:02 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:02 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=-8.0 dB | BER=0.06457
+2026-10-16 07:37:02 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:08 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:08 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=-6.0 dB | BER=0.16717
+2026-10-16 07:37:08 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:11 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:11 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=-4.0 dB | BER=0.34552
+2026-10-16 07:37:11 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:14 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:14 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=-2.0 dB | BER=0.44745
+2026-10-16 07:37:14 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:16 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:16 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=0.0 dB | BER=0.48214
+2026-10-16 07:37:16 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:18 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:18 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=2.0 dB | BER=0.48884
+2026-10-16 07:37:18 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:21 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:21 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=4.0 dB | BER=0.48940
+2026-10-16 07:37:21 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:23 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:23 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=6.0 dB | BER=0.48940
+2026-10-16 07:37:23 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:26 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:26 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=8.0 dB | BER=0.48968
+2026-10-16 07:37:26 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:28 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:28 | src.experiments.run_jamming    | INFO   | jamming partial_band r=2 JSR=10.0 dB | BER=0.48968
+2026-10-16 07:37:28 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:37:52 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:37:52 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=-10.0 dB | BER=0.02108
+2026-10-16 07:37:52 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:15 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:15 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=-8.0 dB | BER=0.03429
+2026-10-16 07:38:15 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:28 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:28 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=-6.0 dB | BER=0.08045
+2026-10-16 07:38:28 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:33 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:33 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=-4.0 dB | BER=0.20742
+2026-10-16 07:38:33 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:36 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:36 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=-2.0 dB | BER=0.37556
+2026-10-16 07:38:36 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:39 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:39 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=0.0 dB | BER=0.46159
+2026-10-16 07:38:39 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:41 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:41 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=2.0 dB | BER=0.48354
+2026-10-16 07:38:41 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:44 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:44 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=4.0 dB | BER=0.48884
+2026-10-16 07:38:44 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:46 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:46 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=6.0 dB | BER=0.48968
+2026-10-16 07:38:46 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:48 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:48 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=8.0 dB | BER=0.48968
+2026-10-16 07:38:48 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:38:51 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:38:51 | src.experiments.run_jamming    | INFO   | jamming partial_band r=3 JSR=10.0 dB | BER=0.48968
+2026-10-16 07:38:51 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:39:15 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:39:15 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=-10.0 dB | BER=0.01936
+2026-10-16 07:39:15 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:39:39 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:39:39 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=-8.0 dB | BER=0.02257
+2026-10-16 07:39:39 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:02 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:02 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=-6.0 dB | BER=0.03509
+2026-10-16 07:40:02 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:20 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:20 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=-4.0 dB | BER=0.06250
+2026-10-16 07:40:21 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:28 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:28 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=-2.0 dB | BER=0.13368
+2026-10-16 07:40:28 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:33 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:33 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=0.0 dB | BER=0.26023
+2026-10-16 07:40:33 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:36 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:36 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=2.0 dB | BER=0.38467
+2026-10-16 07:40:36 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:38 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:38 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=4.0 dB | BER=0.46624
+2026-10-16 07:40:38 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:41 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:41 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=6.0 dB | BER=0.49330
+2026-10-16 07:40:41 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:43 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:43 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=8.0 dB | BER=0.50223
+2026-10-16 07:40:43 | src.evaluation.evaluator       | INFO   | Starting evaluation over 14 SNR points
+2026-10-16 07:40:46 | src.evaluation.evaluator       | INFO   | Evaluation completed for 14 SNR points
+2026-10-16 07:40:46 | src.experiments.run_jamming    | INFO   | jamming partial_band r=4 JSR=10.0 dB | BER=0.50614
+2026-10-16 07:40:46 | src.experiments.run_jamming    | INFO   | Results for partial_band saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/jamming_results_partial_band.csv
+2026-10-16 07:40:46 | src.experiments.run_jamming    | INFO   | Per-realization results for partial_band saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/jamming_realizations_partial_band.csv
+2026-10-16 07:40:47 | src.experiments.run_jamming    | INFO   | Overlay plot saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/plots/ber_vs_jsr_overlay.pdf
+2026-10-16 07:40:47 | src.experiments.run_jamming    | INFO   | Jammed vs clean plot saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/plots/ber_vs_jsr_qkv_vs_clean.pdf
+2026-10-16 07:40:48 | src.experiments.run_jamming    | INFO   | Separate plot for cw saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/plots/ber_vs_jsr_cw.pdf
+2026-10-16 07:40:48 | src.experiments.run_jamming    | INFO   | Separate plot for barrage saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/plots/ber_vs_jsr_barrage.pdf
+2026-10-16 07:40:49 | src.experiments.run_jamming    | INFO   | Separate plot for partial_band saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/plots/ber_vs_jsr_partial_band.pdf
+2026-10-16 07:40:49 | src.experiments.pipeline       | INFO   | Jamming evaluation completed. Results saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming
+2026-10-16 07:40:49 | __main__                       | INFO   | Jamming vs clean ber_vs_snr comparison saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/jamming/ber_vs_jsr_qkv_vs_clean.pdf
+2026-10-16 07:40:50 | __main__                       | INFO   | RSS [jamming qkv] = 3.95 GB
+2026-10-16 07:40:51 | __main__                       | INFO   | Multi-model plot saved to /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/plots/ber_vs_jsr_all_models.pdf
+2026-10-16 07:40:51 | __main__                       | INFO   | jamming experiment completed.
+2026-10-16 07:40:51 | __main__                       | INFO   | Experiment jamming completed successfully.
+2026-10-16 07:40:51 | __main__                       | INFO   | ================================================================================
+2026-10-16 07:40:51 | __main__                       | INFO   | SUMMARY
+2026-10-16 07:40:51 | __main__                       | INFO   | ================================================================================
+2026-10-16 07:40:51 | __main__                       | INFO   | jamming: OK
+2026-10-16 07:40:51 | __main__                       | INFO   | All requested experiments finished. Output in: /content/drive/MyDrive/DHUC_RUN/qkv_jam
+2026-10-16 07:41:00 | root                           | INFO   | Logging configured: file=/content/drive/MyDrive/DHUC_RUN/qkv_jam/full/logs/runner.log level=INFO
+2026-10-16 07:41:00 | __main__                       | INFO   | Mode: full
+2026-10-16 07:41:00 | __main__                       | INFO   | Run root: /content/drive/MyDrive/DHUC_RUN/qkv_jam/full
+2026-10-16 07:41:00 | __main__                       | INFO   | Models: qkv
+2026-10-16 07:41:00 | __main__                       | INFO   | No dataset regeneration: False
+2026-10-16 07:41:00 | __main__                       | INFO   | ================================================================================
+2026-10-16 07:41:00 | __main__                       | INFO   | EXPERIMENT jamming_interpretability
+2026-10-16 07:41:00 | __main__                       | INFO   | ================================================================================
+2026-10-16 07:41:00 | __main__                       | INFO   | experiment_name = jamming_interpretability_full
+2026-10-16 07:41:00 | __main__                       | INFO   | seed = 42
+2026-10-16 07:41:00 | __main__                       | INFO   | lambda_mse = 2
+2026-10-16 07:41:00 | __main__                       | INFO   | sequence_length = 100
+2026-10-16 07:41:00 | __main__                       | INFO   | map_type = logistic / map_param = 3.9
+2026-10-16 07:41:00 | __main__                       | INFO   | backbone_type = qkv
+2026-10-16 07:41:00 | __main__                       | INFO   | epochs = 30
+2026-10-16 07:41:00 | src.utils.config_loader        | INFO   | config snapshot saved: /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming_interpretability/logs/config_used.yaml
+2026-10-16 07:41:00 | __main__                       | INFO   | Experiment jamming_interpretability (models=['qkv'])
+2026-10-16 07:41:00 | __main__                       | INFO   |   snr_eval=[-1.0, 3.0, 7.0, 11.0, 15.0, 21.0] jsr=[-10.0, -6.0, -2.0, 2.0, 6.0, 10.0] jammer=['cw', 'barrage', 'partial_band'] ret_subset=3000 realizations=5/{} max_symbols=None
+2026-10-16 07:41:00 | src.experiments.pipeline       | INFO   | Dataset already present in data/raw/01634829
+2026-10-16 07:41:01 | src.data.data_loader           | INFO   | split 'test': 240000 total samples, x shape=(240000, 100), tau in [3.00, 27.00], f_d in [1.601e-05, 4.803e-05]
+2026-10-16 07:41:33 | __main__                       | INFO   | jamming_interpretability: test set of 240000 samples (SNR [-1.0, 3.0, 7.0, 11.0, 15.0, 21.0])
+2026-10-16 07:41:33 | __main__                       | INFO   | ============================================================
+2026-10-16 07:41:33 | __main__                       | INFO   | jamming_interpretability architecture: qkv
+2026-10-16 07:41:33 | __main__                       | INFO   | jamming_interpretability qkv: jamming model loaded from /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming/qkv/best_model.keras
+2026-10-16 07:41:35 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] probe ready: 7 captured layers
+2026-10-16 07:42:56 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] clean | BER=0.0048 corr_tau=0.669 margin=2.87 (81 s)
+2026-10-16 07:44:15 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR= -10.0 dB r=0 | BER=0.0245 corr_tau=0.662 margin=2.70 (78 s)
+2026-10-16 07:45:32 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -6.0 dB r=0 | BER=0.1805 corr_tau=0.646 margin=1.81 (77 s)
+2026-10-16 07:46:49 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -2.0 dB r=0 | BER=0.4752 corr_tau=0.616 margin=0.22 (77 s)
+2026-10-16 07:48:05 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   2.0 dB r=0 | BER=0.4999 corr_tau=0.578 margin=-0.02 (76 s)
+2026-10-16 07:49:21 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   6.0 dB r=0 | BER=0.5000 corr_tau=0.512 margin=-0.05 (76 s)
+2026-10-16 07:50:37 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  10.0 dB r=0 | BER=0.5000 corr_tau=0.353 margin=-0.05 (77 s)
+2026-10-16 07:51:54 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR= -10.0 dB r=1 | BER=0.0174 corr_tau=0.662 margin=2.76 (76 s)
+2026-10-16 07:53:10 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -6.0 dB r=1 | BER=0.1160 corr_tau=0.648 margin=2.16 (76 s)
+2026-10-16 07:54:27 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -2.0 dB r=1 | BER=0.4339 corr_tau=0.613 margin=0.47 (77 s)
+2026-10-16 07:55:43 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   2.0 dB r=1 | BER=0.4994 corr_tau=0.564 margin=-0.02 (76 s)
+2026-10-16 07:56:59 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   6.0 dB r=1 | BER=0.5000 corr_tau=0.470 margin=-0.05 (76 s)
+2026-10-16 07:58:15 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  10.0 dB r=1 | BER=0.5000 corr_tau=0.324 margin=-0.06 (76 s)
+2026-10-16 07:59:31 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR= -10.0 dB r=2 | BER=0.0052 corr_tau=0.661 margin=2.86 (76 s)
+2026-10-16 08:00:46 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -6.0 dB r=2 | BER=0.0060 corr_tau=0.649 margin=2.83 (76 s)
+2026-10-16 08:02:02 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -2.0 dB r=2 | BER=0.0080 corr_tau=0.624 margin=2.76 (75 s)
+2026-10-16 08:03:17 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   2.0 dB r=2 | BER=0.0114 corr_tau=0.574 margin=2.52 (76 s)
+2026-10-16 08:04:33 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   6.0 dB r=2 | BER=0.0249 corr_tau=0.489 margin=1.75 (76 s)
+2026-10-16 08:05:49 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  10.0 dB r=2 | BER=0.1313 corr_tau=0.276 margin=0.87 (76 s)
+2026-10-16 08:07:05 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR= -10.0 dB r=3 | BER=0.0104 corr_tau=0.654 margin=2.81 (76 s)
+2026-10-16 08:08:20 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -6.0 dB r=3 | BER=0.0644 corr_tau=0.629 margin=2.45 (76 s)
+2026-10-16 08:09:36 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -2.0 dB r=3 | BER=0.4058 corr_tau=0.573 margin=0.69 (76 s)
+2026-10-16 08:10:52 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   2.0 dB r=3 | BER=0.4994 corr_tau=0.511 margin=0.07 (75 s)
+2026-10-16 08:12:07 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   6.0 dB r=3 | BER=0.5000 corr_tau=0.394 margin=0.03 (75 s)
+2026-10-16 08:13:22 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  10.0 dB r=3 | BER=0.5000 corr_tau=0.189 margin=-0.00 (75 s)
+2026-10-16 08:14:37 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR= -10.0 dB r=4 | BER=0.0144 corr_tau=0.657 margin=2.78 (75 s)
+2026-10-16 08:15:53 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -6.0 dB r=4 | BER=0.1195 corr_tau=0.635 margin=2.14 (75 s)
+2026-10-16 08:17:08 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  -2.0 dB r=4 | BER=0.4557 corr_tau=0.590 margin=0.39 (75 s)
+2026-10-16 08:18:22 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   2.0 dB r=4 | BER=0.4998 corr_tau=0.539 margin=0.07 (75 s)
+2026-10-16 08:19:38 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=   6.0 dB r=4 | BER=0.5000 corr_tau=0.418 margin=0.02 (75 s)
+2026-10-16 08:20:53 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] cw          JSR=  10.0 dB r=4 | BER=0.5000 corr_tau=0.187 margin=-0.03 (75 s)
+2026-10-16 08:22:09 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR= -10.0 dB r=0 | BER=0.0065 corr_tau=0.660 margin=2.84 (75 s)
+2026-10-16 08:23:24 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -6.0 dB r=0 | BER=0.0101 corr_tau=0.646 margin=2.79 (75 s)
+2026-10-16 08:24:39 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -2.0 dB r=0 | BER=0.0244 corr_tau=0.616 margin=2.62 (75 s)
+2026-10-16 08:25:53 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   2.0 dB r=0 | BER=0.0847 corr_tau=0.563 margin=2.11 (74 s)
+2026-10-16 08:27:08 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   6.0 dB r=0 | BER=0.2311 corr_tau=0.447 margin=1.24 (75 s)
+2026-10-16 08:28:23 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  10.0 dB r=0 | BER=0.3879 corr_tau=0.215 margin=0.63 (75 s)
+2026-10-16 08:29:42 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR= -10.0 dB r=1 | BER=0.0064 corr_tau=0.661 margin=2.84 (77 s)
+2026-10-16 08:30:58 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -6.0 dB r=1 | BER=0.0097 corr_tau=0.648 margin=2.79 (77 s)
+2026-10-16 08:32:14 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -2.0 dB r=1 | BER=0.0241 corr_tau=0.618 margin=2.62 (75 s)
+2026-10-16 08:33:29 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   2.0 dB r=1 | BER=0.0848 corr_tau=0.566 margin=2.11 (75 s)
+2026-10-16 08:34:44 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   6.0 dB r=1 | BER=0.2308 corr_tau=0.447 margin=1.24 (75 s)
+2026-10-16 08:35:59 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  10.0 dB r=1 | BER=0.3889 corr_tau=0.223 margin=0.62 (75 s)
+2026-10-16 08:37:15 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR= -10.0 dB r=2 | BER=0.0064 corr_tau=0.661 margin=2.84 (75 s)
+2026-10-16 08:38:29 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -6.0 dB r=2 | BER=0.0098 corr_tau=0.648 margin=2.79 (74 s)
+2026-10-16 08:39:43 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -2.0 dB r=2 | BER=0.0238 corr_tau=0.620 margin=2.63 (74 s)
+2026-10-16 08:40:59 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   2.0 dB r=2 | BER=0.0840 corr_tau=0.565 margin=2.12 (76 s)
+2026-10-16 08:42:15 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   6.0 dB r=2 | BER=0.2311 corr_tau=0.446 margin=1.24 (76 s)
+2026-10-16 08:43:32 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  10.0 dB r=2 | BER=0.3867 corr_tau=0.218 margin=0.63 (76 s)
+2026-10-16 08:44:49 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR= -10.0 dB r=3 | BER=0.0065 corr_tau=0.661 margin=2.84 (76 s)
+2026-10-16 08:46:05 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -6.0 dB r=3 | BER=0.0097 corr_tau=0.649 margin=2.79 (76 s)
+2026-10-16 08:47:20 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -2.0 dB r=3 | BER=0.0241 corr_tau=0.620 margin=2.62 (75 s)
+2026-10-16 08:48:36 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   2.0 dB r=3 | BER=0.0846 corr_tau=0.567 margin=2.11 (75 s)
+2026-10-16 08:49:50 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   6.0 dB r=3 | BER=0.2309 corr_tau=0.447 margin=1.24 (75 s)
+2026-10-16 08:51:06 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  10.0 dB r=3 | BER=0.3876 corr_tau=0.219 margin=0.62 (76 s)
+2026-10-16 08:52:22 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR= -10.0 dB r=4 | BER=0.0064 corr_tau=0.660 margin=2.84 (75 s)
+2026-10-16 08:53:38 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -6.0 dB r=4 | BER=0.0098 corr_tau=0.647 margin=2.79 (76 s)
+2026-10-16 08:54:53 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  -2.0 dB r=4 | BER=0.0238 corr_tau=0.618 margin=2.62 (75 s)
+2026-10-16 08:56:09 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   2.0 dB r=4 | BER=0.0840 corr_tau=0.563 margin=2.11 (76 s)
+2026-10-16 08:57:25 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=   6.0 dB r=4 | BER=0.2314 corr_tau=0.442 margin=1.24 (76 s)
+2026-10-16 08:58:43 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] barrage     JSR=  10.0 dB r=4 | BER=0.3877 corr_tau=0.214 margin=0.63 (78 s)
+2026-10-16 09:00:01 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR= -10.0 dB r=0 | BER=0.0088 corr_tau=0.661 margin=2.82 (76 s)
+2026-10-16 09:01:16 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -6.0 dB r=0 | BER=0.0304 corr_tau=0.648 margin=2.65 (76 s)
+2026-10-16 09:02:32 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -2.0 dB r=0 | BER=0.1717 corr_tau=0.616 margin=1.84 (76 s)
+2026-10-16 09:03:48 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   2.0 dB r=0 | BER=0.4252 corr_tau=0.561 margin=0.54 (75 s)
+2026-10-16 09:05:03 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   6.0 dB r=0 | BER=0.4927 corr_tau=0.454 margin=0.09 (75 s)
+2026-10-16 09:06:18 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  10.0 dB r=0 | BER=0.4988 corr_tau=0.256 margin=-0.00 (76 s)
+2026-10-16 09:07:36 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR= -10.0 dB r=1 | BER=0.0084 corr_tau=0.657 margin=2.83 (75 s)
+2026-10-16 09:08:51 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -6.0 dB r=1 | BER=0.0339 corr_tau=0.637 margin=2.63 (76 s)
+2026-10-16 09:10:08 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -2.0 dB r=1 | BER=0.2485 corr_tau=0.592 margin=1.50 (76 s)
+2026-10-16 09:11:23 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   2.0 dB r=1 | BER=0.4826 corr_tau=0.524 margin=0.23 (76 s)
+2026-10-16 09:12:39 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   6.0 dB r=1 | BER=0.4999 corr_tau=0.368 margin=0.01 (76 s)
+2026-10-16 09:13:55 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  10.0 dB r=1 | BER=0.5000 corr_tau=0.166 margin=-0.10 (76 s)
+2026-10-16 09:15:13 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR= -10.0 dB r=2 | BER=0.0146 corr_tau=0.652 margin=2.78 (76 s)
+2026-10-16 09:16:28 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -6.0 dB r=2 | BER=0.1053 corr_tau=0.624 margin=2.23 (76 s)
+2026-10-16 09:17:44 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -2.0 dB r=2 | BER=0.4188 corr_tau=0.566 margin=0.61 (76 s)
+2026-10-16 09:18:59 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   2.0 dB r=2 | BER=0.4989 corr_tau=0.490 margin=0.08 (75 s)
+2026-10-16 09:20:14 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   6.0 dB r=2 | BER=0.5000 corr_tau=0.328 margin=0.03 (75 s)
+2026-10-16 09:21:30 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  10.0 dB r=2 | BER=0.5000 corr_tau=0.156 margin=-0.05 (76 s)
+2026-10-16 09:22:47 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR= -10.0 dB r=3 | BER=0.0094 corr_tau=0.656 margin=2.82 (75 s)
+2026-10-16 09:24:03 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -6.0 dB r=3 | BER=0.0452 corr_tau=0.634 margin=2.56 (76 s)
+2026-10-16 09:25:18 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -2.0 dB r=3 | BER=0.2961 corr_tau=0.586 margin=1.25 (75 s)
+2026-10-16 09:26:34 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   2.0 dB r=3 | BER=0.4903 corr_tau=0.509 margin=0.15 (75 s)
+2026-10-16 09:27:49 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   6.0 dB r=3 | BER=0.5000 corr_tau=0.365 margin=0.05 (76 s)
+2026-10-16 09:29:05 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  10.0 dB r=3 | BER=0.5000 corr_tau=0.173 margin=-0.02 (76 s)
+2026-10-16 09:30:22 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR= -10.0 dB r=4 | BER=0.0070 corr_tau=0.661 margin=2.84 (75 s)
+2026-10-16 09:31:38 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -6.0 dB r=4 | BER=0.0169 corr_tau=0.649 margin=2.74 (75 s)
+2026-10-16 09:32:53 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  -2.0 dB r=4 | BER=0.0892 corr_tau=0.619 margin=2.25 (75 s)
+2026-10-16 09:34:08 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   2.0 dB r=4 | BER=0.3261 corr_tau=0.561 margin=1.03 (75 s)
+2026-10-16 09:35:23 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=   6.0 dB r=4 | BER=0.4743 corr_tau=0.446 margin=0.27 (75 s)
+2026-10-16 09:36:38 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] partial_band JSR=  10.0 dB r=4 | BER=0.4955 corr_tau=0.243 margin=0.04 (75 s)
+2026-10-16 09:36:38 | src.experiments.jamming_interpretability | INFO   | [jamming_interpretability qkv] completed -> /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming_interpretability/qkv (conditions=19)
+2026-10-16 09:36:38 | __main__                       | INFO   | jamming_interpretability experiment completed. Output in /content/drive/MyDrive/DHUC_RUN/qkv_jam/full/jamming_interpretability
+2026-10-16 09:36:38 | __main__                       | INFO   | Experiment jamming_interpretability completed successfully.
+2026-10-16 09:36:38 | __main__                       | INFO   | ================================================================================
+2026-10-16 09:36:38 | __main__                       | INFO   | SUMMARY
+2026-10-16 09:36:38 | __main__                       | INFO   | ================================================================================
+2026-10-16 09:36:38 | __main__                       | INFO   | jamming_interpretability: OK
+2026-10-16 09:36:38 | __main__                       | INFO   | All requested experiments finished. Output in: /content/drive/MyDrive/DHUC_RUN/qkv_jam

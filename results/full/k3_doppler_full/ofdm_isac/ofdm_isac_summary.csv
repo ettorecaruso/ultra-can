@@ -1,0 +1,8 @@
+scenario,method,snr_db,n,exact_tau,medae_samples,peer_false,radar_exact_tau
+k3_doppler_full,chaotic_mf,21.0,200000,0.45484,6.0,0.0,
+k3_doppler_full,head_conv1d,21.0,200000,0.69169,0.0,0.0,0.45484
+k3_doppler_full,head_qkv,21.0,200000,0.6949,0.0,0.0,0.45484
+k3_doppler_full,ofdm_15k_all,21.0,200000,0.471125,5.0,0.0,
+k3_doppler_full,ofdm_60k_extcp_all,21.0,200000,0.47103,5.0,0.0,
+k3_doppler_full,peak_picker_ceiling,21.0,200000,0.478745,,,
+k3_doppler_full,peak_picker_ceiling_all_taps,21.0,200000,0.478745,,,

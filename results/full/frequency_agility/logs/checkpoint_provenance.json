@@ -1,0 +1,7 @@
+{
+  "frequency_agility:conv1d": {
+    "checkpoint": "/content/drive/MyDrive/DHUC_RUN/conv1d/full/ber_vs_snr/k3_doppler_full/conv1d/best_model.keras",
+    "preferred_scenario": "k3_doppler_full",
+    "matched_preferred_scenario": true
+  }
+}

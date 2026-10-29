@@ -1,0 +1,114 @@
+I (560) esp_psram: SPI SRAM memory test OK
+I (569) cpu_start: Pro cpu start user code
+I (569) cpu_start: cpu freq: 240000000 Hz
+I (569) app_init: Application information:
+I (569) app_init: Project name:     hello
+I (569) app_init: App version:      41bd77f-dirty
+I (569) app_init: Compile time:     Oct 22 2026 14:10:36
+I (569) app_init: ELF file SHA256:  a59316cb8...
+I (569) app_init: ESP-IDF:          6.1.0
+I (570) efuse_init: Min chip rev:     v0.0
+I (570) efuse_init: Max chip rev:     v0.99 
+I (570) efuse_init: Chip rev:         v0.2
+I (570) heap_init: Initializing. RAM available for dynamic allocation:
+I (570) heap_init: At 3FCC7600 len 00022110 (136 KiB): RAM
+I (570) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM
+I (571) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM
+I (571) heap_init: At 600FE000 len 00001FE8 (7 KiB): RTCRAM
+I (571) esp_psram: Adding pool of 8192K of PSRAM memory to heap allocator
+I (572) spi_flash: detected chip: generic
+I (572) spi_flash: flash io: dio
+W (572) spi_flash: Detected size(16384k) larger than the size in the binary image header(8192k). Using the size in the binary image header.
+I (573) sleep_gpio: Configure to isolate all GPIO pins in sleep state
+I (574) sleep_gpio: Enable automatic switching of GPIO sleep configuration
+I (574) main_task: Started on CPU0
+I (574) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations
+I (574) main_task: Calling app_main()
+BENCH_EARLY wdt_deinit=0
+BENCH_BOOT cores=2 rev=2 cpu_mhz=240 heap=8567515 psram=8388608
+ABI tf_tensor_bytes=40 bytes_offset=24 ptr_bytes=4 arena=196608
+CPU_CAL 1M_iter_us=54206 acc=1783293664
+=== qkv-int8 : 80688 bytes flatbuffer ===
+MODEL qkv-int8 inputs=2 outputs=2 arena_used=190040 heap=8567515
+OUTPUT idx=0 type=9 bytes=33 data=0x3fc94ae0 dims=1x33
+OUTPUT idx=1 type=9 bytes=2 data=0x3fc964a0 dims=1x2
+INPUT idx=0 type=9 bytes=99 data=0x3fcbf5f0 dims=1x99
+INPUT idx=1 type=9 bytes=200 data=0x3fc94ae0 dims=1x100x2
+PROFILE qkv-int8 tags=11
+OP RESHAPE            calls=6 total_us=138 avg_us=23.0
+OP CONV_2D            calls=2 total_us=4603 avg_us=2301.5
+OP ADD                calls=2 total_us=3274 avg_us=1637.0
+OP FULLY_CONNECTED    calls=9 total_us=20152 avg_us=2239.1
+OP TRANSPOSE          calls=4 total_us=1355 avg_us=338.8
+OP BATCH_MATMUL       calls=2 total_us=99863 avg_us=49931.5
+OP MUL                calls=1 total_us=28178 avg_us=28178.0
+OP SOFTMAX            calls=1 total_us=28160 avg_us=28160.0
+OP MEAN               calls=1 total_us=3754 avg_us=3754.0
+OP REDUCE_MAX         calls=1 total_us=3831 avg_us=3831.0
+OP CONCATENATION      calls=1 total_us=63 avg_us=63.0
+RUN qkv-int8 i=0 us=193704
+RUN qkv-int8 i=1 us=193690
+RUN qkv-int8 i=2 us=193649
+RUN qkv-int8 i=3 us=193660
+RUN qkv-int8 i=4 us=193680
+RUN qkv-int8 i=5 us=193641
+RUN qkv-int8 i=6 us=193673
+RUN qkv-int8 i=7 us=193660
+RUN qkv-int8 i=8 us=193666
+RUN qkv-int8 i=9 us=193653
+RUN qkv-int8 i=10 us=193667
+RUN qkv-int8 i=11 us=193652
+RUN qkv-int8 i=12 us=193672
+RUN qkv-int8 i=13 us=193657
+RUN qkv-int8 i=14 us=193665
+RUN qkv-int8 i=15 us=193655
+RUN qkv-int8 i=16 us=193676
+RUN qkv-int8 i=17 us=193645
+RUN qkv-int8 i=18 us=193673
+RUN qkv-int8 i=19 us=193658
+BENCH qkv-int8 warmup=5 runs=20 min_us=193641 median_us=193665 p95_us=193690 max_us=193704 mean_us=193664.8 arena_used=190040 heap=8567351
+=== conv1d-int8 : 46704 bytes flatbuffer ===
+MODEL conv1d-int8 inputs=2 outputs=2 arena_used=24776 heap=8567515
+OUTPUT idx=0 type=9 bytes=33 data=0x3fc94ae0 dims=1x33
+OUTPUT idx=1 type=9 bytes=2 data=0x3fc94c10 dims=1x2
+INPUT idx=0 type=9 bytes=99 data=0x3fc99660 dims=1x99
+INPUT idx=1 type=9 bytes=200 data=0x3fc94ae0 dims=1x100x2
+PROFILE conv1d-int8 tags=8
+OP RESHAPE            calls=4 total_us=58 avg_us=14.5
+OP CONV_2D            calls=3 total_us=5536 avg_us=1845.3
+OP FULLY_CONNECTED    calls=5 total_us=441 avg_us=88.2
+OP SOFTMAX            calls=1 total_us=517 avg_us=517.0
+OP MUL                calls=1 total_us=2355 avg_us=2355.0
+OP SUM                calls=1 total_us=3721 avg_us=3721.0
+OP REDUCE_MAX         calls=1 total_us=3821 avg_us=3821.0
+OP CONCATENATION      calls=1 total_us=32 avg_us=32.0
+RUN conv1d-int8 i=0 us=17046
+RUN conv1d-int8 i=1 us=16899
+RUN conv1d-int8 i=2 us=16900
+RUN conv1d-int8 i=3 us=16875
+RUN conv1d-int8 i=4 us=16904
+RUN conv1d-int8 i=5 us=16863
+RUN conv1d-int8 i=6 us=16914
+RUN conv1d-int8 i=7 us=16864
+RUN conv1d-int8 i=8 us=16915
+RUN conv1d-int8 i=9 us=16862
+RUN conv1d-int8 i=10 us=16910
+RUN conv1d-int8 i=11 us=16863
+RUN conv1d-int8 i=12 us=16919
+RUN conv1d-int8 i=13 us=16860
+RUN conv1d-int8 i=14 us=16908
+RUN conv1d-int8 i=15 us=16873
+RUN conv1d-int8 i=16 us=16910
+RUN conv1d-int8 i=17 us=16862
+RUN conv1d-int8 i=18 us=16907
+RUN conv1d-int8 i=19 us=16872
+BENCH conv1d-int8 warmup=5 runs=20 min_us=16860 median_us=16900 p95_us=16919 max_us=17046 mean_us=16896.3 arena_used=24776 heap=8567351
+BENCH_DONE heap=8567515
+BENCH_ALIVE t=5565685
+BENCH_ALIVE t=10558450
+BENCH_ALIVE t=15558449
+BENCH_ALIVE t=20558449
+BENCH_ALIVE t=25558449
+BENCH_ALIVE t=30558449
+BENCH_ALIVE t=35558449
+BENCH_ALIVE t=40558449

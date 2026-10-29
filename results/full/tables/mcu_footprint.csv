@@ -1,0 +1,3 @@
+model,arch,int8_kib,arena_kib,runs,min_us,median_us,p95_us,max_us,mean_us,bursts_per_s,dwell_bursts,payload_bit_s,velocity_hz,energy_mj_low,energy_mj_high,mcu_over_pc,conv_share_pct,attention_share_pct
+conv1d-int8,conv1d,45.6,24.2,40,16848.0,16911.0,16952.0,17029.0,16907.7,59.13,1691,59.13,7.39,2.232,3.348,114.7,33.7,14.4
+qkv-int8,qkv,78.8,185.6,40,193619.0,193640.0,193653.0,193659.0,193638.4,5.16,19364,5.16,0.65,25.56,38.341,355.8,2.4,66.2
